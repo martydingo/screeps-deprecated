@@ -28,7 +28,7 @@ var visual = {
                     }
                 )
                 
-                extensions = variables.structures.extensions.all()
+                extensions = variables.structures.extensions.E26N37.all()
                 for(extension in extensions){
                     
                     spawn.room.visual.text(
