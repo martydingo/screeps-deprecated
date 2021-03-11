@@ -12,34 +12,29 @@ visual = require('visual')
 module.exports.loop = function () {
     //console.log(variables.bots.builderBots.E27N38().length)
     //console.log(variables.structures.towers.E26N37.eastSpawnTower())    
-    respawn.respawnDaemon()
-    try{
-    }
-    catch(err){
+    try {
+        respawn.respawnDaemon()
+    } catch (err) {
         console.log(err)
     }
-    bots.botDaemon()
-    try{
-    }
-    catch(err){
+    try {
+        bots.botDaemon()
+    } catch (err) {
         console.log(err)
     }
-    try{
+    try {
         utilities.garbageCollection.run()
-    }
-    catch(err){
+    } catch (err) {
         console.log(err)
     }
-    try{
+    try {
         varStructures.towers.runDaemon()
-    }
-    catch(err){
+    } catch (err) {
         console.log(err)
     }
-    try{
+    try {
         //visual.room.paint()
-    }
-    catch(err){
+    } catch (err) {
         console.log(err)
     }
 }

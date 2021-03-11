@@ -1,0 +1,5 @@
+node_modules
+package-lock.json
+.screeps.json
+dist/bots_builderBot_common_template_bots_builderBots_common_template.js
+dist/bots_common.js
