@@ -225,21 +225,21 @@ var config = {
             }
         },
         "feederBots": {
-            "E26N37":{
+            "E26N37": {
                 "primarySpawn": {
                     "function": "feederBot_primarySpawn",
                     "shortName": "feederBot_pS",
                     "maxActive": "4",
-                    "source": "60448d520c8afa4b168b5e52",                    
-                }      
+                    "source": "60448d520c8afa4b168b5e52",
+                }
             },
-            "E27N38":{
+            "E27N38": {
                 "primarySpawn": {
-                    "function": "feederBot_primarySpawn",
+                    "function": "feederBot_E27N38_primarySpawn",
                     "shortName": "feederBot_pS",
                     "maxActive": "0",
-                    "source": "60491c6bd2b0860bfb1bd4dd",                    
-                }      
+                    "source": "60491c6bd2b0860bfb1bd4dd",
+                }
             }
         },
         "claimBots": {
