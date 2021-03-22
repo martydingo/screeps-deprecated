@@ -337,7 +337,7 @@ var bots = {
                         if (creep.store[RESOURCE_ENERGY] == 0) {
                             shouldGoUpgrade = false
                         } else
-                        if (creep.store[RESOURCE_ENERGY] == creep.store.getCapacity()) {
+                        if (creep.store[RESOURCE_ENERGY] == creep.store.getCapacity(RESOURCE_ENERGY)) {
                             shouldGoUpgrade = true
                         }
                         if (shouldGoUpgrade == false) {
@@ -602,16 +602,14 @@ var bots = {
                     if (creep.memory.shouldBuild && creep.store[RESOURCE_ENERGY] == 0) {
                         creep.memory.shouldBuild = false;
                     }
-                    if (!creep.memory.shouldBuild && creep.store.getFreeCapacity() == 0) {
+                    if (!creep.memory.shouldBuild && creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
                         creep.memory.shouldBuild = true;
                     }
 
                     if (creep.memory.shouldBuild) {
                         var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
                         var targetsRepair = creep.room.find(FIND_STRUCTURES, {
-                            filter: object => object.structureType == STRUCTURE_CONTAINER
-                        }).sort(function (a, b) {
-                            return a.hits - b.hits
+                            filter: object => object.structureType == STRUCTURE_CONTAINER && object.hits < object.hitsMax || object.structureType == STRUCTURE_ROAD && object.hits < object.hitsMax 
                         })
                         if (targets.length) {
                             this.build(creep, targets)

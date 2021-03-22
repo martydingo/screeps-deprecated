@@ -1,6 +1,6 @@
-const respawn_feederBots_template = require('respawn_feederBots_template')
+const bots_upgradeBots_template = require('bots_upgradeBots_template')
 
-class respawn_feederBots_e27n38 extends respawn_feederBots_template {
+class bots_upgradeBots_e27n38_primarySpawn extends bots_upgradeBots_template {
     constructor(functionName, shortName,
         maxActive = 1,
         partArray = [CARRY, CARRY, CARRY, MOVE, MOVE, MOVE],
@@ -25,4 +25,4 @@ class respawn_feederBots_e27n38 extends respawn_feederBots_template {
     }
 }
 
-module.exports = respawn_feederBots_e27n38
+module.exports = bots_upgradeBots_e27n38_primarySpawn

@@ -1,6 +1,6 @@
-const respawn_template = require('respawn_template')
+const bots_template = require('bots_template')
 
-class respawn_feederBots_template extends respawn_template {
+class bots_feederBots_template extends bots_template {
     constructor(
         functionName = "feederBot",
         shortName = "feederBot",
@@ -14,4 +14,4 @@ class respawn_feederBots_template extends respawn_template {
     }
 }
 
-module.exports = respawn_feederBots_template
+module.exports = bots_feederBots_template
