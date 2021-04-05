@@ -13,7 +13,7 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
         upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N56")
         //console.log(upgradeCreeps[0])
         upgradeFromPOS = null
-        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'60685f6d0db288d32283c306',[WORK,WORK,CARRY,MOVE])
+        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'60685f6d0db288d32283c306',[WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE])
         
         this.creepWatch(spawn,upgradeCreeps,upgradeCreep)
         this.creepAct(upgradeCreeps,upgradeCreep)

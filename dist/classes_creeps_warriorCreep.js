@@ -10,6 +10,7 @@ class classes_creeps_warriorCreep {
         this.inPosition = this.inPosition
         this.result = this.result
         this.badGuys = this.badGuys
+        this.healerCreeps = this.healerCreeps
     }
 
     spawnCreep(spawner){
@@ -18,7 +19,7 @@ class classes_creeps_warriorCreep {
                 spawner.spawnCreep(this.partsArray,this.creepName+Game.time, {
                     memory: {
                         creepClass: 'warriorCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepParts: this.partsArray
                     }
                 })
@@ -38,23 +39,35 @@ class classes_creeps_warriorCreep {
     
     attack(creep){
         this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 20)
-        console.log(this.badGuys)
         if(this.badGuys.length > 0){
             this.result = creep.attack(this.badGuys[0])
             if(this.result == ERR_NOT_IN_RANGE){
                 creep.moveTo(this.badGuys[0])
             }
             console.log('Attack result: ' + this.result)
+        } else {
+            creep.moveTo(new RoomPosition(25,25,this.roomName))
         }
+
     }
     
     run(creep){
-        if(creep.pos.roomName != this.roomName){
-            creep.moveTo(new RoomPosition(25,25,this.roomName))
-        } else {
-            this.attack(creep)
-        }
-
+        //this.healerCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "healerCreep")
+        //if(this.healerCreeps.length > 0){
+           // if(creep.pos.inRangeTo(this.healerCreeps[0],1)){
+                if(creep.pos.roomName != this.roomName){
+                    creep.moveTo(new RoomPosition(25,25,this.roomName))
+                } else {
+                    this.attack(creep)
+                }
+          //  } else {
+              //  if(creep.pos.roomName == this.roomName){
+                //    if(this.healerCreeps[0].pos.roomName != this.roomName){
+                  //      creep.moveTo(new RoomPosition(47, 35, this.roomName))
+             //       }
+               // }
+            //}
+        //}
     }
 }
 

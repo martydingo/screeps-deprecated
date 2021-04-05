@@ -7,7 +7,8 @@ var config_e18n55_respawn = {
         "buildCreep": "0",
         "feederCreep": "0",
         "claimCreep": "1",
-        "scoutCreep": "1",
+        "warriorCreep": "1",
+        "scoutCreep": "0",
     }
 }
 

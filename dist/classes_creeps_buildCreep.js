@@ -9,7 +9,7 @@ class classes_creeps_buildCreep {
         this.room = Game.rooms[roomName]
         this.constructionSite = this.constructionSite
         this.repairSite = this.repairSite
-        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]
+        this.partsArray = partsArray || [MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,CARRY,CARRY]
         this.creepName = 'buildCreep\[' + this.roomName + '\]-'
         this.shouldGoBuild = ''
         this.result = this.result

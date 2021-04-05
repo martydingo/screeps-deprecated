@@ -1,12 +1,13 @@
 var config_e17n54_respawn = {
     "maxActive": {
         "sourceCreep": {
-            "srcOne": "0"
+            "srcOne": "3"
         },
         "upgradeCreep": "0",
         "buildCreep": "0",
         "feederCreep": "0",
-        "claimCreep": "0",
+        "warriorCreep": "1",
+        "claimCreep": "1",
         "scoutCreep": "0",
     }
 }

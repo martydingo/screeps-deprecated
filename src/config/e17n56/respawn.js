@@ -1,10 +1,10 @@
-var config_e07n56_respawn = {
+var config_e17n56_respawn = {
     "maxActive": {
         "sourceCreep": {
             "srcOne": "1",
-            "srcTwo": "0"
+            "srcTwo": "1"
         },
-        "upgradeCreep": "1",
+        "upgradeCreep": "4",
         "buildCreep": "2",
         "feederCreep": "1",
         "transportCreep": {
@@ -19,4 +19,4 @@ var config_e07n56_respawn = {
     }
 }
 
-module.exports = config_e07n56_respawn
+module.exports = config_e17n56_respawn

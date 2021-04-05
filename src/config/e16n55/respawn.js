@@ -6,10 +6,11 @@ var config_e16n55_respawn = {
         "upgradeCreep": "0",
         "buildCreep": "0",
         "warriorCreep": "0",
+        "healerCreep": "0",
         "feederCreep": "0",
         "claimCreep": "0",
-        "scoutCreep": "1",
-        "oxygenCreep": "1",
+        "scoutCreep": "0",
+        "oxygenCreep": "0",
     }
 }
 

@@ -10,7 +10,7 @@ var routines_e17n56_sourceCreeps_srcTwo = {
         spawn = Game.spawns['E17N56SPA1']
         sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
-        sourceCreep = new classes_creeps_sourceCreep(null,energySource,room,[WORK,WORK,WORK,WORK,WORK,MOVE,CARRY])
+        sourceCreep = new classes_creeps_sourceCreep(null,energySource,room,[WORK,WORK,WORK,WORK,MOVE,CARRY])
         
         this.creepWatch(spawn,sourceCreeps,sourceCreep)
         this.creepAct(sourceCreeps,sourceCreep)
@@ -26,9 +26,9 @@ var routines_e17n56_sourceCreeps_srcTwo = {
     
     creepAct: function(sourceCreeps,sourceCreep){
         for(creep in sourceCreeps){
-            //if(sourceCreeps[creep].memory.creepSource == this.energySource){
+            if(sourceCreeps[creep].memory.creepSource == energySource){
                 sourceCreep.run(sourceCreeps[creep])
-            //}
+            }
         }
     }
 }
