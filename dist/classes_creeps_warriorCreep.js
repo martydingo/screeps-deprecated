@@ -40,11 +40,13 @@ class classes_creeps_warriorCreep {
     attack(creep){
         this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 20)
         if(this.badGuys.length > 0){
-            this.result = creep.attack(this.badGuys[0])
-            if(this.result == ERR_NOT_IN_RANGE){
-                creep.moveTo(this.badGuys[0])
+            if(this.badGuys[0].pos.roomName == this.roomName){
+                this.result = creep.attack(this.badGuys[0])
+                console.log('Attack result: ' + this.result)
+                if(this.result == ERR_NOT_IN_RANGE){
+                    creep.moveTo(this.badGuys[0])
+                }
             }
-            console.log('Attack result: ' + this.result)
         } else {
             creep.moveTo(new RoomPosition(25,25,this.roomName))
         }

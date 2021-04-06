@@ -2,11 +2,11 @@ var config_e17n56_respawn = {
     "maxActive": {
         "sourceCreep": {
             "srcOne": "1",
-            "srcTwo": "1"
+            "srcTwo": "0"
         },
-        "upgradeCreep": "4",
-        "buildCreep": "2",
-        "feederCreep": "1",
+        "upgradeCreep": "0",
+        "buildCreep": "0",
+        "feederCreep": "2",
         "transportCreep": {
             "linkViaStorage": "0",
             "storageViaSrcTwoContainer": "0",

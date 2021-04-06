@@ -6,7 +6,7 @@ var routines_e17n56_feederCreeps_feederCreep = {
 
     run: function () {
         room = 'E17N56'
-        origin = '606b050239c8c35403a0b080'
+        origin = '60685f6d0db288d32283c306'
         energySource = config_e17n56_sources.srcTwo
         roomController = '5bbcade89099fc012e6381d6'
         spawn = Game.spawns['E17N56SPA1']
