@@ -1,4 +1,5 @@
 const config_e17n55_respawn = require("config_e17n55_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_lootCreep = require("classes_creeps_lootCreep")
 
 var routines_e17n55_lootCreeps_lootCreep = {
@@ -10,7 +11,9 @@ var routines_e17n55_lootCreeps_lootCreep = {
         //console.log(lootCreeps[0])
         lootCreep = new classes_creeps_lootCreep(room)
         
-        this.creepWatch(spawn,lootCreeps,lootCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,lootCreeps,lootCreep)
+        }
         this.creepAct(lootCreeps,lootCreep)
         
     },
@@ -24,9 +27,22 @@ var routines_e17n55_lootCreeps_lootCreep = {
     
     creepAct: function(lootCreeps,lootCreep){
         for(creep in lootCreeps){
-            lootCreep.run(lootCreeps[creep])
+            if(lootCreeps[creep].ticksToLive < 400){
+                lootCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(lootCreeps[creep].ticksToLive > 1400){
+                lootCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(lootCreeps[creep].memory.creepShouldRenew) {
+                if(lootCreeps[creep].memory.creepShouldRenew == false){
+                    lootCreep.run(lootCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(lootCreeps[creep],spawn)
+                }
+            } else { 
+                lootCreep.run(lootCreeps[creep])
+            }
         }
     }
 }
-
 module.exports = routines_e17n55_lootCreeps_lootCreep

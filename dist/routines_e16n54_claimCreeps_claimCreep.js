@@ -1,5 +1,6 @@
 const config_e16n54_respawn = require("config_e16n54_respawn")
 const config_e16n54_sources = require("config_e16n54_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_claimCreep = require("classes_creeps_claimCreep")
 
 var routines_e16n54_claimCreeps_claimCreep = {
@@ -13,7 +14,9 @@ var routines_e16n54_claimCreeps_claimCreep = {
         //console.log(claimCreeps[0])
         claimCreep = new classes_creeps_claimCreep(room, targetRoomPos,reserveController)
         
-        this.creepWatch(spawn,claimCreeps,claimCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,claimCreeps,claimCreep)
+        }
         this.creepAct(claimCreeps,claimCreep)
         
     },

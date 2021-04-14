@@ -1,4 +1,5 @@
 const config_e18n55_respawn = require("config_e18n55_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_scoutCreep = require("classes_creeps_scoutCreep")
 
 var routines_e18n55_scoutCreeps_scoutCreep = {
@@ -11,7 +12,9 @@ var routines_e18n55_scoutCreeps_scoutCreep = {
         //console.log(scoutCreeps[0])
         scoutCreep = new classes_creeps_scoutCreep(room,[MOVE],targetPos)
         
-        this.creepWatch(spawn,scoutCreeps,scoutCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,scoutCreeps,scoutCreep)
+        }
         this.creepAct(scoutCreeps,scoutCreep)
         
     },

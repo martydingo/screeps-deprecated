@@ -5,7 +5,7 @@ class classes_creeps_upgradeCreep {
         this.energySource = Game.getObjectById(energySourceID)
         this.container = Game.getObjectById(container) || Game.getObjectById('605cf742e96436c85b848964')
         this.room = Game.rooms[roomName]
-        this.partsArray = partsArray || [WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,CARRY]
+        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY]
         this.creepName = 'upgradeCreep\['+this.room.name+'\]-'
         this.result = this.result
         this.upgradeFromPOS = upgradeFromPOS || this.upgradeFromPOS || new RoomPosition(6, 42, 'E17N55')
@@ -90,7 +90,7 @@ class classes_creeps_upgradeCreep {
             
         } else {
             if(this.storage != null){
-                if(this.storage.store[RESOURCE_ENERGY] > 1600){
+                if(this.storage.store[RESOURCE_ENERGY] > 5000){
                     this.pickUpEnergy(creep, this.storage)
                 } else if(this.container != null){
                     if(this.container.store[RESOURCE_ENERGY] > 1600){

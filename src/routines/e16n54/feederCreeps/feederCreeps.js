@@ -1,5 +1,6 @@
 const config_e16n54_respawn = require("config_e16n54_respawn")
 const config_e16n54_sources = require("config_e16n54_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_feederCreep = require("classes_creeps_feederCreep")
 
 var routines_e16n54_feederCreeps_feederCreep = {
@@ -13,7 +14,9 @@ var routines_e16n54_feederCreeps_feederCreep = {
         //console.log(feederCreeps[0])
         feederCreep = new classes_creeps_feederCreep(energySource,roomController,room)
         
-        this.creepWatch(spawn,feederCreeps,feederCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,feederCreeps,feederCreep)
+        }
         this.creepAct(feederCreeps,feederCreep)
         
     },

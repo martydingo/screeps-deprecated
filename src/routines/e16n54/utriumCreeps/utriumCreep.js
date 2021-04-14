@@ -1,4 +1,5 @@
 const config_e16n54_respawn = require("config_e16n54_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_utriumCreep = require("classes_creeps_utriumCreep")
 
 var routines_e16n54_utriumCreeps_srcOne = {
@@ -16,8 +17,12 @@ var routines_e16n54_utriumCreeps_srcOne = {
         utriumCreep = new classes_creeps_utriumCreep(utrium,utriumStore,room,holdingPos,keeperLair)
         
         
-        this.creepWatch(spawn,utriumCreeps,utriumCreep)
-        this.creepAct(utriumCreeps,utriumCreep)
+        if(!spawn.memory.spawnBlocked){
+            if(_.filter(Game.creeps, creep => creep.memory.creepClass == "srcKeeperCreep" && creep.memory.creepRoom == room).length > 0){
+                this.creepWatch(spawn,utriumCreeps,utriumCreep)
+            }
+        }
+        this.creepAct(utriumCreeps,utriumCreep,spawn)
         
     },
     
@@ -28,9 +33,23 @@ var routines_e16n54_utriumCreeps_srcOne = {
     },
 
     
-    creepAct: function(utriumCreeps,utriumCreep){
+    creepAct: function(utriumCreeps,utriumCreep,spawn){
         for(creep in utriumCreeps){
-            utriumCreep.run(utriumCreeps[creep])
+            if(utriumCreeps[creep].ticksToLive < 400){
+                utriumCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(utriumCreeps[creep].ticksToLive > 1400){
+                utriumCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(utriumCreeps[creep].memory.creepShouldRenew) {
+                if(utriumCreeps[creep].memory.creepShouldRenew == false){
+                    utriumCreep.run(utriumCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(utriumCreeps[creep],spawn)
+                }
+            } else { 
+                utriumCreep.run(utriumCreeps[creep])
+            }
         }
     }
 }

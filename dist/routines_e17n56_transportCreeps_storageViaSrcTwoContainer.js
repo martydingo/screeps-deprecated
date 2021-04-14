@@ -1,18 +1,21 @@
 const config_e17n56_respawn = require("config_e17n56_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_transportCreep = require("classes_creeps_transportCreep")
 
 var routines_e17n56_transportCreeps_storageViaSrcTwoContainer = {
 
     run: function () {
         room = 'E17N56'
-        origin = '6065b3c85dada2dc2d93716e'
-        destination = '605f381c97b43e119d443878'
+        origin = '60685f6d0db288d32283c306'
+        destination = '6073eaedcea495164e18734a'
         spawn = Game.spawns['E17N56SPA1']
         transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N56" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
         //console.log(transportCreeps[0])
         transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY])
         
-        this.creepWatch(spawn,transportCreeps,transportCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,transportCreeps,transportCreep)
+        }
         this.creepAct(transportCreeps,transportCreep)
         
     },

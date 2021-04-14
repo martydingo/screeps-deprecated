@@ -1,8 +1,9 @@
 class classes_creeps_transportCreep {
-    constructor(origin, destination, roomName, partsArray, resourceType){
+    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit){
         this.origin = Game.getObjectById(origin)
         this.destination = Game.getObjectById(destination)
         this.resourceType = resourceType || RESOURCE_ENERGY
+        this.remoteLimit = remoteLimit
         this.room = Game.rooms[roomName]
         this.partsArray = partsArray || [WORK,MOVE,WORK,CARRY]
         this.creepName = 'transportCreep\['+this.room.name+'\]-'
@@ -50,10 +51,20 @@ class classes_creeps_transportCreep {
     
     
     run(creep){
-        if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
-            this.pickUp(creep)
+        if(this.remoteLimit){
+            if(this.destination.store[RESOURCE_ENERGY] < this.remoteLimit){
+                if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
+                    this.pickUp(creep)
+                } else {
+                    this.dropOff(creep)
+                }
+            }
         } else {
-            this.dropOff(creep)
+            if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
+                this.pickUp(creep)
+            } else {
+                this.dropOff(creep)
+            }
         }
     }
 }

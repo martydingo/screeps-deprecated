@@ -1,3 +1,6 @@
+utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
+utils_pathfinding_fleeHostileCreeps = require('utils_pathfinding_fleeHostileCreeps')
+
 class classes_creeps_healerCreep {
     constructor(roomName, partsArray){
 
@@ -10,6 +13,7 @@ class classes_creeps_healerCreep {
         this.targetCreeps = this.targetCreeps
         this.targetCreep = this.targetCreep
         this.result = this.result
+        this.badGuys = this.badGuys 
     }
 
     spawnCreep(spawner){
@@ -37,30 +41,36 @@ class classes_creeps_healerCreep {
     
     heal(creep, targetCreep){
         if(creep.pos.inRangeTo(targetCreep,1)){
-            this.result = creep.heal(creep)
+            this.result = creep.heal(targetCreep)
         } else {
             creep.moveTo(targetCreep)
             if(creep.pos.inRangeTo(targetCreep,3)){
-                this.result = creep.rangedHeal(creep)
+                this.result = creep.rangedHeal(targetCreep)
             }
             
         }
     }
         
     follow(creep, targetCreep){
-        creep.moveTo(targetCreep.pos)
+        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,targetCreep.pos))
     }
     
     run(creep){
-        console.log(this.targetCreeps)
-        this.targetCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "warriorCreep")
+        this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4)
+        this.targetCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "snipeCreep")
         if(this.targetCreeps.length > 0){
             this.targetCreep = this.targetCreeps[0]
     
             if(creep.pos.inRangeTo(this.targetCreep.pos, 1) == false){
                 this.follow(creep,this.targetCreep)
-            } else {
                 this.heal(creep, this.targetCreep)
+            } else {
+                if(this.badGuys.length > 0){
+                    creep.moveTo(utils_pathfinding_fleeHostileCreeps.findPath(creep,targetCreep.pos))
+                    this.heal(creep, this.targetCreep)
+                } else {
+                    this.heal(creep, this.targetCreep)
+                }
             }
         }
 

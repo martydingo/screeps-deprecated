@@ -1,5 +1,6 @@
 const config_e16n55_respawn = require("config_e16n55_respawn")
 const config_e16n55_sources = require("config_e16n55_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_sourceCreep = require("classes_creeps_sourceCreep")
 
 var routines_e16n55_sourceCreeps_srcOne = {
@@ -11,10 +12,10 @@ var routines_e16n55_sourceCreeps_srcOne = {
         spawn = Game.spawns['E17N55SPA1']
         sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
-        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,MOVE])
+        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
         
         this.creepWatch(spawn,sourceCreeps,sourceCreep)
-        this.creepAct(sourceCreeps,sourceCreep)
+        this.creepAct(sourceCreeps,sourceCreep,spawn)
         
     },
     
@@ -25,12 +26,10 @@ var routines_e16n55_sourceCreeps_srcOne = {
     },
 
     
-    creepAct: function(sourceCreeps,sourceCreep){
+    creepAct: function(sourceCreeps,sourceCreep,spawn){
         for(creep in sourceCreeps){
-            if(sourceCreeps[creep].memory.creepSource == energySource){
                 sourceCreep.run(sourceCreeps[creep])
             }
-        }
     }
 }
 

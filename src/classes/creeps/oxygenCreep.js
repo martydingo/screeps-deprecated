@@ -4,6 +4,7 @@ class classes_creeps_oxygenCreep {
     constructor(oxygen,oxygenStore,roomName,partsArray){
 
         this.room = Game.rooms[roomName]
+        this.roomName = roomName
         this.hostileCreeps = this.hostileCreeps
         this.partsArray = partsArray || [WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY]
         this.creepName = 'oxygenCreep\['+roomName+'\]-'
@@ -18,7 +19,7 @@ class classes_creeps_oxygenCreep {
                 spawner.spawnCreep(this.partsArray,this.creepName+Game.time, {
                     memory: {
                         creepClass: 'oxygenCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepParts: this.partsArray
                     }
                 })
@@ -37,17 +38,21 @@ class classes_creeps_oxygenCreep {
     
     
     run(creep){
-        if(creep.store.getFreeCapacity(RESOURCE_OXYGEN) > 0){
-            this.hostileCreeps = this.room.find(FIND_HOSTILE_CREEPS)
-            this.result = creep.harvest(this.oxygen)
+        if(this.room){
+            if(creep.store.getFreeCapacity(RESOURCE_OXYGEN) > 0){
+                this.hostileCreeps = this.room.find(FIND_HOSTILE_CREEPS)
+                this.result = creep.harvest(this.oxygen)
+                    if(this.result == ERR_NOT_IN_RANGE){
+                        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygen.pos))
+                    }
+            } else {
+                this.result = creep.transfer(this.oxygenStore, RESOURCE_OXYGEN)
                 if(this.result == ERR_NOT_IN_RANGE){
-                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygen.pos))
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygenStore.pos))
                 }
-        } else {
-            this.result = creep.transfer(this.oxygenStore, RESOURCE_OXYGEN)
-            if(this.result == ERR_NOT_IN_RANGE){
-                creep.moveTo(this.oxygenStore)
             }
+        } else {
+            creep.moveTo(new RoomPosition(25,25,this.roomName))
         }
     }
 }

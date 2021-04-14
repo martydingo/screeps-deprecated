@@ -1,4 +1,5 @@
 const config_e17n55_respawn = require("config_e17n55_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_hydrogenCreep = require("classes_creeps_hydrogenCreep")
 
 var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
@@ -15,7 +16,9 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
         hydrogenCreep = new classes_creeps_hydrogenCreep(hydrogen,hydrogenStore,room)
         
         
-        this.creepWatch(spawn,hydrogenCreeps,hydrogenCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,hydrogenCreeps,hydrogenCreep)
+        }
         this.creepAct(hydrogenCreeps,hydrogenCreep)
         
     },
@@ -29,10 +32,23 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
     
     creepAct: function(hydrogenCreeps,hydrogenCreep){
         for(creep in hydrogenCreeps){
-            hydrogenCreep.run(hydrogenCreeps[creep])
+            if(hydrogenCreeps[creep].ticksToLive < 400){
+                hydrogenCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(hydrogenCreeps[creep].ticksToLive > 1400){
+                hydrogenCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(hydrogenCreeps[creep].memory.creepShouldRenew) {
+                if(hydrogenCreeps[creep].memory.creepShouldRenew == false){
+                    hydrogenCreep.run(hydrogenCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(hydrogenCreeps[creep],spawn)
+                }
+            } else { 
+                hydrogenCreep.run(hydrogenCreeps[creep])
+            }
         }
     }
 }
-
 module.exports = routines_e17n55_hydrogenCreeps_hydrogenCreep
 

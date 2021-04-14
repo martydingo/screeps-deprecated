@@ -1,4 +1,5 @@
 const config_e17n55_respawn = require("config_e17n55_respawn")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_transportCreep = require("classes_creeps_transportCreep")
 
 var routines_e17n55_transportCreeps_linkViaStorage = {
@@ -19,7 +20,14 @@ var routines_e17n55_transportCreeps_linkViaStorage = {
     
     creepWatch: function (spawn, transportCreeps,transportCreep) {
         if (transportCreeps.length < config_e17n55_respawn.maxActive.transportCreep.linkViaStorage) {
+            spawn.memory.spawnBlocked = 'transportCreep_linkViaStorage'
             transportCreep.spawnCreep(spawn)
+        } else {
+            if(spawn.memory.spawnBlocked){
+                if(spawn.memory.spawnBlocked == 'transportCreep_linkViaStorage'){
+                    delete spawn.memory.spawnBlocked
+                }
+            }
         }
     },
 

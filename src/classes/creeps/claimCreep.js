@@ -84,13 +84,36 @@ class classes_creeps_claimCreep {
                 }
             })
         } else {
-            this.result = creep.reserveController(creep.room.controller) 
-            if(this.result == ERR_NOT_IN_RANGE){
-                creep.moveTo(creep.room.controller,{
-                    visualizePathStyle: {
-                        stroke: "#302de3"
+            if(creep.room.controller.reservation){
+                if(creep.room.controller.reservation.username == 'Marty'){
+                    this.result = creep.reserveController(creep.room.controller) 
+                    if(this.result == ERR_NOT_IN_RANGE){
+                        creep.moveTo(creep.room.controller,{
+                            visualizePathStyle: {
+                                stroke: "#302de3"
+                            }
+                        })
                     }
-                })
+                } else {
+                    this.result = creep.attackController(creep.room.controller) 
+                    if(this.result == ERR_NOT_IN_RANGE){
+                        creep.moveTo(creep.room.controller,{
+                            visualizePathStyle: {
+                                stroke: "#302de3"
+                            }
+                        })
+                    }
+                }
+            }
+            else {
+                this.result = creep.reserveController(creep.room.controller) 
+                if(this.result == ERR_NOT_IN_RANGE){
+                    creep.moveTo(creep.room.controller,{
+                        visualizePathStyle: {
+                            stroke: "#302de3"
+                        }
+                    })
+                }
             }
         }
     }

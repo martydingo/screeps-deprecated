@@ -1,5 +1,6 @@
 const config_e17n53_respawn = require("config_e17n53_respawn")
 const config_e17n53_sources = require("config_e17n53_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_upgradeCreep = require("classes_creeps_upgradeCreep")
 
 var routines_e17n53_upgradeCreeps_srcOne = {
@@ -12,9 +13,11 @@ var routines_e17n53_upgradeCreeps_srcOne = {
         spawn = Game.spawns['E17N53SPA1']
         upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N53")
         //console.log(upgradeCreeps[0])
-        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,null,null,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY])
+        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,null,null)
         
-        this.creepWatch(spawn,upgradeCreeps,upgradeCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,upgradeCreeps,upgradeCreep)
+        }
         this.creepAct(upgradeCreeps,upgradeCreep)
         
     },
@@ -28,7 +31,21 @@ var routines_e17n53_upgradeCreeps_srcOne = {
     
     creepAct: function(upgradeCreeps,upgradeCreep){
         for(creep in upgradeCreeps){
-            upgradeCreep.run(upgradeCreeps[creep])
+            if(upgradeCreeps[creep].ticksToLive < 400){
+                upgradeCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(upgradeCreeps[creep].ticksToLive > 1400){
+                upgradeCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(upgradeCreeps[creep].memory.creepShouldRenew) {
+                if(upgradeCreeps[creep].memory.creepShouldRenew == false){
+                    upgradeCreep.run(upgradeCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(upgradeCreeps[creep],spawn)
+                }
+            } else { 
+                upgradeCreep.run(upgradeCreeps[creep])
+            }
         }
     }
 }

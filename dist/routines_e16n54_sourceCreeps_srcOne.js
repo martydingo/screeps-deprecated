@@ -1,5 +1,6 @@
 const config_e16n54_respawn = require("config_e16n54_respawn")
 const config_e16n54_sources = require("config_e16n54_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_sourceCreep = require("classes_creeps_sourceCreep")
 
 var routines_e16n54_sourceCreeps_srcOne = {
@@ -7,14 +8,16 @@ var routines_e16n54_sourceCreeps_srcOne = {
     run: function () {
         room = 'E16N54'
         energySource = config_e16n54_sources.srcOne
-        storage = '605f381c97b43e119d443878'
-        spawn = Game.spawns['E17N55SPA1']
+        storage = '60668763c15bf6dea0a3288e'
+        spawn = Game.spawns['E17N53SPA1']
         sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
-        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,WORK,CARRY,MOVE,MOVE,MOVE])
+        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
         
-        this.creepWatch(spawn,sourceCreeps,sourceCreep)
-        this.creepAct(sourceCreeps,sourceCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,sourceCreeps,sourceCreep)
+        }
+        this.creepAct(sourceCreeps,sourceCreep,spawn)
         
     },
     
@@ -25,9 +28,21 @@ var routines_e16n54_sourceCreeps_srcOne = {
     },
 
     
-    creepAct: function(sourceCreeps,sourceCreep){
+    creepAct: function(sourceCreeps,sourceCreep,spawn){
         for(creep in sourceCreeps){
-            if(sourceCreeps[creep].memory.creepSource == energySource){
+            if(sourceCreeps[creep].ticksToLive < 400){
+                sourceCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(sourceCreeps[creep].ticksToLive > 1400){
+                sourceCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(sourceCreeps[creep].memory.creepShouldRenew) {
+                if(sourceCreeps[creep].memory.creepShouldRenew == false){
+                    sourceCreep.run(sourceCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(sourceCreeps[creep],spawn)
+                }
+            } else { 
                 sourceCreep.run(sourceCreeps[creep])
             }
         }

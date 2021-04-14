@@ -44,7 +44,7 @@ class classes_creeps_sourceCreep {
         
         harvestEnergySource(creep){
             if(this.energySource) {
-                if(creep.room.find(FIND_HOSTILE_CREEPS).length < 5){
+                if(creep.room.find(FIND_HOSTILE_CREEPS).length < 1){
                     if(creep.harvest(this.energySource) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(this.energySource);
                     }
@@ -54,7 +54,7 @@ class classes_creeps_sourceCreep {
                 }
             }
         } else {
-            creep.moveTo(this.roomName)
+            creep.moveTo(new RoomPosition(25, 25, this.roomName))
         }
     } 
 
@@ -84,7 +84,8 @@ class classes_creeps_sourceCreep {
         this.unloadDest = this.storage
         this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)
         if(this.result == ERR_NOT_IN_RANGE) {
-            creep.moveTo(this.unloadDest);
+            this.result = creep.moveTo(this.unloadDest)
+            // console.log(creep + " - " + this.result + " - " + this.unloadDest)
         } //else
         // if(this.result != 0){
             //     //console.log(this.creepName + " Error: " + this.result)

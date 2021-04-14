@@ -26,7 +26,7 @@ class classes_structures_tower {
         this.injuredCreeps = this.tower.room.find(FIND_MY_CREEPS, { filter: creep => creep.hits < creep.hitsMax })
         this.hostileCreeps = this.tower.room.find(FIND_HOSTILE_CREEPS)
         this.unrepairedStructuresUnsorted = this.tower.room.find(FIND_STRUCTURES, {
-            filter: object => object.hits < object.hitsMax && object.structureType == STRUCTURE_CONTAINER || object.hits < object.hitsMax && object.structureType == STRUCTURE_TOWER || object.hits < object.hitsMax && object.structureType == STRUCTURE_ROAD || object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_RAMPART || object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_WALL
+            filter: object => object.hits < object.hitsMax && object.structureType == STRUCTURE_CONTAINER || object.hits < object.hitsMax && object.structureType == STRUCTURE_TOWER || object.hits < object.hitsMax && object.structureType == STRUCTURE_ROAD || object.hits < 100000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_RAMPART || object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_WALL
         })
         
         this.unrepairedStructures = this.unrepairedStructuresUnsorted.sort(function (a, b) {

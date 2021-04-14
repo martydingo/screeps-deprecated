@@ -14,7 +14,9 @@ var routines_e17n53_feederCreeps_feederCreep = {
         //console.log(feederCreeps[0])
         feederCreep = new classes_creeps_feederCreep(origin,energySource,roomController,room,[MOVE,CARRY,MOVE,CARRY,MOVE,CARRY])
         
-        this.creepWatch(spawn,feederCreeps,feederCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,feederCreeps,feederCreep)
+        }
         this.creepAct(feederCreeps,feederCreep)
         
     },

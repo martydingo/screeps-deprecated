@@ -1,5 +1,6 @@
 const config_e17n55_respawn = require("config_e17n55_respawn")
 const config_e17n55_sources = require("config_e17n55_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_feederCreep = require("classes_creeps_feederCreep")
 
 var routines_e17n55_feederCreeps_feederCreep = {
@@ -21,7 +22,14 @@ var routines_e17n55_feederCreeps_feederCreep = {
     
     creepWatch: function (spawn, feederCreeps,feederCreep) {
         if (feederCreeps.length < config_e17n55_respawn.maxActive.feederCreep) {
+            spawn.memory.spawnBlocked = 'feederCreep'
             feederCreep.spawnCreep(spawn)
+        } else {
+            if(spawn.memory.spawnBlocked){
+                if(spawn.memory.spawnBlocked == 'feederCreep'){
+                    delete spawn.memory.spawnBlocked
+                }
+            }
         }
     },
 

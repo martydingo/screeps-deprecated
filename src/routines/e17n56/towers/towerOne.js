@@ -3,7 +3,7 @@ classes_structures_tower = require("classes_structures_tower")
 var routines_e17n56_towers_towerOne = {
     run: function(){
         room = 'E17N56'
-        towerObj = Game.getObjectById('605ddb6c9a82e8b390ed4a9e')
+        towerObj = Game.getObjectById('606b69aa70ed373287aa7f80')
         tower = new classes_structures_tower(towerObj)
         tower.run()
 

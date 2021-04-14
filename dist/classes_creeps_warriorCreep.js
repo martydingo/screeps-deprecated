@@ -1,6 +1,5 @@
 class classes_creeps_warriorCreep {
     constructor(roomName, partsArray){
-
         this.room = Game.rooms[roomName]
         this.roomName = roomName
         this.partsArray = partsArray || [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK]
@@ -38,7 +37,10 @@ class classes_creeps_warriorCreep {
     }
     
     attack(creep){
-        this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 20)
+        this.badGuys = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 25)
+        if(this.badGuys.length < 1){
+            this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 25)
+        }
         if(this.badGuys.length > 0){
             this.result = creep.attack(this.badGuys[0])
             if(this.result == ERR_NOT_IN_RANGE){
@@ -55,8 +57,8 @@ class classes_creeps_warriorCreep {
         //this.healerCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "healerCreep")
         //if(this.healerCreeps.length > 0){
            // if(creep.pos.inRangeTo(this.healerCreeps[0],1)){
-                if(creep.pos.roomName != this.roomName){
-                    creep.moveTo(new RoomPosition(25,25,this.roomName))
+               if(creep.pos.roomName != this.roomName){
+                   creep.moveTo(new RoomPosition(25,25,this.roomName))
                 } else {
                     this.attack(creep)
                 }

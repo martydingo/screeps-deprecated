@@ -1,5 +1,6 @@
 const config_e17n56_respawn = require("config_e17n56_respawn")
 const config_e17n56_sources = require("config_e17n56_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_upgradeCreep = require("classes_creeps_upgradeCreep")
 
 var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
@@ -15,7 +16,9 @@ var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
         upgradeFromPOS = null
         upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'606b050239c8c35403a0b080',[WORK,WORK,WORK,WORK,CARRY,MOVE,MOVE])
         
-        this.creepWatch(spawn,upgradeCreeps,upgradeCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,upgradeCreeps,upgradeCreep)
+        }
         this.creepAct(upgradeCreeps,upgradeCreep)
         
     },
@@ -31,7 +34,21 @@ var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
     
     creepAct: function(upgradeCreeps,upgradeCreep){
         for(creep in upgradeCreeps){
-            upgradeCreep.run(upgradeCreeps[creep])
+            if(upgradeCreeps[creep].ticksToLive < 400){
+                upgradeCreeps[creep].memory.creepShouldRenew = true
+            }
+            if(upgradeCreeps[creep].ticksToLive > 1400){
+                upgradeCreeps[creep].memory.creepShouldRenew = false
+            }
+            if(upgradeCreeps[creep].memory.creepShouldRenew) {
+                if(upgradeCreeps[creep].memory.creepShouldRenew == false){
+                    upgradeCreep.run(upgradeCreeps[creep])
+                } else {
+                    utils_creeps_renew.renewCreep(upgradeCreeps[creep],spawn)
+                }
+            } else { 
+                upgradeCreep.run(upgradeCreeps[creep])
+            }
         }
     }
 }

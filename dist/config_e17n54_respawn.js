@@ -7,6 +7,7 @@ var config_e17n54_respawn = {
         "buildCreep": "0",
         "feederCreep": "0",
         "warriorCreep": "1",
+        "lootCreep": "0",
         "claimCreep": "1",
         "scoutCreep": "0",
     }

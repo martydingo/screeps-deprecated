@@ -1,12 +1,13 @@
 const config_e17n56_respawn = require("config_e17n56_respawn")
 const config_e17n56_sources = require("config_e17n56_sources")
+const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_feederCreep = require("classes_creeps_feederCreep")
 
 var routines_e17n56_feederCreeps_feederCreep = {
 
     run: function () {
         room = 'E17N56'
-        origin = '606b050239c8c35403a0b080'
+        origin = '6073eaedcea495164e18734a'
         energySource = config_e17n56_sources.srcTwo
         roomController = '5bbcade89099fc012e6381d6'
         spawn = Game.spawns['E17N56SPA1']
@@ -14,7 +15,9 @@ var routines_e17n56_feederCreeps_feederCreep = {
         //console.log(feederCreeps[0])
         feederCreep = new classes_creeps_feederCreep(origin,energySource,roomController,room)
         
-        this.creepWatch(spawn,feederCreeps,feederCreep)
+        if(!spawn.memory.spawnBlocked){
+            this.creepWatch(spawn,feederCreeps,feederCreep)
+        }
         this.creepAct(feederCreeps,feederCreep)
         
     },
