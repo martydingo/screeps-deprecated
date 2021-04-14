@@ -11,7 +11,7 @@ var routines_e17n55_transportCreeps_storageViaSrcTwoContainer = {
         spawn = Game.spawns['E17N55SPA1']
         transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N55" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
         //console.log(transportCreeps[0])
-        transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY])
+        transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,transportCreeps,transportCreep)

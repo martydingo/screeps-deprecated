@@ -30,21 +30,7 @@ var routines_e17n54_upgradeCreeps_srcOne = {
     
     creepAct: function(upgradeCreeps,upgradeCreep){
         for(creep in upgradeCreeps){
-            if(upgradeCreeps[creep].ticksToLive < 400){
-                upgradeCreeps[creep].memory.creepShouldRenew = true
-            }
-            if(upgradeCreeps[creep].ticksToLive > 1400){
-                upgradeCreeps[creep].memory.creepShouldRenew = false
-            }
-            if(upgradeCreeps[creep].memory.creepShouldRenew) {
-                if(upgradeCreeps[creep].memory.creepShouldRenew == false){
-                    upgradeCreep.run(upgradeCreeps[creep])
-                } else {
-                    utils_creeps_renew.renewCreep(upgradeCreeps[creep],spawn)
-                }
-            } else { 
-                upgradeCreep.run(upgradeCreeps[creep])
-            }
+            upgradeCreep.run(upgradeCreeps[creep])
         }
     }
 }

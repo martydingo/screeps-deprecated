@@ -30,22 +30,8 @@ var routines_e18n55_sourceCreeps_srcOne = {
     
     creepAct: function(sourceCreeps,sourceCreep,spawn){
         for(creep in sourceCreeps){
-            if(sourceCreeps[creep].ticksToLive < 400){
-                sourceCreeps[creep].memory.creepShouldRenew = true
-            }
-            if(sourceCreeps[creep].ticksToLive > 1400){
-                sourceCreeps[creep].memory.creepShouldRenew = false
-            }
-            if(sourceCreeps[creep].memory.creepShouldRenew) {
-                if(sourceCreeps[creep].memory.creepShouldRenew == false){
-                    sourceCreep.run(sourceCreeps[creep])
-                } else {
-                    utils_creeps_renew.renewCreep(sourceCreeps[creep],spawn)
-                }
-            } else { 
                 sourceCreep.run(sourceCreeps[creep])
             }
-        }
     }
 }
 
