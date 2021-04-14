@@ -1,8 +1,8 @@
 var config_e16n55_respawn = {
     "maxActive": {
         "sourceCreep": {
-            "srcOne": "4",
-            "srcTwo": "4"
+            "srcOne": "0",
+            "srcTwo": "0"
         },
         "upgradeCreep": "0",
         "buildCreep": "0",
@@ -15,7 +15,7 @@ var config_e16n55_respawn = {
         "oxygenCreep": "0",
         "srcKeeperCreep": {
             "utriumKeeper": "0",
-            "sourceOneKeeper": "1",
+            "sourceOneKeeper": "0",
         },
     }
 }
