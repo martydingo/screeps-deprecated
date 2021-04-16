@@ -123,7 +123,13 @@ class classes_creeps_buildCreep {
                         this.build(creep)
                     } else {
                         this.repairSite = this.room.find(FIND_STRUCTURES, { filter: object => object.hits < object.hitsMax && object.structureType == STRUCTURE_CONTAINER || object.hits < object.hitsMax && object.structureType == STRUCTURE_TOWER || object.hits < object.hitsMax && object.structureType == STRUCTURE_ROAD || object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_RAMPART })
-                        this.repair(creep)
+                        if(this.repairSite.length > 0){
+                            this.repair(creep)
+                        } else {
+                            if(Game.flags[this.roomName+'_IDLFLA']){
+                                creep.moveTo(Game.flags[this.roomName+'_IDLFLA'])
+                            }
+                        }
                     }
                 } else {
                     this.moveIn(creep)
