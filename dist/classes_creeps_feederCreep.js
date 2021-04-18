@@ -1,9 +1,8 @@
 class classes_creeps_feederCreep {
-    constructor(origin, destination, resourceType, roomName, partsArray,extraTargets) {
+    constructor(origin, destination, resourceType, roomName, partsArray) {
         this.origin = Game.getObjectById(origin)
         this.room = Game.rooms[roomName]
-        this.partsArray = partsArray || [MOVE,CARRY,CARRY,MOVE,CARRY,CARRY,MOVE,CARRY,CARRY]
-        this.extraTargets = extraTargets
+        this.partsArray = partsArray || [MOVE,CARRY,CARRY,MOVE,CARRY,CARRY]
         this.creepName = 'feederCreep\[' + this.room.name + '\]-'
         this.destination = this.destination
         this.result = this.result
@@ -38,11 +37,6 @@ class classes_creeps_feederCreep {
         this.destination = creep.pos.findClosestByPath(FIND_STRUCTURES, {
             filter: object => object.structureType == STRUCTURE_EXTENSION && object.store.getFreeCapacity(RESOURCE_ENERGY) > 0 || object.structureType == STRUCTURE_SPAWN && object.store.getFreeCapacity(RESOURCE_ENERGY) > 0 && object.id != Game.spawns['E17N55SPA1'].id || object.structureType == STRUCTURE_TOWER && object.store.getFreeCapacity(RESOURCE_ENERGY) > 100
         })
-        if(!this.destination){
-            if(this.extraTargets){
-                this.destination = Game.getObjectById(this.extraTargets[0])
-            }
-        }
         this.result = creep.transfer(this.destination, RESOURCE_ENERGY)
         if (this.result == ERR_NOT_IN_RANGE) {
             creep.moveTo(this.destination)

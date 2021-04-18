@@ -1,7 +1,6 @@
 class classes_creeps_transportCreep {
-    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit, origin2){
+    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit){
         this.origin = Game.getObjectById(origin)
-        this.origin2 = Game.getObjectById(origin2)
         this.destination = Game.getObjectById(destination)
         this.resourceType = resourceType || RESOURCE_ENERGY
         this.remoteLimit = remoteLimit
@@ -32,10 +31,6 @@ class classes_creeps_transportCreep {
         this.result = creep.withdraw(this.origin, this.resourceType)
         if(this.result == ERR_NOT_IN_RANGE){
             creep.moveTo(this.origin)
-        } else {
-            if(this.result == -6){
-                this.result = creep.withdraw(this.origin2, this.resourceType)
-            }
         }
     }
 

@@ -79,13 +79,13 @@ class classes_creeps_upgradeCreep {
             creep.memory.creepUpgrade = true
         }
         if(creep.memory.creepUpgrade){
-            if(upgradeFromPOS){
-                if(creep.pos.getRangeTo(upgradeFromPOS)>2){
-                    this.result = creep.moveTo(upgradeFromPOS)
-                } else {
-                    this.upgrade(creep)
-                }
-            } else
+            // if(upgradeFromPOS){
+            //     if(creep.pos.getRangeTo(upgradeFromPOS)>1){
+            //         this.result = creep.moveTo(upgradeFromPOS)
+            //     } else {
+            //         this.upgrade(creep)
+            //     }
+            // } else
             this.upgrade(creep)
             
         } else {
@@ -93,7 +93,7 @@ class classes_creeps_upgradeCreep {
                 if(this.storage.store[RESOURCE_ENERGY] > 5000){
                     this.pickUpEnergy(creep, this.storage)
                 } else if(this.container != null){
-                    if(this.container.store[RESOURCE_ENERGY] > 1600 || this.container.id == '607adf9af2a970d033902c00'){
+                    if(this.container.store[RESOURCE_ENERGY] > 1600){
                         this.pickUpEnergy(creep, this.container)
                     }
                 } else

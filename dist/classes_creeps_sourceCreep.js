@@ -58,7 +58,6 @@ class classes_creeps_sourceCreep {
         }
     } 
 
-
     unloadEnergy(creep){
         if(this.storage == null){
             this.containers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
@@ -81,18 +80,13 @@ class classes_creeps_sourceCreep {
             } else
                 this.unloadDest = creep.room.find(FIND_MY_SPAWNS)[0]
             }
-        } else {
-            this.unloadDest = this.storage
-        }
-        if(this.unloadDest.hits < this.unloadDest.hitsMax){
-            creep.repair(this.unloadDest)
-        } else {
-            this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)
-            if(this.result == ERR_NOT_IN_RANGE) {
-                this.result = creep.moveTo(this.unloadDest)
-                // console.log(creep + " - " + this.result + " - " + this.unloadDest)
-            } //else
-        }
+        } else
+        this.unloadDest = this.storage
+        this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)
+        if(this.result == ERR_NOT_IN_RANGE) {
+            this.result = creep.moveTo(this.unloadDest)
+            // console.log(creep + " - " + this.result + " - " + this.unloadDest)
+        } //else
         // if(this.result != 0){
             //     //console.log(this.creepName + " Error: " + this.result)
         // }

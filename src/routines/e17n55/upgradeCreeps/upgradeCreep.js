@@ -13,7 +13,7 @@ var routines_e17n55_upgradeCreeps_srcOne = {
         spawn = Game.spawns['E17N55SPA1']
         upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N55")
         //console.log(upgradeCreeps[0])
-        upgradeFromPOS = new RoomPosition(6, 41, 'E17N55')
+        upgradeFromPOS = new RoomPosition(5, 41, 'E17N55')
         upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS)
         
         if(!spawn.memory.spawnBlocked){
