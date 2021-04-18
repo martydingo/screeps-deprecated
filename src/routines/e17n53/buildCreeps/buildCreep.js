@@ -12,7 +12,7 @@ var routines_e17n53_buildCreeps_srcOne = {
         buildCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
         storage = '60668763c15bf6dea0a3288e'
         //console.log(buildCreeps[0])
-        buildCreep = new classes_creeps_buildCreep(storage,energySource,room,null,[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
+        buildCreep = new classes_creeps_buildCreep(storage,energySource,room,null,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,buildCreeps,buildCreep)

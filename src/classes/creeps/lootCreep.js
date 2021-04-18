@@ -77,8 +77,11 @@ class classes_creeps_lootCreep {
                 } else {
                     if (this.lootTarget[0]) {
                         this.pickUpLoot(creep)
-                    } //else
-                    // creep.moveTo(Game.flags[room+'_idleArea'])
+                    } else {
+                        if(Game.flags[this.roomName+'_IDLFLA']){
+                            creep.moveTo(Game.flags[this.roomName+'_IDLFLA'])
+                        }
+                    }
                 }
             } else {
                 creep.moveTo(new RoomPosition(25, 25, this.roomName))

@@ -8,11 +8,11 @@ var routines_e18n55_sourceCreeps_srcOne = {
     run: function () {
         room = 'E18N55'
         energySource = config_e18n55_sources.srcOne
-        storage = '605f381c97b43e119d443878'
+        storage = '607b12ca987cda4509ee5933'
         spawn = Game.spawns['E17N55SPA1']
         sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
-        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
+        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,sourceCreeps,sourceCreep)

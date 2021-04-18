@@ -8,7 +8,7 @@ var config_e17n55_respawn = {
         "buildCreep": "0",
         "feederCreep": "3",
         "transportCreep": {
-            "linkViaStorage": "1",
+            "linkViaStorage": "0",
             "storageViaSrcTwoContainer": "1",
             "spawnerViaStorage": "1",
             "storageViaUtriumContainer": "0",
