@@ -6,7 +6,7 @@ var routines_e17n54_lootCreeps_lootCreep = {
 
     run: function () {
         room = 'E17N54'
-        spawn = Game.spawns['E17N55SPA1']
+        spawn = Game.spawns['E17N53SPA1']
         storage = '605f381c97b43e119d443878'
         lootCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "lootCreep" && creep.memory.creepRoom == room)
         //console.log(lootCreeps[0])

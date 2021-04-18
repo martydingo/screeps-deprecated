@@ -1,7 +1,10 @@
 var config_e18n55_respawn = {
     "maxActive": {
         "sourceCreep": {
-            "srcOne": "3"
+            "srcOne": "1"
+        },
+        "transportCreep": {
+            "storageViaSrcOneContainer": "1",
         },
         "upgradeCreep": "0",
         "buildCreep": "0",
@@ -9,6 +12,7 @@ var config_e18n55_respawn = {
         "claimCreep": "1",
         "warriorCreep": "1",
         "scoutCreep": "0",
+        "lootCreep": "1",
     }
 }
 

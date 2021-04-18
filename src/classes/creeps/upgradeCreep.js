@@ -8,7 +8,7 @@ class classes_creeps_upgradeCreep {
         this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY]
         this.creepName = 'upgradeCreep\['+this.room.name+'\]-'
         this.result = this.result
-        this.upgradeFromPOS = upgradeFromPOS || this.upgradeFromPOS || new RoomPosition(6, 42, 'E17N55')
+        this.upgradeFromPOS = upgradeFromPOS || null
     }
 
     spawnCreep(spawner){
@@ -79,13 +79,13 @@ class classes_creeps_upgradeCreep {
             creep.memory.creepUpgrade = true
         }
         if(creep.memory.creepUpgrade){
-            // if(upgradeFromPOS){
-            //     if(creep.pos.getRangeTo(upgradeFromPOS)>1){
-            //         this.result = creep.moveTo(upgradeFromPOS)
-            //     } else {
-            //         this.upgrade(creep)
-            //     }
-            // } else
+            if(upgradeFromPOS){
+                if(creep.pos.getRangeTo(upgradeFromPOS)>3){
+                    this.result = creep.moveTo(upgradeFromPOS)
+                } else {
+                    this.upgrade(creep)
+                }
+            } else
             this.upgrade(creep)
             
         } else {

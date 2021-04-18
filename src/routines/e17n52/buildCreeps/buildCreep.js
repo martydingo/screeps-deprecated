@@ -8,11 +8,10 @@ var routines_e17n52_buildCreeps_srcOne = {
     run: function () {
         room = 'E17N52'
         energySource = config_e17n52_sources.srcOne
-        spawn = Game.spawns['E17N52SPA1']
+        spawn = Game.spawns['E17N53SPA1']
         buildCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
-        storage = '60668763c15bf6dea0a3288e'
         //console.log(buildCreeps[0])
-        buildCreep = new classes_creeps_buildCreep(storage,energySource,room,null,[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
+        buildCreep = new classes_creeps_buildCreep(null,energySource,room)
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,buildCreeps,buildCreep)

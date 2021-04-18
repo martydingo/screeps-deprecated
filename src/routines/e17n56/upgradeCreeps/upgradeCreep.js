@@ -6,7 +6,7 @@ const classes_creeps_upgradeCreep = require("classes_creeps_upgradeCreep")
 var routines_e17n56_upgradeCreeps_upgradeCreep = {
 
     run: function () {
-        storage = '6073eaedcea495164e18734a'
+        storage = '607adf9af2a970d033902c00'
         room = 'E17N56'
         energySource = config_e17n56_sources.srcOne
         roomController = '5bbcade89099fc012e6381d6'
@@ -14,7 +14,7 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
         upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N56")
         //console.log(upgradeCreeps[0])
         upgradeFromPOS = null
-        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,null,[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,CARRY,CARRY,CARRY,MOVE])
+        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'607adf9af2a970d033902c00',[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,CARRY,CARRY,CARRY,MOVE])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,upgradeCreeps,upgradeCreep)

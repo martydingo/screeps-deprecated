@@ -6,7 +6,7 @@ var routines_e17n56_transportCreeps_storageViaSrcTwoContainer = {
 
     run: function () {
         room = 'E17N56'
-        origin = '60685f6d0db288d32283c306'
+        origin = '6079c70a2588dd61dce30462'
         destination = '6073eaedcea495164e18734a'
         spawn = Game.spawns['E17N56SPA1']
         transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N56" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )

@@ -1,5 +1,6 @@
 class classes_creeps_transportCreep {
-    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit){
+    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit, localLimit){
+        this.localLimit = localLimit || null
         this.origin = Game.getObjectById(origin)
         this.destination = Game.getObjectById(destination)
         this.resourceType = resourceType || RESOURCE_ENERGY
@@ -52,7 +53,7 @@ class classes_creeps_transportCreep {
     
     run(creep){
         if(this.remoteLimit){
-            if(this.destination.store[RESOURCE_ENERGY] < this.remoteLimit){
+            if(this.destination.store[this.resourceType] < this.remoteLimit){
                 if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
                     this.pickUp(creep)
                 } else {
@@ -60,10 +61,20 @@ class classes_creeps_transportCreep {
                 }
             }
         } else {
-            if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
-                this.pickUp(creep)
+            if(this.localLimit){
+                if(this.origin.store[this.resourceType] > this.remoteLimit){
+                    if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
+                        this.pickUp(creep)
+                    } else {
+                        this.dropOff(creep)
+                    }
+                }
             } else {
-                this.dropOff(creep)
+                if(creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)){
+                    this.pickUp(creep)
+                } else {
+                    this.dropOff(creep)
+                }
             }
         }
     }
