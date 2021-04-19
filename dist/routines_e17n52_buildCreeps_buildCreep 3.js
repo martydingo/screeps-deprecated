@@ -1,18 +1,17 @@
-const config_e17n56_respawn = require("config_e17n56_respawn")
-const config_e17n56_sources = require("config_e17n56_sources")
+const config_e17n52_respawn = require("config_e17n52_respawn")
+const config_e17n52_sources = require("config_e17n52_sources")
 const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_buildCreep = require("classes_creeps_buildCreep")
 
-var routines_e17n56_buildCreeps_srcOne = {
+var routines_e17n52_buildCreeps_srcOne = {
 
     run: function () {
-        room = 'E17N56'
-        energySource = config_e17n56_sources.srcTwo
-        spawn = Game.spawns['E17N56SPA1']
-        storage = '606cceaa50ef98648238800c'
+        room = 'E17N52'
+        energySource = config_e17n52_sources.srcOne
+        spawn = Game.spawns['E17N53SPA1']
         buildCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
         //console.log(buildCreeps[0])
-        buildCreep = new classes_creeps_buildCreep(storage,energySource,room,500,[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY])
+        buildCreep = new classes_creeps_buildCreep(null,energySource,room)
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,buildCreeps,buildCreep)
@@ -22,7 +21,7 @@ var routines_e17n56_buildCreeps_srcOne = {
     },
     
     creepWatch: function (spawn, buildCreeps,buildCreep) {
-        if (buildCreeps.length < config_e17n56_respawn.maxActive.buildCreep) {
+        if (buildCreeps.length < config_e17n52_respawn.maxActive.buildCreep) {
             buildCreep.spawnCreep(spawn)
         }
     },
@@ -48,4 +47,4 @@ var routines_e17n56_buildCreeps_srcOne = {
         }
     }
 }
-module.exports = routines_e17n56_buildCreeps_srcOne
+module.exports = routines_e17n52_buildCreeps_srcOne
