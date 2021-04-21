@@ -2,17 +2,16 @@ const config_e17n56_respawn = require("config_e17n56_respawn")
 const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_transportCreep = require("classes_creeps_transportCreep")
 
-var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
+var routines_e17n56_transportCreeps_storageViaSrcTwoContainer = {
 
     run: function () {
         room = 'E17N56'
-        origin = '60685f6d0db288d32283c306'
-        origin2 = '6079cbeef913971725c02bc3'
+        origin = '6079c70a2588dd61dce30462'
         destination = '6073eaedcea495164e18734a'
         spawn = Game.spawns['E17N56SPA1']
         transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N56" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
         //console.log(transportCreeps[0])
-        transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY],RESOURCE_ENERGY,null,null,origin2)
+        transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,transportCreeps,transportCreep)
@@ -22,7 +21,7 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
     },
     
     creepWatch: function (spawn, transportCreeps,transportCreep) {
-        if (transportCreeps.length < config_e17n56_respawn.maxActive.transportCreep.storageViaSrcOneContainer) {
+        if (transportCreeps.length < config_e17n56_respawn.maxActive.transportCreep.storageViaSrcTwoContainer) {
             transportCreep.spawnCreep(spawn)
         }
     },
@@ -35,4 +34,4 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
     }
 }
 
-module.exports = routines_e17n56_transportCreeps_storageViaSrcOneContainer
+module.exports = routines_e17n56_transportCreeps_storageViaSrcTwoContainer

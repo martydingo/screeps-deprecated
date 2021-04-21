@@ -9,6 +9,7 @@ var config_e17n56_respawn = {
         "feederCreep": "2",
         "transportCreep": {
             "linkViaStorage": "0",
+            "upgradeContainerviaStorage": "1",
             "storageViaSrcOneContainer": "1",
             "storageViaSrcTwoContainer": "0",
             "spawnerViaStorage": "0",

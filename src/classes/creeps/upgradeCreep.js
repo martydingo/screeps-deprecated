@@ -1,3 +1,5 @@
+utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
+
 class classes_creeps_upgradeCreep {
     constructor(storage, energySourceID, roomController, roomName, upgradeFromPOS, container, partsArray){
         this.storage = Game.getObjectById(storage) || null
@@ -43,7 +45,11 @@ class classes_creeps_upgradeCreep {
     harvestEnergySource(creep){
         if(this.energySource) {
             if(creep.harvest(this.energySource) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(this.energySource);
+                if(creep.room.find(FIND_HOSTILE_CREEPS).length > 0){
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.energySource))
+                } else {
+                    creep.moveTo(this.energySource)
+                }
             }
         if(creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0){
             return true
@@ -79,13 +85,13 @@ class classes_creeps_upgradeCreep {
             creep.memory.creepUpgrade = true
         }
         if(creep.memory.creepUpgrade){
-            if(upgradeFromPOS){
-                if(creep.pos.getRangeTo(upgradeFromPOS)>3){
-                    this.result = creep.moveTo(upgradeFromPOS)
-                } else {
-                    this.upgrade(creep)
-                }
-            } else
+            // if(upgradeFromPOS){
+            //     if(creep.pos.getRangeTo(upgradeFromPOS)>3){
+            //         this.result = creep.moveTo(upgradeFromPOS)
+            //     } else {
+            //         this.upgrade(creep)
+            //     }
+            // } else
             this.upgrade(creep)
             
         } else {
@@ -93,7 +99,7 @@ class classes_creeps_upgradeCreep {
                 if(this.storage.store[RESOURCE_ENERGY] > 5000){
                     this.pickUpEnergy(creep, this.storage)
                 } else if(this.container != null){
-                    if(this.container.store[RESOURCE_ENERGY] > 1600){
+                    if(this.container.store[RESOURCE_ENERGY] > 300){
                         this.pickUpEnergy(creep, this.container)
                     }
                 } else

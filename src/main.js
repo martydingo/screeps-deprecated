@@ -73,7 +73,12 @@ routines_e16n55_sourceCreeps_srcTwo = require('routines_e16n55_sourceCreeps_srcT
 routines_e15n53_claimCreeps_claimCreep = require('routines_e15n53_claimCreeps_claimCreep')
 routines_e17n52_claimCreeps_claimCreep = require('routines_e17n52_claimCreeps_claimCreep')
 routines_e17n53_transportCreeps_e17n55StorageviaStorage = require('routines_e17n53_transportCreeps_e17n55StorageviaStorage')
-
+routines_e17n56_links_storage_via_srcTwo = require('routines_e17n56_links_storage_via_srcTwo')
+routines_e17n56_transportCreeps_upgradeContainerviaStorage = require('routines_e17n56_transportCreeps_upgradeContainerviaStorage')
+routines_e15n53_buildCreeps_buildCreep = require('routines_e15n53_buildCreeps_buildCreep')
+routines_e15n53_upgradeCreeps_upgradeCreep = require('routines_e15n53_upgradeCreeps_upgradeCreep')
+routines_e15n53_sourceCreeps_srcOne = require('routines_e15n53_sourceCreeps_srcOne')
+routines_e15n53_feederCreeps_feederCreep = require('routines_e15n53_feederCreeps_feederCreep')
 utils_garbageCollection_gc = require('utils_garbageCollection_gc')
 
 timerReport = 600
@@ -166,4 +171,10 @@ module.exports.loop = function () {
     routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
     routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
     routines_e17n53_transportCreeps_e17n55StorageviaStorage.run()
+    routines_e17n56_links_storage_via_srcTwo.run()
+    routines_e17n56_transportCreeps_upgradeContainerviaStorage.run()
+    routines_e15n53_buildCreeps_buildCreep.run()
+    routines_e15n53_upgradeCreeps_upgradeCreep.run()
+    routines_e15n53_sourceCreeps_srcOne.run()
+    routines_e15n53_feederCreeps_feederCreep.run()
 }

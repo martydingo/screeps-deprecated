@@ -1,13 +1,13 @@
 var config_e15n53_respawn = {
     "maxActive": {
         "sourceCreep": {
-            "srcOne": "0"
+            "srcOne": "1"
         },
-        "upgradeCreep": "0",
-        "buildCreep": "0",
-        "feederCreep": "0",
-        "claimCreep": "1",
-        "lootCreep": "1",
+        "upgradeCreep": "3",
+        "buildCreep": "1",
+        "feederCreep": "1",
+        "claimCreep": "0",
+        "lootCreep": "0",
         "keaniumCreep": "0",
         "transportCreep": {
             "terminalViaStorage": "0",

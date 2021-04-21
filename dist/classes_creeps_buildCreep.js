@@ -5,11 +5,11 @@ class classes_creeps_buildCreep {
         this.storage = Game.getObjectById(storage)
         this.energySource = Game.getObjectById(energySourceID)
         this.roomName = roomName
-        this.containerLimit = containerLimit || 2100
+        this.containerLimit = containerLimit || 1200
         this.room = Game.rooms[roomName]
         this.constructionSite = this.constructionSite
         this.repairSite = this.repairSite
-        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]
+        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]
         this.creepName = 'buildCreep\[' + this.roomName + '\]-'
         this.shouldGoBuild = ''
         this.result = this.result

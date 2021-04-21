@@ -5,7 +5,7 @@ var config_e17n55_respawn = {
             "srcTwo": "1"
         },
         "upgradeCreep": "0",
-        "buildCreep": "1",
+        "buildCreep": "0",
         "feederCreep": "3",
         "transportCreep": {
             "linkViaStorage": "0",

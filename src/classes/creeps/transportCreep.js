@@ -1,7 +1,8 @@
 class classes_creeps_transportCreep {
-    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit, localLimit){
+    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit, localLimit, origin2){
         this.localLimit = localLimit || null
         this.origin = Game.getObjectById(origin)
+        this.origin2 = Game.getObjectById(origin2)
         this.destination = Game.getObjectById(destination)
         this.resourceType = resourceType || RESOURCE_ENERGY
         this.remoteLimit = remoteLimit
@@ -20,6 +21,7 @@ class classes_creeps_transportCreep {
                         creepRoom: this.room.name,
                         creepParts: this.partsArray,
                         creepOrigin: this.origin,
+                        creepOrigin2: this.origin2,
                         creepDestination: this.destination                    }
                 })
             )
@@ -29,9 +31,23 @@ class classes_creeps_transportCreep {
     }
 
     pickUp(creep){
-        this.result = creep.withdraw(this.origin, this.resourceType)
-        if(this.result == ERR_NOT_IN_RANGE){
-            creep.moveTo(this.origin)
+        if(this.origin2){       
+            if(this.origin.store[this.resourceType] < 1){
+                this.result = creep.withdraw(this.origin2, this.resourceType)
+                if(this.result == ERR_NOT_IN_RANGE){
+                    creep.moveTo(this.origin2)
+                }
+            } else {
+                this.result = creep.withdraw(this.origin, this.resourceType)
+                if(this.result == ERR_NOT_IN_RANGE){
+                    creep.moveTo(this.origin)
+                }
+            }
+        } else {            
+            this.result = creep.withdraw(this.origin, this.resourceType)
+            if(this.result == ERR_NOT_IN_RANGE){
+                creep.moveTo(this.origin)
+            }
         }
     }
 
