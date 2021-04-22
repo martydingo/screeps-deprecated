@@ -66,6 +66,7 @@ routines_e17n53_transportCreeps_terminalViaStorage = require('routines_e17n53_tr
 routines_e17n55_transportCreeps_labViaStorage = require('routines_e17n55_transportCreeps_labViaStorage')
 routines_e16n54_srcKeeperCreeps_utriumKeeper = require('routines_e16n54_srcKeeperCreeps_utriumKeeper')
 routines_e17n53_towers_towerTwo = require('routines_e17n53_towers_towerTwo')
+routines_e17n55_towers_towerThree = require('routines_e17n55_towers_towerThree')
 routines_e16n54_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n54_srcKeeperCreeps_sourceOneKeeper')
 routines_e16n55_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n55_srcKeeperCreeps_sourceOneKeeper')
 routines_e16n55_sourceCreeps_srcOne = require('routines_e16n55_sourceCreeps_srcOne')
@@ -79,14 +80,16 @@ routines_e15n53_buildCreeps_buildCreep = require('routines_e15n53_buildCreeps_bu
 routines_e15n53_upgradeCreeps_upgradeCreep = require('routines_e15n53_upgradeCreeps_upgradeCreep')
 routines_e15n53_sourceCreeps_srcOne = require('routines_e15n53_sourceCreeps_srcOne')
 routines_e15n53_feederCreeps_feederCreep = require('routines_e15n53_feederCreeps_feederCreep')
+routines_e20n49_mistCreeps_srcOne = require('routines_e20n49_mistCreeps_srcOne')
+routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo')
 utils_garbageCollection_gc = require('utils_garbageCollection_gc')
 
 timerReport = 600
 
 module.exports.loop = function () {
-    // if ( Game.cpu.bucket > 9999 ) {
-    //     Game.cpu.generatePixel()
-    // }
+    if ( Game.cpu.bucket > 9999 ) {
+        Game.cpu.generatePixel()
+    }
 
     // if(timerReport == 600){
     //     for(creep in Game.creeps){
@@ -147,6 +150,7 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerOne.run()
     routines_e17n56_towers_towerOne.run()
     routines_e17n55_towers_towerTwo.run()
+    routines_e17n55_towers_towerThree.run()
     routines_e17n53_towers_towerOne.run()
     routines_e18n55_scoutCreeps_scoutCreep.run()
     routines_e18n55_claimCreeps_claimCreep.run()
@@ -163,7 +167,7 @@ module.exports.loop = function () {
     routines_e16n54_srcKeeperCreeps_utriumKeeper.run()
     routines_e16n54_srcKeeperCreeps_sourceOneKeeper.run()
     routines_e16n55_srcKeeperCreeps_sourceOneKeeper.run()
-    routines_e17n53_towers_towerTwo.run()
+    routines_e17n55_towers_towerTwo.run()
     routines_e16n55_sourceCreeps_srcOne.run()
     routines_e16n55_sourceCreeps_srcTwo.run()
     routines_e15n53_claimCreeps_claimCreep.run()
@@ -177,4 +181,6 @@ module.exports.loop = function () {
     routines_e15n53_upgradeCreeps_upgradeCreep.run()
     routines_e15n53_sourceCreeps_srcOne.run()
     routines_e15n53_feederCreeps_feederCreep.run()
+    routines_e20n49_mistCreeps_srcOne.run()
+    routines_e17n56_towers_towerTwo.run()
 }

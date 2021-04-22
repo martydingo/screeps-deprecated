@@ -14,7 +14,7 @@ var routines_e15n53_upgradeCreeps_srcOne = {
         upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E15N53")
         //console.log(upgradeCreeps[0])
         upgradeFromPOS = null
-        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'60802877f9b1d6c57c1f2736',[WORK,MOVE,CARRY,CARRY,MOVE])
+        upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'60802877f9b1d6c57c1f2736',[WORK,WORK,MOVE,MOVE,MOVE,CARRY,CARRY,MOVE,MOVE])
         
         if(!spawn.memory.spawnBlocked){
             this.creepWatch(spawn,upgradeCreeps,upgradeCreep)

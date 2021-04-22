@@ -15,7 +15,24 @@ var utils_pathfinding_avoidHostileCreeps = {
               // you should be careful!
               if (!room) return;
               let costs = new PathFinder.CostMatrix;
-      
+
+              // Avoid E19N51
+              if(roomName == 'E19N51' || roomName == 'E19N48'){
+                x = 0
+                y = 0
+                while(x < 50){
+                  while(y < 50){
+                    costs.set(x, y, 255)
+                    y++
+                  }
+                x++
+                }
+              }
+
+              room.find(FIND_STRUCTURES).forEach(function(structure) {
+                costs.set(structure.pos.x, structure.pos.y, 255);
+              });
+  
               // Avoid creeps in the room
               room.find(FIND_HOSTILE_CREEPS).forEach(function(creep) {
                 costs.set(creep.pos.x, creep.pos.y-3, 255);
@@ -98,6 +115,8 @@ var utils_pathfinding_avoidHostileCreeps = {
             console.log(creep.name+' - WARNING: Could not pathfind a complete path!')
         }
         let pos = ret.path[0];
+        let path = ret.path;
+        //console.log(JSON.stringify(ret.path))
         return pos
     }
 }
