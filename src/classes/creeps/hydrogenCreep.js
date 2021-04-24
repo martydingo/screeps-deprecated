@@ -2,6 +2,7 @@ class classes_creeps_hydrogenCreep {
     constructor(hydrogen,hydrogenStore,roomName,partsArray){
 
         this.room = Game.rooms[roomName]
+        this.roomName = roomName
         this.partsArray = partsArray || [WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY]
         this.creepName = 'hydrogenCreep\['+roomName+'\]-'
         this.hydrogen = Game.getObjectById(hydrogen)
@@ -15,7 +16,7 @@ class classes_creeps_hydrogenCreep {
                 spawner.spawnCreep(this.partsArray,this.creepName+Game.time, {
                     memory: {
                         creepClass: 'hydrogenCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepParts: this.partsArray
                     }
                 })
@@ -39,10 +40,12 @@ class classes_creeps_hydrogenCreep {
                 creep.moveTo(this.hydrogen)
             }
         } else
-        if(this.hydrogenStore.store[RESOURCE_HYDROGEN < 15000]){
+        if(this.hydrogenStore.store[RESOURCE_HYDROGEN] < 10000){
             this.result = creep.transfer(this.hydrogenStore, RESOURCE_HYDROGEN)
             if(this.result == ERR_NOT_IN_RANGE){
                 creep.moveTo(this.hydrogenStore)
+            } else {
+                creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,Game.flags[this.roomName+'_IDLFLA']))
             }
         }
     }

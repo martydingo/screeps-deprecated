@@ -7,8 +7,9 @@ class classes_creeps_transportCreep {
         this.resourceType = resourceType || RESOURCE_ENERGY
         this.remoteLimit = remoteLimit
         this.room = Game.rooms[roomName]
+        this.roomName = roomName
         this.partsArray = partsArray || [WORK,MOVE,WORK,CARRY]
-        this.creepName = 'transportCreep\['+this.room.name+'\]-'
+        this.creepName = 'transportCreep\['+this.roomName+'\]-'
         this.result = this.result
     }
 
@@ -18,7 +19,7 @@ class classes_creeps_transportCreep {
                 spawner.spawnCreep(this.partsArray,this.creepName+Game.time, {
                     memory: {
                         creepClass: 'transportCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepParts: this.partsArray,
                         creepOrigin: this.origin,
                         creepOrigin2: this.origin2,

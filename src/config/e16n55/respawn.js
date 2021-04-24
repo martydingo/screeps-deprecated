@@ -12,7 +12,7 @@ var config_e16n55_respawn = {
         "feederCreep": "0",
         "claimCreep": "0",
         "scoutCreep": "0",
-        "oxygenCreep": "0",
+        "oxygenCreep": "1",
         "srcKeeperCreep": {
             "utriumKeeper": "0",
             "sourceOneKeeper": "0",

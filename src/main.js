@@ -82,6 +82,7 @@ routines_e15n53_sourceCreeps_srcOne = require('routines_e15n53_sourceCreeps_srcO
 routines_e15n53_feederCreeps_feederCreep = require('routines_e15n53_feederCreeps_feederCreep')
 routines_e20n49_mistCreeps_srcOne = require('routines_e20n49_mistCreeps_srcOne')
 routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo')
+routines_e17n56_hydrogenCreeps_hydrogenCreep = require('routines_e17n56_hydrogenCreeps_hydrogenCreep')
 utils_garbageCollection_gc = require('utils_garbageCollection_gc')
 
 timerReport = 600
@@ -158,7 +159,7 @@ module.exports.loop = function () {
     routines_e16n55_snipeCreeps_snipeCreep.run()
     utils_garbageCollection_gc.garbageCollection.creeps.run()
     routines_e17n55_hydrogenCreeps_hydrogenCreep.run()
-    routines_e17n55_labs_lab6.run()
+    // routines_e17n55_labs_lab6.run()
     routines_e18n55_warriorCreeps_warriorCreep.run()
     routines_e17n54_warriorCreeps_warriorCreep.run()
     routines_e17n53_keaniumCreeps_keaniumCreep.run()
@@ -183,4 +184,5 @@ module.exports.loop = function () {
     routines_e15n53_feederCreeps_feederCreep.run()
     routines_e20n49_mistCreeps_srcOne.run()
     routines_e17n56_towers_towerTwo.run()
+    routines_e17n56_hydrogenCreeps_hydrogenCreep.run()
 }

@@ -46,9 +46,13 @@ class classes_creeps_oxygenCreep {
                         creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygen.pos))
                     }
             } else {
-                this.result = creep.transfer(this.oxygenStore, RESOURCE_OXYGEN)
-                if(this.result == ERR_NOT_IN_RANGE){
-                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygenStore.pos))
+                if(this.oxygenStore[RESOURCE_OXYGEN] < 10000){
+                    this.result = creep.transfer(this.oxygenStore, RESOURCE_OXYGEN)
+                    if(this.result == ERR_NOT_IN_RANGE){
+                        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.oxygenStore.pos))
+                    }
+                } else {
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,Game.flags[roomName+'_IDLFLA']))
                 }
             }
         } else {

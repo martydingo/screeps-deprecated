@@ -6,9 +6,9 @@ var routines_e16n55_oxygenCreeps_srcOne = {
 
     run: function () {
         room = 'E16N55'
-        spawn = Game.spawns['E17N55SPA1']
+        spawn = Game.spawns['E17N56SPA1']
         oxygen = '5bbcb7b61e7d3f3cbe2509ed'
-        oxygenStore = '6068f47e6d58935c351d5f15'
+        oxygenStore = '6073eaedcea495164e18734a'
 
         oxygenCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "oxygenCreep" && creep.memory.creepRoom == "E16N55")
         //console.log(oxygenCreeps[0])

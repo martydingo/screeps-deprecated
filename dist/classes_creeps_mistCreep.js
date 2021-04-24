@@ -89,7 +89,11 @@ class classes_creeps_mistCreep {
         } else {
             this.result = creep.transfer(this.unloadDest, RESOURCE_MIST)
             if(this.result == ERR_NOT_IN_RANGE) {
-                this.result = creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.unloadDest))
+                if(creep.pos.roomName == 'E19N50'){
+                    creep.moveTo(new RoomPosition(25,25,'E18N50'))
+                } else {
+                    this.result = creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.unloadDest))
+                }
                 // console.log(creep + " - " + this.result + " - " + this.unloadDest)
             } //else
             // if(this.result != 0){

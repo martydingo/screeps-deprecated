@@ -7,7 +7,7 @@ var routines_e17n55_transportCreeps_labViaUtriumContainer = {
     run: function () {
         room = 'E17N55'
         origin = '60673c5129245f65a5d6fa3d'
-        destination = '606a0a48f353172e7b3ab84b' //3rd lab 60691f22d5ec72f53a831b90
+        destination = '605f381c97b43e119d443878' //3rd lab 60691f22d5ec72f53a831b90
         spawn = Game.spawns['E17N55SPA1']
         resourceType = RESOURCE_UTRIUM
         transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N55" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )

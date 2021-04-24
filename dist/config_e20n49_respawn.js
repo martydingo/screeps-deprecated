@@ -1,7 +1,7 @@
 var config_e20n49_respawn = {
     "maxActive": {
         "mistCreep": {
-            "srcOne": "0"
+            "srcOne": "1"
         }
     }
 }
