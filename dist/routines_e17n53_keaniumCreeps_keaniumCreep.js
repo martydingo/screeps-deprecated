@@ -11,7 +11,7 @@ var routines_e17n53_keaniumCreeps_keaniumCreep = {
         keaniumStore = '6071a510015f30575a4c36c5'
         holdingPos = new RoomPosition(46, 17, 'E17N53')
 
-        keaniumCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "keaniumCreep" && creep.memory.creepRoom == "E17N53")
+        keaniumCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "keaniumCreep" && creep.memory.creepRoom == "E17N53")
         //console.log(keaniumCreeps[0])
         keaniumCreep = new classes_creeps_keaniumCreep(keanium,keaniumStore,room)
         

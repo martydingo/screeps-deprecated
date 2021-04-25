@@ -6,7 +6,7 @@ class classes_creeps_srcKeeperCreep {
         this.roomName = roomName
         this.campPos = campPos
         this.secondLair = Game.getObjectById(secondLair)
-        this.partsArray = partsArray || [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK]
+        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,HEAL,HEAL,HEAL,HEAL,HEAL]
         this.creepName = 'srcKeeperCreep\['+this.roomName+'\]-'
         this.returnToBase = this.returnToBase 
         this.result = this.result
@@ -57,8 +57,9 @@ class classes_creeps_srcKeeperCreep {
     
     shouldHeal(creep){
         this.scanForTargets(creep)
+        console.log(this.badGuys)
         if(this.badGuys.length < 1){
-            if(creep.hits < 3333){
+            if(creep.hits < creep.hitsMax){
                 creep.memory.creepShouldHeal = true
             }
         }
@@ -71,10 +72,10 @@ class classes_creeps_srcKeeperCreep {
         this.countBoostedParts(creep)
         this.shouldHeal(creep)
         if(creep.memory.creepShouldHeal == true){
-            creep.memory.creepReturnToBase = true
+            creep.heal(creep)
         } else {
             if(this.boostedBodyParts < 1){
-                creep.memory.creepReturnToBase = true
+                creep.memory.creepReturnToBase = false
             } else {
                 creep.memory.creepReturnToBase = false
             }
@@ -103,9 +104,9 @@ class classes_creeps_srcKeeperCreep {
 
     scanForTargets(creep){
         this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1)
-        if(this.badGuys.length < 1){
-            this.badGuys = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 1)
-        }
+        // if(this.badGuys.length < 1){
+        //     this.badGuys = creep.pos.findInRange(FIND_HOSTILE_STRUCTURES, 1)
+        // }
     }
     
     run(creep){
@@ -113,15 +114,25 @@ class classes_creeps_srcKeeperCreep {
         if(creep.memory.creepReturnToBase == true){
             this.resupply(creep)
         } else {
-            if(this.roomName != creep.pos.roomName){
+            if(!creep.pos.inRangeTo(new RoomPosition(25,25,this.roomName),24)){
                 creep.moveTo(new RoomPosition(25,25,this.roomName))
             } else {
-                if(this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0){
-                    this.badGuys = this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 5)
-                    this.result = creep.attack(this.badGuys[0])
-                    if(this.result == ERR_NOT_IN_RANGE){
-                        creep.moveTo(this.badGuys[0])
+                if(this.secondLair){
+                    if(this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0){
+                        this.badGuys = this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 4)
+                        this.result = creep.attack(this.badGuys[0])
+                        if(this.result == ERR_NOT_IN_RANGE){
+                            creep.moveTo(this.badGuys[0])
+                        }
+                }
+                if(creep.pos.inRangeTo(this.campPos,0) == false ){
+                    creep.moveTo(this.campPos)
+                } else {
+                    this.scanForTargets(creep)
+                    if(this.badGuys.length > 0){
+                        this.attack(creep)
                     }
+                }
                 } else {             
                     if(creep.pos.inRangeTo(this.campPos,0) == false ){
                         creep.moveTo(this.campPos)

@@ -66,6 +66,7 @@ routines_e17n53_transportCreeps_terminalViaStorage = require('routines_e17n53_tr
 routines_e17n55_transportCreeps_labViaStorage = require('routines_e17n55_transportCreeps_labViaStorage')
 routines_e16n54_srcKeeperCreeps_utriumKeeper = require('routines_e16n54_srcKeeperCreeps_utriumKeeper')
 routines_e17n53_towers_towerTwo = require('routines_e17n53_towers_towerTwo')
+routines_e15n53_towers_towerTwo = require('routines_e15n53_towers_towerTwo')
 routines_e17n55_towers_towerThree = require('routines_e17n55_towers_towerThree')
 routines_e16n54_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n54_srcKeeperCreeps_sourceOneKeeper')
 routines_e16n55_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n55_srcKeeperCreeps_sourceOneKeeper')
@@ -84,6 +85,8 @@ routines_e20n49_mistCreeps_srcOne = require('routines_e20n49_mistCreeps_srcOne')
 routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo')
 routines_e17n56_hydrogenCreeps_hydrogenCreep = require('routines_e17n56_hydrogenCreeps_hydrogenCreep')
 utils_garbageCollection_gc = require('utils_garbageCollection_gc')
+routines_e16n55_buildCreeps_buildCreep = require('routines_e16n55_buildCreeps_buildCreep')
+routines_e16n55_transportCreeps_srcOneToE17N55Storage = require('routines_e16n55_transportCreeps_srcOneToE17N55Storage')
 
 timerReport = 600
 
@@ -170,6 +173,7 @@ module.exports.loop = function () {
     routines_e16n55_srcKeeperCreeps_sourceOneKeeper.run()
     routines_e17n55_towers_towerTwo.run()
     routines_e16n55_sourceCreeps_srcOne.run()
+    routines_e16n55_buildCreeps_buildCreep.run()
     routines_e16n55_sourceCreeps_srcTwo.run()
     routines_e15n53_claimCreeps_claimCreep.run()
     routines_e17n52_claimCreeps_claimCreep.run()
@@ -185,4 +189,8 @@ module.exports.loop = function () {
     routines_e20n49_mistCreeps_srcOne.run()
     routines_e17n56_towers_towerTwo.run()
     routines_e17n56_hydrogenCreeps_hydrogenCreep.run()
+    routines_e17n53_towers_towerTwo.run()
+    routines_e17n56_towers_towerTwo.run()
+    routines_e15n53_towers_towerTwo.run()
+    routines_e16n55_transportCreeps_srcOneToE17N55Storage.run()
 }

@@ -11,7 +11,7 @@ var routines_e17n53_claimCreeps_claimCreep = {
         roomController = '5bbcade89099fc012e6381e1'
         spawn = Game.spawns['E17N55SPA1']
         targetRoomPos = new RoomPosition(25,25,'E17N53')
-        claimCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "claimCreep")
+        claimCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "claimCreep")
         //console.log(claimCreeps[0])
         claimCreep = new classes_creeps_claimCreep(room, targetRoomPos)
         

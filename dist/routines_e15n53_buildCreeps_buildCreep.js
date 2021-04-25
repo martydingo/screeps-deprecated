@@ -10,7 +10,7 @@ var routines_e15n53_buildCreeps_srcOne = {
         storage = '60802877f9b1d6c57c1f2736'
         energySource = config_e15n53_sources.srcOne
         spawn = Game.spawns['E15N53SPA1']
-        buildCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
+        buildCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
         //console.log(buildCreeps[0])
         buildCreep = new classes_creeps_buildCreep(storage,energySource,room,0,[WORK,WORK,WORK,MOVE,MOVE,MOVE,CARRY,CARRY])
         

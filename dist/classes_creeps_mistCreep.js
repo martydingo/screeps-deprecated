@@ -7,7 +7,7 @@ class classes_creeps_mistCreep {
         this.mistSourceID = mistSourceID
         this.roomName = roomName
         this.room = Game.rooms[roomName]
-        this.partsArray = partsArray || [WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY]
+        this.partsArray = partsArray || [WORK,WORK,WORK,WORK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,CARRY,CARRY,CARRY,CARRY]
         this.creepName = 'mistCreep\['+this.roomName+'\]-'
         this.containers = []
         this.extensions = []

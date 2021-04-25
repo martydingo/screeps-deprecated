@@ -10,7 +10,7 @@ var routines_e20n49_mistCreeps_srcOne = {
         mistSource = config_e20n49_sources.srcOne
         storage = '60668763c15bf6dea0a3288e'
         spawn = Game.spawns['E17N53SPA1']
-        mistCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "mistCreep" && creep.memory.creepSource == mistSource)
+        mistCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "mistCreep" && creep.memory.creepSource == mistSource)
         //console.log(mistCreeps[0])
         mistCreep = new classes_creeps_mistCreep(storage,mistSource,room)
         if(!spawn.memory.spawnBlocked){

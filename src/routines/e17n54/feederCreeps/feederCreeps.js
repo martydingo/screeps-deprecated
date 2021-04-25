@@ -10,7 +10,7 @@ var routines_e17n54_feederCreeps_feederCreep = {
         energySource = config_e17n54_sources.srcTwo
         roomController = '5bbcade89099fc012e6381d9'
         spawn = Game.spawns['E17N55SPA1']
-        feederCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "feederCreep")
+        feederCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "feederCreep")
         //console.log(feederCreeps[0])
         feederCreep = new classes_creeps_feederCreep(energySource,roomController,room)
         

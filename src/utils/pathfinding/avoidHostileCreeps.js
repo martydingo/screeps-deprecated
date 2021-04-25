@@ -31,6 +31,10 @@ var utils_pathfinding_avoidHostileCreeps = {
                 costs.set(structure.pos.x, structure.pos.y, 0xff);
               });
   
+              room.find(FIND_MY_CREEPS).forEach(function(structure) {
+                costs.set(structure.pos.x, structure.pos.y, 0xff);
+              });
+  
               // Avoid creeps in the room
               room.find(FIND_HOSTILE_CREEPS).forEach(function(creep) {
                 x = -4

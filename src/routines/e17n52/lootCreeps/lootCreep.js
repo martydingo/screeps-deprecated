@@ -7,7 +7,7 @@ var routines_e17n52_lootCreeps_lootCreep = {
     run: function () {
         room = 'E17N52'
         spawn = Game.spawns['E17N52SPA1']
-        lootCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "lootCreep" && creep.memory.creepRoom == room)
+        lootCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "lootCreep" && creep.memory.creepRoom == room)
         //console.log(lootCreeps[0])
         lootCreep = new classes_creeps_lootCreep(room)
         

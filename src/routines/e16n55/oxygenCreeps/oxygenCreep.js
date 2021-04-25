@@ -10,7 +10,7 @@ var routines_e16n55_oxygenCreeps_srcOne = {
         oxygen = '5bbcb7b61e7d3f3cbe2509ed'
         oxygenStore = '6073eaedcea495164e18734a'
 
-        oxygenCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "oxygenCreep" && creep.memory.creepRoom == "E16N55")
+        oxygenCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "oxygenCreep" && creep.memory.creepRoom == "E16N55")
         //console.log(oxygenCreeps[0])
         oxygenCreep = new classes_creeps_oxygenCreep(oxygen,oxygenStore,room)
         

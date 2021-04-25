@@ -8,7 +8,7 @@ var routines_e16n55_warriorCreeps_warriorCreep = {
         room = 'E16N55'
         spawn = Game.spawns['E17N55SPA1']
         guardPost = new RoomPosition(44,33,room)
-        warriorCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "warriorCreep" && creep.memory.creepRoom == room)
+        warriorCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "warriorCreep" && creep.memory.creepRoom == room)
         //console.log(warriorCreeps[0])
         warriorCreep = new classes_creeps_warriorCreep(room)
         if(!spawn.memory.spawnBlocked){

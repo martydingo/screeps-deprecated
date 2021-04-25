@@ -10,7 +10,7 @@ var routines_e17n54_sourceCreeps_srcOne = {
         energySource = config_e17n54_sources.srcOne
         storage = '607b011de14b2f3824d90a62'
         spawn = Game.spawns['E17N55SPA1']
-        sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
+        sourceCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
         sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY])
         

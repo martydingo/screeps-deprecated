@@ -8,11 +8,11 @@ var routines_e16n55_sourceCreeps_srcOne = {
     run: function () {
         room = 'E16N55'
         energySource = config_e16n55_sources.srcOne
-        storage = '605f381c97b43e119d443878'
-        spawn = Game.spawns['E17N55SPA1']
-        sourceCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
+        storage = '60847dae416684815d3ef661'
+        if(Game.spawns['E17N55SPA2'].spawning){spawn = Game.spawns['E17N55SPA2']} else {spawn = Game.spawns['E17N55SPA1']}
+        sourceCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "sourceCreep" && creep.memory.creepSource == energySource)
         //console.log(sourceCreeps[0])
-        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY])
+        sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY])
         
         this.creepWatch(spawn,sourceCreeps,sourceCreep)
         this.creepAct(sourceCreeps,sourceCreep,spawn)

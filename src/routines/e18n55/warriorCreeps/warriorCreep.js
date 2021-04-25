@@ -7,7 +7,7 @@ var routines_e18n55_warriorCreeps_warriorCreep = {
     run: function () {
         room = 'E18N55'
         spawn = Game.spawns['E17N55SPA1']
-        warriorCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "warriorCreep" && creep.memory.creepRoom == room)
+        warriorCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "warriorCreep" && creep.memory.creepRoom == room)
         //console.log(warriorCreeps[0])
         warriorCreep = new classes_creeps_warriorCreep(room, [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])
         if(!spawn.memory.spawnBlocked){

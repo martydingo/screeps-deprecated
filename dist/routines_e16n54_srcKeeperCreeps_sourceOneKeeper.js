@@ -9,7 +9,7 @@ var routines_e16n54_srcKeeperCreeps_sourceOneKeeper = {
         spawn = Game.spawns['E17N53SPA1']
         campPos = new RoomPosition(37, 9, room)
         lab = '606a0fa296af2a502a7be7c7'
-        srcKeeperCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "srcKeeperCreep" && creep.memory.creepRoom == room && creep.memory.creepRoom == room && creep.memory.creepCampPos.x == campPos.x && creep.memory.creepCampPos.y == campPos.y)
+        srcKeeperCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "srcKeeperCreep" && creep.memory.creepRoom == room && creep.memory.creepRoom == room && creep.memory.creepCampPos.x == campPos.x && creep.memory.creepCampPos.y == campPos.y)
         //console.log(srcKeeperCreeps[0])
         //        srcKeeperCreep = new classes_creeps_sourceOneKeeper(room, [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])
         srcKeeperCreep = new classes_creeps_sourceOneKeeper(room, campPos, lab)

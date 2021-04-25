@@ -8,8 +8,8 @@ var routines_e17n55_transportCreeps_storageViaUtriumContainer = {
         room = 'E17N55'
         origin = '6068f47e6d58935c351d5f15'
         destination = '605f381c97b43e119d443878'
-        spawn = Game.spawns['E17N55SPA1']
-        transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N55" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
+        if(Game.spawns['E17N55SPA1'].spawning){spawn = Game.spawns['E17N55SPA2']} else {spawn = Game.spawns['E17N55SPA1']}
+        transportCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N55" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
         //console.log(transportCreeps[0])
         transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY])
         

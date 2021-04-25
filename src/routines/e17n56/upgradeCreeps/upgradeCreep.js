@@ -11,7 +11,7 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
         energySource = config_e17n56_sources.srcOne
         roomController = '5bbcade89099fc012e6381d6'
         spawn = Game.spawns['E17N56SPA1']
-        upgradeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N56")
+        upgradeCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "upgradeCreep" && creep.memory.creepRoom == "E17N56")
         //console.log(upgradeCreeps[0])
         upgradeFromPOS = null
         upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'607adf9af2a970d033902c00',[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,CARRY,CARRY,CARRY,MOVE])

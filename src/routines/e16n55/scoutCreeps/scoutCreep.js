@@ -8,7 +8,7 @@ var routines_e16n55_scoutCreeps_scoutCreep = {
         room = 'E16N55'
         spawn = Game.spawns['E17N55SPA1']
         targetPos = new RoomPosition(45,38,room)
-        scoutCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "scoutCreep" && creep.memory.creepRoom == room )
+        scoutCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "scoutCreep" && creep.memory.creepRoom == room )
         //console.log(scoutCreeps[0])
         scoutCreep = new classes_creeps_scoutCreep(room,[MOVE],targetPos)
         

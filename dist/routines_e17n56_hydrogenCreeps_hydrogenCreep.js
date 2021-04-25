@@ -11,7 +11,7 @@ var routines_e17n56_hydrogenCreeps_hydrogenCreep = {
         hydrogenStore = '6073eaedcea495164e18734a'
         holdingPos = new RoomPosition(46, 17, 'E17N56')
 
-        hydrogenCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "hydrogenCreep" && creep.memory.creepRoom == "E17N56")
+        hydrogenCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "hydrogenCreep" && creep.memory.creepRoom == "E17N56")
         //console.log(hydrogenCreeps[0])
         hydrogenCreep = new classes_creeps_hydrogenCreep(hydrogen,hydrogenStore,room)
         

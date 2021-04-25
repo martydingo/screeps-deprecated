@@ -50,7 +50,11 @@ class classes_creeps_sourceCreep {
                     }
                 } else {
                     if(creep.harvest(this.energySource) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.energySource.pos))
+                        if(creep.pos.roomName == 'E16N53'){
+                            creep.moveTo(new RoomPosition(25,25,this.roomName))
+                        } else {
+                            creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,this.energySource.pos))
+                        }
                 }
             }
         } else {
@@ -83,7 +87,7 @@ class classes_creeps_sourceCreep {
         } else {
             this.unloadDest = this.storage
         }
-        if(this.unloadDest.hits < this.unloadDest.hitsMax){
+        if(this.unloadDest.hits < (this.unloadDest.hitsMax/2)){
             creep.repair(this.unloadDest)
         } else {
             this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)

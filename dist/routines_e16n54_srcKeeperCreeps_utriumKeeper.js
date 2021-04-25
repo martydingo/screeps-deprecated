@@ -10,7 +10,7 @@ var routines_e16n54_srcKeeperCreeps_utriumKeeper = {
         campPos = new RoomPosition(43, 34, room)
         secondLair = '5bbcaddb9099fc012e637fa4'
         lab = '606a0fa296af2a502a7be7c7'
-        srcKeeperCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "srcKeeperCreep" && creep.memory.creepRoom == room && creep.memory.creepCampPos.x == campPos.x && creep.memory.creepCampPos.y == campPos.y)
+        srcKeeperCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "srcKeeperCreep" && creep.memory.creepRoom == room && creep.memory.creepCampPos.x == campPos.x && creep.memory.creepCampPos.y == campPos.y)
         //console.log(srcKeeperCreeps[0])
         //        srcKeeperCreep = new classes_creeps_utriumKeeper(room, [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])
         srcKeeperCreep = new classes_creeps_utriumKeeper(room, campPos, lab, secondLair)

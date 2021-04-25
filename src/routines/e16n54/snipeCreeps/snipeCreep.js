@@ -9,7 +9,7 @@ var routines_e16n54_snipeCreeps_snipeCreep = {
         room = 'E16N54'
         spawn = Game.spawns['E17N55SPA1']
         snipePos = new RoomPosition(37,41,room)
-        snipeCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "snipeCreep")
+        snipeCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "snipeCreep")
         //console.log(snipeCreeps[0])
         snipeCreep = new classes_creeps_snipeCreep(snipePos,room)
         if(!spawn.memory.spawnBlocked){

@@ -10,7 +10,7 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
         origin2 = '6079cbeef913971725c02bc3'
         destination = '6073eaedcea495164e18734a'
         spawn = Game.spawns['E17N56SPA1']
-        transportCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N56" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
+        transportCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "transportCreep" && creep.memory.creepRoom == "E17N56" && creep.memory.creepOrigin.id == origin && creep.memory.creepDestination.id == destination )
         //console.log(transportCreeps[0])
         transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY],RESOURCE_ENERGY,null,null,origin2)
         

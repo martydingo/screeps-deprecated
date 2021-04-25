@@ -3,14 +3,14 @@ const config_e17n55_sources = require("config_e17n55_sources")
 const utils_creeps_renew = require('utils_creeps_renew')
 const classes_creeps_buildCreep = require("classes_creeps_buildCreep")
 
-var routines_e16n55_buildCreeps_srcOne = {
+var routines_e16n55_buildCreeps_buildCreep = {
 
     run: function () {
         room = 'E16N55'
         storage = '605f381c97b43e119d443878'
         energySource = config_e17n55_sources.srcTwo
         spawn = Game.spawns['E17N55SPA1']
-        buildCreeps = _.filter(Game.creeps, creep => creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
+        buildCreeps = _.filter(Game.creeps, creep => creep.ticksToLive > 200 && creep.memory.creepClass == "buildCreep" && creep.memory.creepRoom == room)
         //console.log(buildCreeps[0])
         buildCreep = new classes_creeps_buildCreep(storage,energySource,room)
         
@@ -34,4 +34,4 @@ var routines_e16n55_buildCreeps_srcOne = {
         }
     }
 }
-module.exports = routines_e16n55_buildCreeps_srcOne
+module.exports = routines_e16n55_buildCreeps_buildCreep
