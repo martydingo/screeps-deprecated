@@ -1,6 +1,5 @@
 class respawn_template {
-    constructor(){
-    }
+    constructor() {}
 }
 
 module.exports = respawn_template

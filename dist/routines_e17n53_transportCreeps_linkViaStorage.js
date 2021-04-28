@@ -16,12 +16,13 @@ var routines_e17n55_transportCreeps_linkViaStorage = {
                 creep.memory.creepDestination.id == destination
         )
 
-        var transportCreep = new classes_creeps_transportCreep(
-            origin,
-            destination,
-            room,
-            [MOVE, CARRY, CARRY, CARRY, CARRY]
-        )
+        var transportCreep = new classes_creeps_transportCreep(origin, destination, room, [
+            MOVE,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+        ])
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, transportCreeps, transportCreep)
@@ -30,10 +31,7 @@ var routines_e17n55_transportCreeps_linkViaStorage = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n55_respawn.maxActive.transportCreep.linkViaStorage
-        ) {
+        if (transportCreeps.length < config_e17n55_respawn.maxActive.transportCreep.linkViaStorage) {
             transportCreep.spawnCreep(spawn)
         }
     },

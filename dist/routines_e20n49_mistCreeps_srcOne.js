@@ -10,9 +10,7 @@ var routines_e20n49_mistCreeps_srcOne = {
         const spawn = Game.spawns['E17N53SPA1']
         var mistCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'mistCreep' &&
-                creep.memory.creepSource == mistSource
+            (creep) => creep.memory.creepClass == 'mistCreep' && creep.memory.creepSource == mistSource
         )
         var mistCreep = new classes_creeps_mistCreep(storage, mistSource, room)
         if (!spawn.memory.spawnBlocked) {
@@ -22,9 +20,7 @@ var routines_e20n49_mistCreeps_srcOne = {
     },
 
     creepWatch: function (spawn, mistCreeps, mistCreep) {
-        if (
-            mistCreeps.length < config_e20n49_respawn.maxActive.mistCreep.srcOne
-        ) {
+        if (mistCreeps.length < config_e20n49_respawn.maxActive.mistCreep.srcOne) {
             mistCreep.spawnCreep(spawn)
         }
     },

@@ -55,11 +55,7 @@ var routines_e17n53_transportCreeps_e17n55StorageviaStorage = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n53_respawn.maxActive.transportCreep
-                .e17n55StorageviaStorage
-        ) {
+        if (transportCreeps.length < config_e17n53_respawn.maxActive.transportCreep.e17n55StorageviaStorage) {
             transportCreep.spawnCreep(spawn)
         }
     },

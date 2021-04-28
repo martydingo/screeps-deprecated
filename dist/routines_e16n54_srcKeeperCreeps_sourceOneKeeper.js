@@ -17,11 +17,7 @@ var routines_e16n54_srcKeeperCreeps_sourceOneKeeper = {
                 creep.memory.creepCampPos.y == campPos.y
         )
 
-        var srcKeeperCreep = new classes_creeps_sourceOneKeeper(
-            room,
-            campPos,
-            lab
-        )
+        var srcKeeperCreep = new classes_creeps_sourceOneKeeper(room, campPos, lab)
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, srcKeeperCreeps, srcKeeperCreep)
         }
@@ -29,10 +25,7 @@ var routines_e16n54_srcKeeperCreeps_sourceOneKeeper = {
     },
 
     creepWatch: function (spawn, srcKeeperCreeps, srcKeeperCreep) {
-        if (
-            srcKeeperCreeps.length <
-            config_e16n54_respawn.maxActive.srcKeeperCreep.sourceOneKeeper
-        ) {
+        if (srcKeeperCreeps.length < config_e16n54_respawn.maxActive.srcKeeperCreep.sourceOneKeeper) {
             srcKeeperCreep.spawnCreep(spawn)
         }
     },

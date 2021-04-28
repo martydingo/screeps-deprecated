@@ -16,33 +16,28 @@ var routines_e17n54_transportCreeps_storageViaSrcOneContainer = {
                 creep.memory.creepOrigin.id == origin &&
                 creep.memory.creepDestination.id == destination
         )
-        var transportCreep = new classes_creeps_transportCreep(
-            origin,
-            destination,
-            room,
-            [
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-            ]
-        )
+        var transportCreep = new classes_creeps_transportCreep(origin, destination, room, [
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+        ])
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, transportCreeps, transportCreep)
@@ -51,11 +46,7 @@ var routines_e17n54_transportCreeps_storageViaSrcOneContainer = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n54_respawn.maxActive.transportCreep
-                .storageViaSrcOneContainer
-        ) {
+        if (transportCreeps.length < config_e17n54_respawn.maxActive.transportCreep.storageViaSrcOneContainer) {
             transportCreep.spawnCreep(spawn)
         }
     },

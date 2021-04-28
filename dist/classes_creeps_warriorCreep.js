@@ -65,17 +65,13 @@ class classes_creeps_warriorCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'warriorCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'warriorCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                },
+            })
             return this.result
         }
     }

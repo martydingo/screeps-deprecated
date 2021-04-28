@@ -28,17 +28,13 @@ class classes_creeps_keaniumCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'keaniumCreep',
-                        creepRoom: this.room.name,
-                        creepParts: this.partsArray,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'keaniumCreep',
+                    creepRoom: this.room.name,
+                    creepParts: this.partsArray,
+                },
+            })
             return this.result
         }
     }
@@ -59,9 +55,7 @@ class classes_creeps_keaniumCreep {
             if (this.result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this.keanium)
             }
-        } else if (
-            this.keaniumStore.store.getFreeCapacity(RESOURCE_ENERGY) > 2000
-        ) {
+        } else if (this.keaniumStore.store.getFreeCapacity(RESOURCE_ENERGY) > 2000) {
             this.result = creep.transfer(this.keaniumStore, RESOURCE_KEANIUM)
             if (this.result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this.keaniumStore)

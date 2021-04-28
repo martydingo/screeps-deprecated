@@ -11,16 +11,9 @@ var routines_e17n55_feederCreeps_feederCreep = {
         const spawn = Game.spawns['E17N55SPA1']
         var feederCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'feederCreep' &&
-                creep.memory.creepRoom == 'E17N55'
+            (creep) => creep.memory.creepClass == 'feederCreep' && creep.memory.creepRoom == 'E17N55'
         )
-        var feederCreep = new classes_creeps_feederCreep(
-            origin,
-            energySource,
-            roomController,
-            room
-        )
+        var feederCreep = new classes_creeps_feederCreep(origin, energySource, roomController, room)
 
         this.creepWatch(spawn, feederCreeps, feederCreep)
         this.creepAct(feederCreeps, feederCreep)

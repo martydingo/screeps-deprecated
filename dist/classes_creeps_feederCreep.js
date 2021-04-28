@@ -10,19 +10,15 @@ class classes_creeps_feederCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'feederCreep',
-                        creepRoom: this.room.name,
-                        creepParts: this.partsArray,
-                        creepOrigin: this.origin,
-                        creepDestination: this.destination,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'feederCreep',
+                    creepRoom: this.room.name,
+                    creepParts: this.partsArray,
+                    creepOrigin: this.origin,
+                    creepDestination: this.destination,
+                },
+            })
             return this.result
         }
     }
@@ -37,13 +33,11 @@ class classes_creeps_feederCreep {
     dropOff(creep) {
         this.destination = creep.pos.findClosestByPath(FIND_STRUCTURES, {
             filter: (object) =>
-                (object.structureType == STRUCTURE_EXTENSION &&
-                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
+                (object.structureType == STRUCTURE_EXTENSION && object.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
                 (object.structureType == STRUCTURE_SPAWN &&
                     object.store.getFreeCapacity(RESOURCE_ENERGY) > 0 &&
                     object.id != Game.spawns['E17N55SPA1'].id) ||
-                (object.structureType == STRUCTURE_TOWER &&
-                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 900),
+                (object.structureType == STRUCTURE_TOWER && object.store.getFreeCapacity(RESOURCE_ENERGY) > 900),
         })
         this.result = creep.transfer(this.destination, RESOURCE_ENERGY)
         if (this.result == ERR_NOT_IN_RANGE) {
@@ -62,11 +56,7 @@ class classes_creeps_feederCreep {
     }
 
     run(creep) {
-        if (
-            creep.store.getCapacity(RESOURCE_ENERGY) -
-                creep.store.getFreeCapacity(RESOURCE_ENERGY) <
-            50
-        ) {
+        if (creep.store.getCapacity(RESOURCE_ENERGY) - creep.store.getFreeCapacity(RESOURCE_ENERGY) < 50) {
             this.pickUp(creep)
         } else {
             this.dropOff(creep)

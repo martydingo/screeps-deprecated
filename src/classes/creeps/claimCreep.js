@@ -46,6 +46,7 @@ class classes_creeps_claimCreep {
             if (creep.pos.getRangeTo(this.targetRoomPos) < 20) {
                 creep.memory.creepMovedIn = true
             }
+            // eslint-disable-next-line no-empty
         } catch (err) {}
         if (creep.memory.creepMovedIn == false) {
             // creep.moveTo(this.targetRoomPos,{

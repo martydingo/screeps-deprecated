@@ -15,35 +15,27 @@ var routines_e17n55_transportCreeps_spawnerViaStorage = {
                 creep.memory.creepOrigin.id == origin &&
                 creep.memory.creepDestination.id == destination
         )
-        var transportCreep = new classes_creeps_transportCreep(
-            origin,
-            destination,
-            room,
-            [
-                MOVE,
-                CARRY,
-                MOVE,
-                CARRY,
-                MOVE,
-                CARRY,
-                MOVE,
-                CARRY,
-                MOVE,
-                CARRY,
-                MOVE,
-                CARRY,
-            ]
-        )
+        var transportCreep = new classes_creeps_transportCreep(origin, destination, room, [
+            MOVE,
+            CARRY,
+            MOVE,
+            CARRY,
+            MOVE,
+            CARRY,
+            MOVE,
+            CARRY,
+            MOVE,
+            CARRY,
+            MOVE,
+            CARRY,
+        ])
 
         this.creepWatch(spawn, transportCreeps, transportCreep)
         this.creepAct(transportCreeps, transportCreep)
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n55_respawn.maxActive.transportCreep.spawnerViaStorage
-        ) {
+        if (transportCreeps.length < config_e17n55_respawn.maxActive.transportCreep.spawnerViaStorage) {
             transportCreep.spawnCreep(spawn)
         }
     },

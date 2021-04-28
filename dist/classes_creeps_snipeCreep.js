@@ -65,17 +65,13 @@ class classes_creeps_snipeCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'snipeCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'snipeCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                },
+            })
             return this.result
         }
     }
@@ -102,10 +98,7 @@ class classes_creeps_snipeCreep {
     }
 
     run(creep) {
-        this.healerCreeps = _.filter(
-            Game.creeps,
-            (creep) => creep.memory.creepClass == 'healerCreep'
-        )
+        this.healerCreeps = _.filter(Game.creeps, (creep) => creep.memory.creepClass == 'healerCreep')
         if (this.healerCreeps.length > 0) {
             if (creep.pos.inRangeTo(this.healerCreeps[0], 1)) {
                 if (creep.pos.roomName != this.roomName) {

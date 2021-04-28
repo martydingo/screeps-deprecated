@@ -1,14 +1,5 @@
 class classes_creeps_transportCreep {
-    constructor(
-        origin,
-        destination,
-        roomName,
-        partsArray,
-        resourceType,
-        remoteLimit,
-        localLimit,
-        origin2
-    ) {
+    constructor(origin, destination, roomName, partsArray, resourceType, remoteLimit, localLimit, origin2) {
         this.localLimit = localLimit || null
         this.origin = Game.getObjectById(origin)
         this.origin2 = Game.getObjectById(origin2)
@@ -24,20 +15,16 @@ class classes_creeps_transportCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'transportCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                        creepOrigin: this.origin,
-                        creepOrigin2: this.origin2,
-                        creepDestination: this.destination,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'transportCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                    creepOrigin: this.origin,
+                    creepOrigin2: this.origin2,
+                    creepDestination: this.destination,
+                },
+            })
             return this.result
         }
     }
@@ -83,9 +70,7 @@ class classes_creeps_transportCreep {
     repairRoad(creep) {
         creep.pos
             .findInRange(FIND_STRUCTURES, 0, {
-                filter: (structure) =>
-                    structure.structureType == STRUCTURE_ROAD &&
-                    structure.hits < structure.hitsMax,
+                filter: (structure) => structure.structureType == STRUCTURE_ROAD && structure.hits < structure.hitsMax,
             })
             .forEach((road) => {
                 console.log(road)
@@ -102,10 +87,7 @@ class classes_creeps_transportCreep {
 
         if (this.remoteLimit) {
             if (this.destination.store[this.resourceType] < this.remoteLimit) {
-                if (
-                    creep.store[this.resourceType] <
-                    creep.store.getFreeCapacity(this.resourceType)
-                ) {
+                if (creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)) {
                     this.pickUp(creep)
                 } else {
                     this.dropOff(creep)
@@ -114,20 +96,14 @@ class classes_creeps_transportCreep {
         } else {
             if (this.localLimit) {
                 if (this.origin.store[this.resourceType] > this.remoteLimit) {
-                    if (
-                        creep.store[this.resourceType] <
-                        creep.store.getFreeCapacity(this.resourceType)
-                    ) {
+                    if (creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)) {
                         this.pickUp(creep)
                     } else {
                         this.dropOff(creep)
                     }
                 }
             } else {
-                if (
-                    creep.store[this.resourceType] <
-                    creep.store.getFreeCapacity(this.resourceType)
-                ) {
+                if (creep.store[this.resourceType] < creep.store.getFreeCapacity(this.resourceType)) {
                     this.pickUp(creep)
                 } else {
                     this.dropOff(creep)

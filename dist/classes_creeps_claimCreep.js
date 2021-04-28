@@ -14,20 +14,16 @@ class classes_creeps_claimCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'claimCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                        creepMovedIn: this.movedIn,
-                        creepTargetRoom: this.targetRoomPos,
-                        creepReserveController: this.reserveController,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'claimCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                    creepMovedIn: this.movedIn,
+                    creepTargetRoom: this.targetRoomPos,
+                    creepReserveController: this.reserveController,
+                },
+            })
             return this.result
         }
     }
@@ -53,12 +49,7 @@ class classes_creeps_claimCreep {
             //         stroke: "#302de3"
             //     }
             // })
-            creep.move(
-                utils_pathfinding_avoidHostileCreeps.findPath(
-                    creep,
-                    this.targetRoomPos
-                )
-            )
+            creep.move(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.targetRoomPos))
         } else {
             this.result = creep.claimController(creep.room.controller)
             if (this.result == ERR_NOT_IN_RANGE) {

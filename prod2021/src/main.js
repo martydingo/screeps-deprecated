@@ -25,13 +25,14 @@ module.exports.loop = function () {
         console.log(err)
     }
 
-
     respawn.respawnDaemon()
-    try {} catch (err) {
+    try {
+    } catch (err) {
         console.log(err)
     }
     bots.botDaemon()
-    try {} catch (err) {
+    try {
+    } catch (err) {
         console.log(err)
     }
     try {

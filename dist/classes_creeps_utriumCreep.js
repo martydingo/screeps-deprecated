@@ -1,12 +1,5 @@
 class classes_creeps_utriumCreep {
-    constructor(
-        utrium,
-        utriumStore,
-        roomName,
-        holdingPos,
-        keeperLair,
-        partsArray
-    ) {
+    constructor(utrium, utriumStore, roomName, holdingPos, keeperLair, partsArray) {
         this.room = Game.rooms[roomName]
         this.roomName = roomName
         this.hostileCreeps = this.hostileCreeps
@@ -44,17 +37,13 @@ class classes_creeps_utriumCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'utriumCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'utriumCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                },
+            })
             return this.result
         }
     }

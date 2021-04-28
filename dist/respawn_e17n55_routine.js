@@ -17,9 +17,7 @@ class respawn_e17n55_routine extends classes_respawn_prioritization {
     respawn() {
         for (var creepClass in this.priorityMatrix) {
             for (var creep in this.priorityMatrix[creepClass]) {
-                if (
-                    this.priorityMatrix[creepClass][creep] == this.priorityLevel
-                ) {
+                if (this.priorityMatrix[creepClass][creep] == this.priorityLevel) {
                     this.respawnRoutines[creepClass][creep]()
                 } else {
                     this.priorityMatrix += 1

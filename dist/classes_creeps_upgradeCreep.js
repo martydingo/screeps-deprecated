@@ -1,21 +1,11 @@
 utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
 
 class classes_creeps_upgradeCreep {
-    constructor(
-        storage,
-        energySourceID,
-        roomController,
-        roomName,
-        upgradeFromPOS,
-        container,
-        partsArray
-    ) {
+    constructor(storage, energySourceID, roomController, roomName, upgradeFromPOS, container, partsArray) {
         this.storage = Game.getObjectById(storage) || null
         this.roomController = Game.getObjectById(roomController)
         this.energySource = Game.getObjectById(energySourceID)
-        this.container =
-            Game.getObjectById(container) ||
-            Game.getObjectById('605cf742e96436c85b848964')
+        this.container = Game.getObjectById(container) || Game.getObjectById('605cf742e96436c85b848964')
         this.room = Game.rooms[roomName]
         this.partsArray = partsArray || [
             MOVE,
@@ -52,22 +42,18 @@ class classes_creeps_upgradeCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'upgradeCreep',
-                        creepRoom: this.room.name,
-                        creepSource: this.energySource.id,
-                        creepController: this.roomController.id,
-                        creepParts: this.partsArray,
-                        creepUpgrade: false,
-                        creepContainer: this.container,
-                        creepUpgradeFromPOS: this.upgradeFromPOS,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'upgradeCreep',
+                    creepRoom: this.room.name,
+                    creepSource: this.energySource.id,
+                    creepController: this.roomController.id,
+                    creepParts: this.partsArray,
+                    creepUpgrade: false,
+                    creepContainer: this.container,
+                    creepUpgradeFromPOS: this.upgradeFromPOS,
+                },
+            })
             return this.result
         }
     }
@@ -85,12 +71,7 @@ class classes_creeps_upgradeCreep {
         if (this.energySource) {
             if (creep.harvest(this.energySource) == ERR_NOT_IN_RANGE) {
                 if (creep.room.find(FIND_HOSTILE_CREEPS).length > 0) {
-                    creep.moveTo(
-                        utils_pathfinding_avoidHostileCreeps.findPath(
-                            creep,
-                            this.energySource
-                        )
-                    )
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.energySource))
                 } else {
                     creep.moveTo(this.energySource)
                 }
@@ -120,10 +101,7 @@ class classes_creeps_upgradeCreep {
     run(creep) {
         if (creep.store[RESOURCE_ENERGY] < 3) {
             creep.memory.creepUpgrade = false
-        } else if (
-            creep.store[RESOURCE_ENERGY] ==
-            creep.store.getCapacity(RESOURCE_ENERGY)
-        ) {
+        } else if (creep.store[RESOURCE_ENERGY] == creep.store.getCapacity(RESOURCE_ENERGY)) {
             creep.memory.creepUpgrade = true
         }
         if (creep.memory.creepUpgrade) {

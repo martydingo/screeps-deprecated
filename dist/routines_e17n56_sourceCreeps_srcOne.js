@@ -9,17 +9,10 @@ var routines_e17n56_sourceCreeps_srcOne = {
         const spawn = Game.spawns['E17N56SPA1']
         var sourceCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'sourceCreep' &&
-                creep.memory.creepSource == energySource
+            (creep) => creep.memory.creepClass == 'sourceCreep' && creep.memory.creepSource == energySource
         )
 
-        var sourceCreep = new classes_creeps_sourceCreep(
-            null,
-            energySource,
-            room,
-            [WORK, WORK, MOVE, CARRY]
-        )
+        var sourceCreep = new classes_creeps_sourceCreep(null, energySource, room, [WORK, WORK, MOVE, CARRY])
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, sourceCreeps, sourceCreep)
@@ -28,10 +21,7 @@ var routines_e17n56_sourceCreeps_srcOne = {
     },
 
     creepWatch: function (spawn, sourceCreeps, sourceCreep) {
-        if (
-            sourceCreeps.length <
-            config_e17n56_respawn.maxActive.sourceCreep.srcOne
-        ) {
+        if (sourceCreeps.length < config_e17n56_respawn.maxActive.sourceCreep.srcOne) {
             sourceCreep.spawnCreep(spawn)
         }
     },

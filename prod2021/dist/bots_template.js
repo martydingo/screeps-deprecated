@@ -1,6 +1,5 @@
 class bots_template {
-    constructor(){
-    }
+    constructor() {}
 }
 
 module.exports = bots_template

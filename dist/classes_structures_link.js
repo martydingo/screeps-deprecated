@@ -8,10 +8,7 @@ class classes_structures_link {
     }
 
     transmitLinkWhenFull() {
-        if (
-            this.link.store[RESOURCE_ENERGY] ==
-            this.link.store.getCapacity(RESOURCE_ENERGY)
-        ) {
+        if (this.link.store[RESOURCE_ENERGY] == this.link.store.getCapacity(RESOURCE_ENERGY)) {
             this.result = this.link.transferEnergy(this.remoteLink)
         }
     }

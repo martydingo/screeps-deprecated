@@ -11,9 +11,7 @@ var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
         const spawn = Game.spawns['E17N56SPA1']
         var upgradeCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'upgradeCreep' &&
-                creep.memory.creepRoom == 'E17N56'
+            (creep) => creep.memory.creepClass == 'upgradeCreep' && creep.memory.creepRoom == 'E17N56'
         )
 
         const upgradeFromPOS = null
@@ -36,9 +34,7 @@ var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
     creepWatch: function (spawn, upgradeCreeps, upgradeCreep) {
         console.log(config_e17n56_respawn.maxActive.upgradeCreep2)
 
-        if (
-            upgradeCreeps.length < config_e17n56_respawn.maxActive.upgradeCreep2
-        ) {
+        if (upgradeCreeps.length < config_e17n56_respawn.maxActive.upgradeCreep2) {
             upgradeCreep.spawnCreep(spawn)
         }
     },

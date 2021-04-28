@@ -37,17 +37,13 @@ class classes_creeps_oxygenCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(
-                this.partsArray,
-                this.creepName + Game.time,
-                {
-                    memory: {
-                        creepClass: 'oxygenCreep',
-                        creepRoom: this.roomName,
-                        creepParts: this.partsArray,
-                    },
-                }
-            )
+            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+                memory: {
+                    creepClass: 'oxygenCreep',
+                    creepRoom: this.roomName,
+                    creepParts: this.partsArray,
+                },
+            })
             return this.result
         }
     }
@@ -68,34 +64,16 @@ class classes_creeps_oxygenCreep {
                 this.hostileCreeps = this.room.find(FIND_HOSTILE_CREEPS)
                 this.result = creep.harvest(this.oxygen)
                 if (this.result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(
-                        utils_pathfinding_avoidHostileCreeps.findPath(
-                            creep,
-                            this.oxygen.pos
-                        )
-                    )
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.oxygen.pos))
                 }
             } else {
                 if (this.oxygenStore[RESOURCE_OXYGEN] < 10000) {
-                    this.result = creep.transfer(
-                        this.oxygenStore,
-                        RESOURCE_OXYGEN
-                    )
+                    this.result = creep.transfer(this.oxygenStore, RESOURCE_OXYGEN)
                     if (this.result == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(
-                            utils_pathfinding_avoidHostileCreeps.findPath(
-                                creep,
-                                this.oxygenStore.pos
-                            )
-                        )
+                        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.oxygenStore.pos))
                     }
                 } else {
-                    creep.moveTo(
-                        utils_pathfinding_avoidHostileCreeps.findPath(
-                            creep,
-                            Game.flags[roomName + '_IDLFLA']
-                        )
-                    )
+                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, Game.flags[roomName + '_IDLFLA']))
                 }
             }
         } else {

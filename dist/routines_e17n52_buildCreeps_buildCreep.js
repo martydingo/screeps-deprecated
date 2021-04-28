@@ -9,9 +9,7 @@ var routines_e17n52_buildCreeps_srcOne = {
         const spawn = Game.spawns['E17N53SPA1']
         var buildCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'buildCreep' &&
-                creep.memory.creepRoom == room
+            (creep) => creep.memory.creepClass == 'buildCreep' && creep.memory.creepRoom == room
         )
 
         var buildCreep = new classes_creeps_buildCreep(null, energySource, room)

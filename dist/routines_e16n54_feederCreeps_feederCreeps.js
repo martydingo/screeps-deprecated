@@ -8,15 +8,8 @@ var routines_e16n54_feederCreeps_feederCreep = {
         const energySource = config_e16n54_sources.srcTwo
         const roomController = '5bbcade89099fc012e6381d9'
         const spawn = Game.spawns['E17N55SPA1']
-        var feederCreeps = _.filter(
-            Game.creeps,
-            (creep) => creep.memory.creepClass == 'feederCreep'
-        )
-        var feederCreep = new classes_creeps_feederCreep(
-            energySource,
-            roomController,
-            room
-        )
+        var feederCreeps = _.filter(Game.creeps, (creep) => creep.memory.creepClass == 'feederCreep')
+        var feederCreep = new classes_creeps_feederCreep(energySource, roomController, room)
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, feederCreeps, feederCreep)

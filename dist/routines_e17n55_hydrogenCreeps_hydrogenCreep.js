@@ -11,15 +11,9 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
 
         var hydrogenCreeps = _.filter(
             Game.creeps,
-            (creep) =>
-                creep.memory.creepClass == 'hydrogenCreep' &&
-                creep.memory.creepRoom == 'E17N55'
+            (creep) => creep.memory.creepClass == 'hydrogenCreep' && creep.memory.creepRoom == 'E17N55'
         )
-        var hydrogenCreep = new classes_creeps_hydrogenCreep(
-            hydrogen,
-            hydrogenStore,
-            room
-        )
+        var hydrogenCreep = new classes_creeps_hydrogenCreep(hydrogen, hydrogenStore, room)
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, hydrogenCreeps, hydrogenCreep)
@@ -28,10 +22,7 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
     },
 
     creepWatch: function (spawn, hydrogenCreeps, hydrogenCreep) {
-        if (
-            hydrogenCreeps.length <
-            config_e17n55_respawn.maxActive.hydrogenCreep
-        ) {
+        if (hydrogenCreeps.length < config_e17n55_respawn.maxActive.hydrogenCreep) {
             hydrogenCreep.spawnCreep(spawn)
         }
     },
