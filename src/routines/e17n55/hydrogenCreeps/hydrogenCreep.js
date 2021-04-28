@@ -16,8 +16,7 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
                 creep.memory.creepRoom == 'E17N55'
         )
         var hydrogenCreep = new classes_creeps_hydrogenCreep(hydrogen,hydrogenStore,room);
-            room
-        )
+
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, hydrogenCreeps, hydrogenCreep)

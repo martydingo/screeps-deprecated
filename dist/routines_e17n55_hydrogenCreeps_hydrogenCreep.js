@@ -17,6 +17,7 @@ var routines_e17n55_hydrogenCreeps_hydrogenCreep = {
         )
         var hydrogenCreep = new classes_creeps_hydrogenCreep(hydrogen,hydrogenStore,room);
 
+
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, hydrogenCreeps, hydrogenCreep)
         }

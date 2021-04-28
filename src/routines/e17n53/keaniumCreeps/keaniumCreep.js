@@ -16,8 +16,7 @@ var routines_e17n53_keaniumCreeps_keaniumCreep = {
                 creep.memory.creepRoom == 'E17N53'
         )
         var keaniumCreep = new classes_creeps_keaniumCreep(keanium,keaniumStore,room);
-            room
-        )
+
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, keaniumCreeps, keaniumCreep)
