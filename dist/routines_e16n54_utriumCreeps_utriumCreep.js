@@ -14,7 +14,13 @@ var routines_e16n54_utriumCreeps_srcOne = {
             Game.creeps,
             (creep) => creep.memory.creepClass == 'utriumCreep'
         )
-        var utriumCreep = new classes_creeps_utriumCreep(utrium,utriumStore,room,holdingPos,keeperLair);
+        var utriumCreep = new classes_creeps_utriumCreep(
+            utrium,
+            utriumStore,
+            room,
+            holdingPos,
+            keeperLair
+        )
 
         if (!spawn.memory.spawnBlocked) {
             if (
@@ -37,7 +43,7 @@ var routines_e16n54_utriumCreeps_srcOne = {
         }
     },
 
-    creepAct: function (utriumCreeps, utriumCreep, spawn) {
+    creepAct: function (utriumCreeps, utriumCreep) {
         for (var creep in utriumCreeps) {
             if (utriumCreeps[creep].ticksToLive < 400) {
                 utriumCreeps[creep].memory.creepShouldRenew = true

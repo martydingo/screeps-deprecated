@@ -2,3 +2,5 @@ node_modules
 .screeps.json
 package-lock.json
 ScreepsAutocomplete
+dist/screeps-profiler.js
+src/screeps-profiler.js

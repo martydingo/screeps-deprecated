@@ -9,8 +9,8 @@ var utils_pathfinding_avoidHostileCreeps = {
                 let costs = new PathFinder.CostMatrix()
                 // Avoid E19N51
                 if (roomName == 'E19N51' || roomName == 'E19N48') {
-                    x = 0
-                    y = 0
+                    var x = 0
+                    var y = 0
                     while (x < 50) {
                         while (y < 50) {
                             costs.set(x, y, 0xff)
@@ -33,8 +33,8 @@ var utils_pathfinding_avoidHostileCreeps = {
 
                 // Avoid creeps in the room
                 room.find(FIND_HOSTILE_CREEPS).forEach((creep) => {
-                    x = -4
-                    y = -4
+                    var x = -4
+                    var y = -4
                     while (x < 4) {
                         while (y < 4) {
                             costs.set(creep.pos.x, creep.pos.y, 0xff)
@@ -54,7 +54,6 @@ var utils_pathfinding_avoidHostileCreeps = {
             )
         }
         let pos = ret.path[0]
-        let path = ret.path
         //console.log(JSON.stringify(ret.path))
         return pos
     },

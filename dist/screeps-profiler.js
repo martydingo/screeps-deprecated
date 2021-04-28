@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 'use strict';
 
 let usedOnStart = 0;

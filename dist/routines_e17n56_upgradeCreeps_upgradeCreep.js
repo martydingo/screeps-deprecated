@@ -17,7 +17,32 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
         )
 
         const upgradeFromPOS = null
-        var upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room,upgradeFromPOS,'607adf9af2a970d033902c00',[WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,MOVE,MOVE,CARRY,CARRY,CARRY,MOVE]);
+        var upgradeCreep = new classes_creeps_upgradeCreep(
+            storage,
+            energySource,
+            roomController,
+            room,
+            upgradeFromPOS,
+            '607adf9af2a970d033902c00',
+            [
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                MOVE,
+                MOVE,
+                CARRY,
+                CARRY,
+                CARRY,
+                MOVE,
+            ]
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, upgradeCreeps, upgradeCreep)

@@ -29,7 +29,7 @@ var routines_e20n49_mistCreeps_srcOne = {
         }
     },
 
-    creepAct: function (mistCreeps, mistCreep, spawn) {
+    creepAct: function (mistCreeps, mistCreep) {
         for (var creep in mistCreeps) {
             mistCreep.run(mistCreeps[creep])
         }

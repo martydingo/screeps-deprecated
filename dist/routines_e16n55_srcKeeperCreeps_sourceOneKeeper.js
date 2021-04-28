@@ -39,7 +39,7 @@ var routines_e16n55_srcKeeperCreeps_sourceOneKeeper = {
         }
     },
 
-    creepAct: function (srcKeeperCreeps, srcKeeperCreep, spawn) {
+    creepAct: function (srcKeeperCreeps, srcKeeperCreep) {
         for (var creep in srcKeeperCreeps) {
             if (
                 srcKeeperCreeps[creep].ticksToLive < 200 &&

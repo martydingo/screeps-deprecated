@@ -14,7 +14,49 @@ var routines_e16n54_sourceCreeps_srcOne = {
                 creep.memory.creepClass == 'sourceCreep' &&
                 creep.memory.creepSource == energySource
         )
-        var sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]);
+        var sourceCreep = new classes_creeps_sourceCreep(
+            storage,
+            energySource,
+            room,
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, sourceCreeps, sourceCreep)
@@ -31,7 +73,7 @@ var routines_e16n54_sourceCreeps_srcOne = {
         }
     },
 
-    creepAct: function (sourceCreeps, sourceCreep, spawn) {
+    creepAct: function (sourceCreeps, sourceCreep) {
         for (var creep in sourceCreeps) {
             sourceCreep.run(sourceCreeps[creep])
         }

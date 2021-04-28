@@ -14,7 +14,11 @@ var routines_e16n55_oxygenCreeps_srcOne = {
                 creep.memory.creepClass == 'oxygenCreep' &&
                 creep.memory.creepRoom == 'E16N55'
         )
-        var oxygenCreep = new classes_creeps_oxygenCreep(oxygen,oxygenStore,room);
+        var oxygenCreep = new classes_creeps_oxygenCreep(
+            oxygen,
+            oxygenStore,
+            room
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, oxygenCreeps, oxygenCreep)

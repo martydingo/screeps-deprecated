@@ -15,7 +15,12 @@ var routines_e16n53_upgradeCreeps_srcOne = {
                 creep.memory.creepClass == 'upgradeCreep' &&
                 creep.memory.creepRoom == 'E16N53'
         )
-        var upgradeCreep = new classes_creeps_upgradeCreep(storage,energySource,roomController,room);
+        var upgradeCreep = new classes_creeps_upgradeCreep(
+            storage,
+            energySource,
+            roomController,
+            room
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, upgradeCreeps, upgradeCreep)

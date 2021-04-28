@@ -35,7 +35,7 @@ var routines_e17n53_sourceCreeps_srcOne = {
         }
     },
 
-    creepAct: function (sourceCreeps, sourceCreep, spawn) {
+    creepAct: function (sourceCreeps, sourceCreep) {
         for (var creep in sourceCreeps) {
             sourceCreep.run(sourceCreeps[creep])
         }

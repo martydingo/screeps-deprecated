@@ -1,6 +1,6 @@
 var utils_creeps_renew = {
     renewCreep: function (creep, spawn) {
-        results = spawn.renewCreep(creep)
+        var results = spawn.renewCreep(creep)
         if (results == ERR_NOT_IN_RANGE || ERR_BUSY) {
             creep.moveTo(spawn)
         }

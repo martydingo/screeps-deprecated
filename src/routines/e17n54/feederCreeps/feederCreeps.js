@@ -12,7 +12,11 @@ var routines_e17n54_feederCreeps_feederCreep = {
             Game.creeps,
             (creep) => creep.memory.creepClass == 'feederCreep'
         )
-        var feederCreep = new classes_creeps_feederCreep(energySource,roomController,room);
+        var feederCreep = new classes_creeps_feederCreep(
+            energySource,
+            roomController,
+            room
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, feederCreeps, feederCreep)

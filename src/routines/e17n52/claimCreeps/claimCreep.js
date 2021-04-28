@@ -13,7 +13,11 @@ var routines_e17n52_claimCreeps_claimCreep = {
                 creep.memory.creepClass == 'claimCreep' &&
                 creep.memory.creepRoom == room
         )
-        var claimCreep = new classes_creeps_claimCreep(room, targetRoomPos,reserveController);
+        var claimCreep = new classes_creeps_claimCreep(
+            room,
+            targetRoomPos,
+            reserveController
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, claimCreeps, claimCreep)
