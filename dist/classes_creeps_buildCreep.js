@@ -9,16 +9,69 @@ class classes_creeps_buildCreep {
         this.room = Game.rooms[roomName]
         this.constructionSite = this.constructionSite
         this.repairSite = this.repairSite
-        this.partsArray = partsArray || [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY,CARRY]
-        this.creepName = 'buildCreep\[' + this.roomName + '\]-'
+        this.partsArray = partsArray || [
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+            CARRY,
+        ]
+        this.creepName = 'buildCreep[' + this.roomName + ']-'
         this.shouldGoBuild = ''
-        this.result = this.result
+        this.result = null
     }
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = (
-                spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
                     memory: {
                         creepClass: 'buildCreep',
                         creepRoom: this.room.name,
@@ -26,40 +79,52 @@ class classes_creeps_buildCreep {
                         creepParts: this.partsArray,
                         creepConstructionSite: this.constructionSite,
                         creepStorage: this.storage,
-                        creepMovedIn: false
-                    }
-                })
+                        creepMovedIn: false,
+                    },
+                }
             )
             return this.result
         }
-
     }
 
     canSpawn(spawner) {
-        if (spawner.spawnCreep(this.partsArray, this.creepName, {
-                dryRun: true
-            }) == 0) {
+        if (
+            spawner.spawnCreep(this.partsArray, this.creepName, {
+                dryRun: true,
+            }) == 0
+        ) {
             return true
-        } else
-            return false
+        } else return false
     }
 
     moveIn(creep) {
-        if(this.room){
-            if (creep.pos.getRangeTo(new RoomPosition(25, 25, this.room.name)) < 23 ) {
+        if (this.room) {
+            if (
+                creep.pos.getRangeTo(new RoomPosition(25, 25, this.room.name)) <
+                23
+            ) {
                 creep.memory.creepMovedIn = true
-            } else
-                creep.memory.creepMovedIn = false
+            } else creep.memory.creepMovedIn = false
             if (creep.memory.creepMovedIn == false) {
-                if(creep.room.find(FIND_HOSTILE_CREEPS).length > 0){
-                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep,new RoomPosition(25, 25, this.room.name)))
+                if (creep.room.find(FIND_HOSTILE_CREEPS).length > 0) {
+                    creep.moveTo(
+                        utils_pathfinding_avoidHostileCreeps.findPath(
+                            creep,
+                            new RoomPosition(25, 25, this.room.name)
+                        )
+                    )
                 } else {
                     creep.moveTo(new RoomPosition(25, 25, this.room.name))
                 }
             }
         } else {
-            if(creep.room.find(FIND_HOSTILE_CREEPS).length > 0){
-                creep.move(utils_pathfinding_avoidHostileCreeps.findPath(creep,new RoomPosition(25, 25, this.roomName)))
+            if (creep.room.find(FIND_HOSTILE_CREEPS).length > 0) {
+                creep.move(
+                    utils_pathfinding_avoidHostileCreeps.findPath(
+                        creep,
+                        new RoomPosition(25, 25, this.roomName)
+                    )
+                )
             } else {
                 creep.moveTo(new RoomPosition(25, 25, this.roomName))
             }
@@ -70,7 +135,7 @@ class classes_creeps_buildCreep {
         if (this.energySource) {
             this.result = creep.harvest(this.energySource)
             if (this.result == ERR_NOT_IN_RANGE) {
-                creep.moveTo(this.energySource);
+                creep.moveTo(this.energySource)
                 // if (this.result != 0) {
                 //     //console.log("buildCreep harvest Error: " + this.result)
                 // }
@@ -105,29 +170,45 @@ class classes_creeps_buildCreep {
             this.result = creep.moveTo(this.storage)
         }
     }
-    
-    
+
     run(creep) {
         //creep.memory.creepMovedIn = false
         if (creep.memory.creepMovedIn == true) {
             if (creep.store[RESOURCE_ENERGY] == 0) {
                 creep.memory.creepBuild = false
-            } else
-            if (creep.store[RESOURCE_ENERGY] == creep.store.getCapacity()) {
+            } else if (
+                creep.store[RESOURCE_ENERGY] == creep.store.getCapacity()
+            ) {
                 creep.memory.creepBuild = true
             }
             if (creep.memory.creepBuild) {
-                if(creep.pos.roomName == this.roomName){
-                    this.constructionSite = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES)
+                if (creep.pos.roomName == this.roomName) {
+                    this.constructionSite = creep.pos.findClosestByPath(
+                        FIND_CONSTRUCTION_SITES
+                    )
                     if (this.constructionSite) {
                         this.build(creep)
                     } else {
-                        this.repairSite = this.room.find(FIND_STRUCTURES, { filter: object => object.hits < object.hitsMax && object.structureType == STRUCTURE_CONTAINER || object.hits < object.hitsMax && object.structureType == STRUCTURE_TOWER || object.hits < object.hitsMax && object.structureType == STRUCTURE_ROAD || object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_RAMPART })
-                        if(this.repairSite.length > 0){
+                        this.repairSite = this.room.find(FIND_STRUCTURES, {
+                            filter: (object) =>
+                                (object.hits < object.hitsMax &&
+                                    object.structureType ==
+                                        STRUCTURE_CONTAINER) ||
+                                (object.hits < object.hitsMax &&
+                                    object.structureType == STRUCTURE_TOWER) ||
+                                (object.hits < object.hitsMax &&
+                                    object.structureType == STRUCTURE_ROAD) ||
+                                (object.hits < 10000 &&
+                                    object.hits < object.hitsMax &&
+                                    object.structureType == STRUCTURE_RAMPART),
+                        })
+                        if (this.repairSite.length > 0) {
                             this.repair(creep)
                         } else {
-                            if(Game.flags[this.roomName+'_IDLFLA']){
-                                creep.moveTo(Game.flags[this.roomName+'_IDLFLA'])
+                            if (Game.flags[this.roomName + '_IDLFLA']) {
+                                creep.moveTo(
+                                    Game.flags[this.roomName + '_IDLFLA']
+                                )
                             }
                         }
                     }
@@ -136,13 +217,15 @@ class classes_creeps_buildCreep {
                 }
             } else {
                 if (this.storage != null) {
-                    if (this.storage.store[RESOURCE_ENERGY] > this.containerLimit) {
+                    if (
+                        this.storage.store[RESOURCE_ENERGY] >
+                        this.containerLimit
+                    ) {
                         this.pickUpEnergy(creep)
                     } else {
                         this.harvestEnergySource(creep)
                     }
-                } else
-                this.harvestEnergySource(creep)
+                } else this.harvestEnergySource(creep)
             }
         } else {
             this.moveIn(creep)

@@ -11,7 +11,7 @@ routines_e16n55_snipeCreeps_snipeCreep = require('routines_e16n55_snipeCreeps_sn
 routines_e17n54_warriorCreeps_warriorCreep = require('routines_e17n54_warriorCreeps_warriorCreep')
 routines_e18n55_warriorCreeps_warriorCreep = require('routines_e18n55_warriorCreeps_warriorCreep')
 routines_e16n55_healerCreeps_healerCreep = require('routines_e16n55_healerCreeps_healerCreep')
-//routines_e16n55_snipeCreeps_snipeCreep = require('routines_e16n55_snipeCreeps_snipeCreep')
+//routines_e16n55_snipeCreeps_snipeCreep = require('routines_e16n55_snipeCreeps_snipeCreep');
 routines_e17n54_scoutCreeps_scoutCreep = require('routines_e17n54_scoutCreeps_scoutCreep')
 routines_e17n56_scoutCreeps_scoutCreep = require('routines_e17n56_scoutCreeps_scoutCreep')
 routines_e17n56_feederCreeps_feederCreep = require('routines_e17n56_feederCreeps_feederCreep')
@@ -36,6 +36,7 @@ routines_e17n54_lootCreeps_lootCreep = require('routines_e17n54_lootCreeps_lootC
 routines_e16n54_lootCreeps_lootCreep = require('routines_e16n54_lootCreeps_lootCreep')
 routines_e16n55_lootCreeps_lootCreep = require('routines_e16n55_lootCreeps_lootCreep')
 routines_e17n53_lootCreeps_lootCreep = require('routines_e17n53_lootCreeps_lootCreep')
+routines_e15n53_lootCreeps_lootCreep = require('routines_e15n53_lootCreeps_lootCreep')
 routines_e17n55_feederCreeps_feederCreep = require('routines_e17n55_feederCreeps_feederCreep')
 routines_e17n55_transportCreeps_linkViaStorage = require('routines_e17n55_transportCreeps_linkViaStorage')
 routines_e17n55_transportCreeps_spawnerViaStorage = require('routines_e17n55_transportCreeps_spawnerViaStorage')
@@ -86,12 +87,18 @@ routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo')
 routines_e17n56_hydrogenCreeps_hydrogenCreep = require('routines_e17n56_hydrogenCreeps_hydrogenCreep')
 utils_garbageCollection_gc = require('utils_garbageCollection_gc')
 routines_e16n55_buildCreeps_buildCreep = require('routines_e16n55_buildCreeps_buildCreep')
+routines_e18n55_buildCreeps_buildCreep = require('routines_e18n55_buildCreeps_buildCreep')
 routines_e16n55_transportCreeps_srcOneToE17N55Storage = require('routines_e16n55_transportCreeps_srcOneToE17N55Storage')
+respawn_e17n55_routine = require('respawn_e17n55_routine')
+routines_e16n53_warriorCreeps_warriorCreep = require('routines_e16n53_warriorCreeps_warriorCreep')
+routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreeps_srcOne')
+routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
+routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
 
 timerReport = 600
 
 module.exports.loop = function () {
-    if ( Game.cpu.bucket > 9999 ) {
+    if (Game.cpu.bucket > 9999) {
         Game.cpu.generatePixel()
     }
 
@@ -121,8 +128,9 @@ module.exports.loop = function () {
     routines_e17n54_claimCreeps_claimCreep.run()
     routines_e17n56_claimCreeps_claimCreep.run()
     routines_e18n55_claimCreeps_claimCreep.run()
-    //routines_e17n54_buildCreeps_buildCreep.run()
+    routines_e17n54_buildCreeps_buildCreep.run()
     routines_e16n55_buildCreeps_buildCreep.run()
+    routines_e18n55_buildCreeps_buildCreep.run()
     routines_e17n52_buildCreeps_buildCreep.run()
     routines_e16n55_warriorCreeps_warriorCreep.run()
     routines_e16n55_healerCreeps_healerCreep.run()
@@ -151,6 +159,7 @@ module.exports.loop = function () {
     routines_e16n54_lootCreeps_lootCreep.run()
     routines_e16n55_lootCreeps_lootCreep.run()
     routines_e17n53_lootCreeps_lootCreep.run()
+    routines_e15n53_lootCreeps_lootCreep.run()
     routines_e17n55_towers_towerOne.run()
     routines_e17n56_towers_towerOne.run()
     routines_e17n55_towers_towerTwo.run()
@@ -162,7 +171,7 @@ module.exports.loop = function () {
     routines_e16n55_snipeCreeps_snipeCreep.run()
     utils_garbageCollection_gc.garbageCollection.creeps.run()
     routines_e17n55_hydrogenCreeps_hydrogenCreep.run()
-    // routines_e17n55_labs_lab6.run()
+    // routines_e17n55_labs_lab6.run();
     routines_e18n55_warriorCreeps_warriorCreep.run()
     routines_e17n54_warriorCreeps_warriorCreep.run()
     routines_e17n53_keaniumCreeps_keaniumCreep.run()
@@ -193,4 +202,8 @@ module.exports.loop = function () {
     routines_e17n56_towers_towerTwo.run()
     routines_e15n53_towers_towerTwo.run()
     routines_e16n55_transportCreeps_srcOneToE17N55Storage.run()
+    routines_e16n53_warriorCreeps_warriorCreep.run()
+    routines_e16n53_claimCreeps_claimCreep.run()
+    routines_e16n53_sourceCreeps_srcOne.run()
+    routines_e16n53_sourceCreeps_srcTwo.run()
 }
