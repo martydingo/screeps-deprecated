@@ -16,7 +16,6 @@ var routines_e17n55_transportCreeps_spawnerViaStorage = {
                 creep.memory.creepDestination.id == destination
         )
         var transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY,MOVE,CARRY]);
-        )
 
         this.creepWatch(spawn, transportCreeps, transportCreep)
         this.creepAct(transportCreeps, transportCreep)

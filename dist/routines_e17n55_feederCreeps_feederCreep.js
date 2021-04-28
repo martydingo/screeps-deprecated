@@ -16,7 +16,6 @@ var routines_e17n55_feederCreeps_feederCreep = {
                 creep.memory.creepRoom == 'E17N55'
         )
         var feederCreep = new classes_creeps_feederCreep(origin,energySource,roomController,room);
-        )
 
         this.creepWatch(spawn, feederCreeps, feederCreep)
         this.creepAct(feederCreeps, feederCreep)

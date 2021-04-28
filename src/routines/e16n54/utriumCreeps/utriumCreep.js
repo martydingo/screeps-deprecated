@@ -15,7 +15,6 @@ var routines_e16n54_utriumCreeps_srcOne = {
             (creep) => creep.memory.creepClass == 'utriumCreep'
         )
         var utriumCreep = new classes_creeps_utriumCreep(utrium,utriumStore,room,holdingPos,keeperLair);
-        )
 
         if (!spawn.memory.spawnBlocked) {
             if (

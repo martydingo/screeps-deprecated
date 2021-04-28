@@ -18,7 +18,6 @@ var routines_e17n55_transportCreeps_linkViaStorage = {
                 creep.memory.creepDestination.id == destination
         )
         var transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY],RESOURCE_ENERGY,null,null,origin2);
-        )
 
         this.creepWatch(spawn, transportCreeps, transportCreep)
         this.creepAct(transportCreeps, transportCreep)

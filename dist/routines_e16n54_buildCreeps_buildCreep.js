@@ -15,11 +15,7 @@ var routines_e16n54_buildCreeps_srcOne = {
                 creep.memory.creepRoom == room
         )
 
-        var buildCreep = new classes_creeps_buildCreep(
-            storage,
-            energySource,
-            room
-        )
+        var buildCreep = new classes_creeps_buildCreep(storage, energySource)
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, buildCreeps, buildCreep)
         }

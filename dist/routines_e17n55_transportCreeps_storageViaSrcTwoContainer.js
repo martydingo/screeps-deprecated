@@ -16,7 +16,6 @@ var routines_e17n55_transportCreeps_storageViaSrcTwoContainer = {
                 creep.memory.creepDestination.id == destination
         )
         var transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY]);
-        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, transportCreeps, transportCreep)

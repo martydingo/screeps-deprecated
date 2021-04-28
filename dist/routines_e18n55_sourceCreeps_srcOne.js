@@ -16,7 +16,6 @@ var routines_e18n55_sourceCreeps_srcOne = {
         )
 
         var sourceCreep = new classes_creeps_sourceCreep(storage,energySource,room,[MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,WORK,WORK,WORK,WORK,WORK,WORK,CARRY]);
-        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, sourceCreeps, sourceCreep)

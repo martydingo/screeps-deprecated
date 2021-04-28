@@ -16,7 +16,6 @@ var routines_e17n53_feederCreeps_feederCreep = {
                 creep.memory.creepRoom == 'E17N53'
         )
         var feederCreep = new classes_creeps_feederCreep(origin,energySource,roomController,room,[MOVE,CARRY,MOVE,CARRY,MOVE,CARRY]);
-        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, feederCreeps, feederCreep)

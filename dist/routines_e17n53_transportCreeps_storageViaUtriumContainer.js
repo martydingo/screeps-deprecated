@@ -17,7 +17,6 @@ var routines_e17n55_transportCreeps_storageViaUtriumContainer = {
         )
 
         var transportCreep = new classes_creeps_transportCreep(origin,destination,room,[MOVE,CARRY,CARRY,CARRY,CARRY]);
-        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, transportCreeps, transportCreep)
