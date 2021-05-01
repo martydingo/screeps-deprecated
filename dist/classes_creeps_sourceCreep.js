@@ -36,14 +36,18 @@ class classes_creeps_sourceCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'sourceCreep',
-                    creepRoom: this.roomName,
-                    creepSource: this.energySourceID,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'sourceCreep',
+                        creepRoom: this.roomName,
+                        creepSource: this.energySourceID,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -68,7 +72,12 @@ class classes_creeps_sourceCreep {
                     if (creep.pos.roomName == 'E16N53') {
                         creep.moveTo(new RoomPosition(25, 25, this.roomName))
                     } else {
-                        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.energySource.pos))
+                        creep.moveTo(
+                            utils_pathfinding_avoidHostileCreeps.findPath(
+                                creep,
+                                this.energySource.pos
+                            )
+                        )
                     }
                 }
             }
@@ -88,11 +97,13 @@ class classes_creeps_sourceCreep {
             })
             this.extensions = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (object) =>
-                    object.structureType == STRUCTURE_EXTENSION && object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
+                    object.structureType == STRUCTURE_EXTENSION &&
+                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
             })
             this.towers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (object) =>
-                    object.structureType == STRUCTURE_TOWER && object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
+                    object.structureType == STRUCTURE_TOWER &&
+                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
             })
             if (this.containers != null) {
                 this.unloadDest = this.containers

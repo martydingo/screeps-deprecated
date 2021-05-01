@@ -10,53 +10,63 @@ var routines_e16n55_sourceCreeps_srcTwo = {
         const spawn = Game.spawns['E17N55SPA1']
         var sourceCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'sourceCreep' && creep.memory.creepSource == energySource
+            (creep) =>
+                creep.memory.creepClass == 'sourceCreep' &&
+                creep.memory.creepSource == energySource
         )
-        var sourceCreep = new classes_creeps_sourceCreep(storage, energySource, room, [
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-        ])
+        var sourceCreep = new classes_creeps_sourceCreep(
+            storage,
+            energySource,
+            room,
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
+        )
 
         this.creepWatch(spawn, sourceCreeps, sourceCreep)
         this.creepAct(sourceCreeps, sourceCreep, spawn)
     },
 
     creepWatch: function (spawn, sourceCreeps, sourceCreep) {
-        if (sourceCreeps.length < config_e16n55_respawn.maxActive.sourceCreep.srcTwo) {
+        if (
+            sourceCreeps.length <
+            config_e16n55_respawn.maxActive.sourceCreep.srcTwo
+        ) {
             sourceCreep.spawnCreep(spawn)
         }
     },

@@ -93,7 +93,9 @@ var utils_pathfinding_fleeHostileCreeps = {
         })
 
         if (ret.incomplete == true) {
-            console.log(creep.name + ' - WARNING: Could not pathfind a complete path!')
+            console.log(
+                creep.name + ' - WARNING: Could not pathfind a complete path!'
+            )
         }
         let pos = ret.path[0]
         return pos

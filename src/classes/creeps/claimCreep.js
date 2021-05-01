@@ -1,15 +1,14 @@
-utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
+const utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
 
 class classes_creeps_claimCreep {
-    constructor(roomName, targetRoomPos, reserveController, partsArray) {
+    constructor(roomName, reserveController, partsArray) {
         this.reserveController = reserveController || true
         this.room = Game.rooms[roomName]
         this.roomName = roomName
         this.partsArray = partsArray || [CLAIM, MOVE, MOVE, CLAIM]
         this.creepName = 'claimCreep[' + this.roomName + ']-'
         this.result = null
-        this.targetRoomPos = targetRoomPos
-        this.movedIn = false
+        this.movedIn = true
     }
 
     spawnCreep(spawner) {
@@ -61,9 +60,9 @@ class classes_creeps_claimCreep {
                 )
             )
         } else {
-            this.result = creep.claimController(creep.room.controller)
+            this.result = creep.claimController(this.room.controller)
             if (this.result == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller, {
+                creep.moveTo(this.room.controller, {
                     visualizePathStyle: {
                         stroke: '#302de3',
                     },
@@ -73,32 +72,23 @@ class classes_creeps_claimCreep {
     }
 
     moveInAndReserve(creep) {
-        try {
-            if (creep.pos.getRangeTo(this.targetRoomPos) < 20) {
-                creep.memory.creepMovedIn = true
-            }
-        } catch (err) {}
-        if (creep.memory.creepMovedIn == false) {
-            creep.moveTo(this.targetRoomPos, {
-                visualizePathStyle: {
-                    stroke: '#302de3',
-                },
-            })
+        if (!this.room) {
+            creep.moveTo(new RoomPosition(25, 25, this.roomName))
         } else {
-            if (creep.room.controller.reservation) {
-                if (creep.room.controller.reservation.username == 'Marty') {
-                    this.result = creep.reserveController(creep.room.controller)
+            if (this.room.controller.reservation) {
+                if (this.room.controller.reservation.username == 'Marty') {
+                    this.result = creep.reserveController(this.room.controller)
                     if (this.result == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller, {
+                        creep.moveTo(this.room.controller, {
                             visualizePathStyle: {
                                 stroke: '#302de3',
                             },
                         })
                     }
                 } else {
-                    this.result = creep.attackController(creep.room.controller)
+                    this.result = creep.attackController(this.room.controller)
                     if (this.result == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(creep.room.controller, {
+                        creep.moveTo(this.room.controller, {
                             visualizePathStyle: {
                                 stroke: '#302de3',
                             },
@@ -106,9 +96,9 @@ class classes_creeps_claimCreep {
                     }
                 }
             } else {
-                this.result = creep.reserveController(creep.room.controller)
+                this.result = creep.reserveController(this.room.controller)
                 if (this.result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(creep.room.controller, {
+                    creep.moveTo(this.room.controller, {
                         visualizePathStyle: {
                             stroke: '#302de3',
                         },

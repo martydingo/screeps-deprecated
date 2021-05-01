@@ -25,34 +25,58 @@ class classes_structures_tower {
             filter: (creep) => creep.hits < creep.hitsMax,
         })
         this.hostileCreeps = this.tower.room.find(FIND_HOSTILE_CREEPS)
-        this.unrepairedStructuresUnsorted = this.tower.room.find(FIND_STRUCTURES, {
-            filter: (object) =>
-                (object.hits < object.hitsMax && object.structureType == STRUCTURE_CONTAINER) ||
-                (object.hits < object.hitsMax && object.structureType == STRUCTURE_TOWER) ||
-                (object.hits < object.hitsMax && object.structureType == STRUCTURE_ROAD) ||
-                (object.hits < 100000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_RAMPART) ||
-                (object.hits < 10000 && object.hits < object.hitsMax && object.structureType == STRUCTURE_WALL),
-        })
+        this.unrepairedStructuresUnsorted = this.tower.room.find(
+            FIND_STRUCTURES,
+            {
+                filter: (object) =>
+                    (object.hits < object.hitsMax &&
+                        object.structureType == STRUCTURE_CONTAINER) ||
+                    (object.hits < object.hitsMax &&
+                        object.structureType == STRUCTURE_TOWER) ||
+                    (object.hits < object.hitsMax &&
+                        object.structureType == STRUCTURE_ROAD) ||
+                    (object.hits < 100000 &&
+                        object.hits < object.hitsMax &&
+                        object.structureType == STRUCTURE_RAMPART) ||
+                    (object.hits < 10000 &&
+                        object.hits < object.hitsMax &&
+                        object.structureType == STRUCTURE_WALL),
+            }
+        )
 
-        this.unrepairedStructures = this.unrepairedStructuresUnsorted.sort((a, b) => {
-            return a.hits - b.hits
-        })
+        this.unrepairedStructures = this.unrepairedStructuresUnsorted.sort(
+            (a, b) => {
+                return a.hits - b.hits
+            }
+        )
         //console.log(this.unrepairedStructures[0])
 
         if (this.hostileCreeps.length > 0) {
             this.result = this.attackTarget(this.hostileCreeps[0])
             if (this.result == -6) {
-                console.log('Tower at location: ' + this.tower.pos + ' does not have energy to attack!')
+                console.log(
+                    'Tower at location: ' +
+                        this.tower.pos +
+                        ' does not have energy to attack!'
+                )
             }
         } else if (this.injuredCreeps.length > 0) {
             this.result = this.healTarget(this.injuredCreeps[0])
             if ((this.result = -6)) {
-                console.log('Tower at location: ' + this.tower.pos + ' does not have energy to heal!')
+                console.log(
+                    'Tower at location: ' +
+                        this.tower.pos +
+                        ' does not have energy to heal!'
+                )
             }
         } else if (this.unrepairedStructures.length > 0) {
             this.result = this.repairTarget(this.unrepairedStructures[0])
             if (this.result == -6) {
-                console.log('Tower at location: ' + this.tower.pos + ' does not have energy to repair!')
+                console.log(
+                    'Tower at location: ' +
+                        this.tower.pos +
+                        ' does not have energy to repair!'
+                )
             }
         }
     }

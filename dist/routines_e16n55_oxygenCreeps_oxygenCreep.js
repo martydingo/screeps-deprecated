@@ -4,15 +4,21 @@ const classes_creeps_oxygenCreep = require('classes_creeps_oxygenCreep')
 var routines_e16n55_oxygenCreeps_srcOne = {
     run: function () {
         const room = 'E16N55'
-        const spawn = Game.spawns['E17N56SPA1']
+        const spawn = Game.spawns['E17N55SPA1']
         const oxygen = '5bbcb7b61e7d3f3cbe2509ed'
-        const oxygenStore = '6073eaedcea495164e18734a'
+        const oxygenStore = '605f381c97b43e119d443878'
 
         var oxygenCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'oxygenCreep' && creep.memory.creepRoom == 'E16N55'
+            (creep) =>
+                creep.memory.creepClass == 'oxygenCreep' &&
+                creep.memory.creepRoom == 'E16N55'
         )
-        var oxygenCreep = new classes_creeps_oxygenCreep(oxygen, oxygenStore, room)
+        var oxygenCreep = new classes_creeps_oxygenCreep(
+            oxygen,
+            oxygenStore,
+            room
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, oxygenCreeps, oxygenCreep)

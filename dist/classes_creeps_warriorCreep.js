@@ -65,13 +65,17 @@ class classes_creeps_warriorCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'warriorCreep',
-                    creepRoom: this.roomName,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'warriorCreep',
+                        creepRoom: this.roomName,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -100,7 +104,7 @@ class classes_creeps_warriorCreep {
             if (this.result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this.badGuys[0])
             }
-            console.log('Attack result: ' + this.result)
+            //console.log('Attack result: ' + this.result)
         } else {
             creep.moveTo(new RoomPosition(25, 25, this.roomName))
         }

@@ -7,7 +7,7 @@ var config_e16n53_respawn = {
         upgradeCreep: '0',
         buildCreep: '0',
         feederCreep: '0',
-        claimCreep: '1',
+        claimCreep: '0',
         lootCreep: '0',
         keaniumCreep: '0',
         warriorCreep: '0',

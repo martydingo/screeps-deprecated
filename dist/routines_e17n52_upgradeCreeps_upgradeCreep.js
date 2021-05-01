@@ -11,36 +11,46 @@ var routines_e17n52_upgradeCreeps_srcOne = {
         const spawn = Game.spawns['E17N52SPA1']
         var upgradeCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'upgradeCreep' && creep.memory.creepRoom == 'E17N52'
+            (creep) =>
+                creep.memory.creepClass == 'upgradeCreep' &&
+                creep.memory.creepRoom == 'E17N52'
         )
-        var upgradeCreep = new classes_creeps_upgradeCreep(storage, energySource, roomController, room, null, null, [
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            CARRY,
-            CARRY,
-            CARRY,
-        ])
+        var upgradeCreep = new classes_creeps_upgradeCreep(
+            storage,
+            energySource,
+            roomController,
+            room,
+            null,
+            null,
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, upgradeCreeps, upgradeCreep)
@@ -49,7 +59,9 @@ var routines_e17n52_upgradeCreeps_srcOne = {
     },
 
     creepWatch: function (spawn, upgradeCreeps, upgradeCreep) {
-        if (upgradeCreeps.length < config_e17n52_respawn.maxActive.upgradeCreep) {
+        if (
+            upgradeCreeps.length < config_e17n52_respawn.maxActive.upgradeCreep
+        ) {
             upgradeCreep.spawnCreep(spawn)
         }
     },

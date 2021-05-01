@@ -71,16 +71,20 @@ class classes_creeps_srcKeeperCreep {
     spawnCreep(spawner) {
         this.spawner = spawner
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'srcKeeperCreep',
-                    creepRoom: this.roomName,
-                    creepParts: this.partsArray,
-                    creepCampPos: this.campPos,
-                    creepReturnToBase: this.returnToBase,
-                    creepSpawner: this.spawner,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'srcKeeperCreep',
+                        creepRoom: this.roomName,
+                        creepParts: this.partsArray,
+                        creepCampPos: this.campPos,
+                        creepReturnToBase: this.returnToBase,
+                        creepSpawner: this.spawner,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -162,12 +166,23 @@ class classes_creeps_srcKeeperCreep {
         if (creep.memory.creepReturnToBase == true) {
             this.resupply(creep)
         } else {
-            if (!creep.pos.inRangeTo(new RoomPosition(25, 25, this.roomName), 24)) {
+            if (
+                !creep.pos.inRangeTo(
+                    new RoomPosition(25, 25, this.roomName),
+                    24
+                )
+            ) {
                 creep.moveTo(new RoomPosition(25, 25, this.roomName))
             } else {
                 if (this.secondLair) {
-                    if (this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 5).length > 0) {
-                        this.badGuys = this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 4)
+                    if (
+                        this.secondLair.pos.findInRange(FIND_HOSTILE_CREEPS, 5)
+                            .length > 0
+                    ) {
+                        this.badGuys = this.secondLair.pos.findInRange(
+                            FIND_HOSTILE_CREEPS,
+                            4
+                        )
                         this.result = creep.attack(this.badGuys[0])
                         if (this.result == ERR_NOT_IN_RANGE) {
                             creep.moveTo(this.badGuys[0])

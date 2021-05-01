@@ -10,38 +10,45 @@ var routines_e17n52_sourceCreeps_srcOne = {
         const storage = '60668763c15bf6dea0a3288e'
         var sourceCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'sourceCreep' && creep.memory.creepSource == energySource
+            (creep) =>
+                creep.memory.creepClass == 'sourceCreep' &&
+                creep.memory.creepSource == energySource
         )
-        var sourceCreep = new classes_creeps_sourceCreep(storage, energySource, room, [
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            WORK,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-        ])
+        var sourceCreep = new classes_creeps_sourceCreep(
+            storage,
+            energySource,
+            room,
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
+        )
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, sourceCreeps, sourceCreep)
         }
@@ -49,7 +56,10 @@ var routines_e17n52_sourceCreeps_srcOne = {
     },
 
     creepWatch: function (spawn, sourceCreeps, sourceCreep) {
-        if (sourceCreeps.length < config_e17n52_respawn.maxActive.sourceCreep.srcOne) {
+        if (
+            sourceCreeps.length <
+            config_e17n52_respawn.maxActive.sourceCreep.srcOne
+        ) {
             sourceCreep.spawnCreep(spawn)
         }
     },

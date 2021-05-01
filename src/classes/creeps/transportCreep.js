@@ -14,7 +14,7 @@ class classes_creeps_transportCreep {
         this.origin2 = Game.getObjectById(origin2)
         this.destination = Game.getObjectById(destination)
         this.resourceType = resourceType || RESOURCE_ENERGY
-        this.remoteLimit = remoteLimit
+        this.remoteLimit = remoteLimit || null
         this.room = Game.rooms[roomName]
         this.roomName = roomName
         this.partsArray = partsArray || [WORK, MOVE, WORK, CARRY]
@@ -88,7 +88,6 @@ class classes_creeps_transportCreep {
                     structure.hits < structure.hitsMax,
             })
             .forEach((road) => {
-                console.log(road)
                 if (creep.store[RESOURCE_ENERGY] > 0) {
                     creep.repair(road)
                 }

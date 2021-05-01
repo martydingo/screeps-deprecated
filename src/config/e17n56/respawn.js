@@ -4,7 +4,7 @@ var config_e17n56_respawn = {
             srcOne: '1',
             srcTwo: '1',
         },
-        upgradeCreep: '0',
+        upgradeCreep: '1',
         buildCreep: '0',
         feederCreep: '2',
         transportCreep: {

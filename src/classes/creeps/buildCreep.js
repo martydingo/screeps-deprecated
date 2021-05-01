@@ -223,9 +223,9 @@ class classes_creeps_buildCreep {
                     ) {
                         this.pickUpEnergy(creep)
                     } else {
-                        this.harvestEnergySource(creep)
+                        //this.harvestEnergySource(creep)
                     }
-                } else this.harvestEnergySource(creep)
+                }// else this.harvestEnergySource(creep)
             }
         } else {
             this.moveIn(creep)

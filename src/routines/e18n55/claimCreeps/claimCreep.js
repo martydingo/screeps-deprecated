@@ -1,5 +1,4 @@
 const config_e18n55_respawn = require('config_e18n55_respawn')
-const config_e18n55_sources = require('config_e18n55_sources')
 const classes_creeps_claimCreep = require('classes_creeps_claimCreep')
 
 var routines_e18n55_claimCreeps_claimCreep = {

@@ -34,7 +34,11 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (transportCreeps.length < config_e17n56_respawn.maxActive.transportCreep.storageViaSrcOneContainer) {
+        if (
+            transportCreeps.length <
+            config_e17n56_respawn.maxActive.transportCreep
+                .storageViaSrcOneContainer
+        ) {
             transportCreep.spawnCreep(spawn)
         }
     },

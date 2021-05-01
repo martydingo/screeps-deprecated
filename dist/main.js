@@ -56,7 +56,7 @@ const routines_e17n55_towers_towerOne = require('routines_e17n55_towers_towerOne
 const routines_e17n55_towers_towerTwo = require('routines_e17n55_towers_towerTwo')
 const routines_e17n53_towers_towerOne = require('routines_e17n53_towers_towerOne')
 const routines_e18n55_scoutCreeps_scoutCreep = require('routines_e18n55_scoutCreeps_scoutCreep')
-const routines_e17n55_links_spawnLink_via_storageLink = require('routines_e17n55_links_spawnLink_via_storageLink')
+//const routines_e17n55_links_spawnLink_via_storageLink = require('routines_e17n55_links_spawnLink_via_storageLink')
 const routines_e17n55_hydrogenCreeps_hydrogenCreep = require('routines_e17n55_hydrogenCreeps_hydrogenCreep')
 const routines_e17n53_keaniumCreeps_keaniumCreep = require('routines_e17n53_keaniumCreeps_keaniumCreep')
 const routines_e17n53_transportCreeps_terminalViaStorage = require('routines_e17n53_transportCreeps_terminalViaStorage')
@@ -87,12 +87,21 @@ const routines_e16n55_transportCreeps_srcOneToE17N55Storage = require('routines_
 const routines_e16n53_warriorCreeps_warriorCreep = require('routines_e16n53_warriorCreeps_warriorCreep')
 const routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreeps_srcOne')
 const routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
-const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
+//const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
+const routines_e17n55_links_labLink_via_storageLink = require('routines_e17n55_links_labLink_via_storageLink')
+const classes_visual_spawns = require('classes_visual_spawns')
+const classes_visual_storage = require('classes_visual_storage')
 
 module.exports.loop = function () {
     if (Game.cpu.bucket > 9999) {
         Game.cpu.generatePixel()
     }
+
+    var e17n55visualspawn = new classes_visual_spawns('E17N55')
+    e17n55visualspawn.drawAll()
+
+    var visualStorage = new classes_visual_storage()
+    visualStorage.drawAll()
 
     routines_e17n55_transportCreeps_linkViaStorage.run()
     routines_e17n55_transportCreeps_spawnerViaStorage.run()
@@ -149,7 +158,8 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerThree.run()
     routines_e17n53_towers_towerOne.run()
     routines_e18n55_scoutCreeps_scoutCreep.run()
-    routines_e17n55_links_spawnLink_via_storageLink.run()
+    routines_e17n55_links_labLink_via_storageLink.run()
+    //routines_e17n55_links_spawnLink_via_storageLink.run()
     routines_e16n55_snipeCreeps_snipeCreep.run()
     utils_garbageCollection_gc.garbageCollection.creeps.run()
     routines_e17n55_hydrogenCreeps_hydrogenCreep.run()
@@ -184,7 +194,7 @@ module.exports.loop = function () {
     routines_e15n53_towers_towerTwo.run()
     routines_e16n55_transportCreeps_srcOneToE17N55Storage.run()
     routines_e16n53_warriorCreeps_warriorCreep.run()
-    routines_e16n53_claimCreeps_claimCreep.run()
+    //routines_e16n53_claimCreeps_claimCreep.run()
     routines_e16n53_sourceCreeps_srcOne.run()
     routines_e16n53_sourceCreeps_srcTwo.run()
 }

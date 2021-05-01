@@ -4,14 +4,16 @@ const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 
 var routines_e17n56_upgradeCreeps_upgradeCreep = {
     run: function () {
-        const storage = '607adf9af2a970d033902c00'
+        const storage = '6073eaedcea495164e18734a'
         const room = 'E17N56'
         const energySource = config_e17n56_sources.srcOne
         const roomController = '5bbcade89099fc012e6381d6'
         const spawn = Game.spawns['E17N56SPA1']
         var upgradeCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'upgradeCreep' && creep.memory.creepRoom == 'E17N56'
+            (creep) =>
+                creep.memory.creepClass == 'upgradeCreep' &&
+                creep.memory.creepRoom == 'E17N56'
         )
 
         const upgradeFromPOS = null
@@ -22,7 +24,24 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
             room,
             upgradeFromPOS,
             '607adf9af2a970d033902c00',
-            [WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, WORK, MOVE, MOVE, CARRY, CARRY, CARRY, MOVE]
+            [
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                MOVE,
+                MOVE,
+                CARRY,
+                CARRY,
+                CARRY,
+                MOVE,
+            ]
         )
 
         if (!spawn.memory.spawnBlocked) {
@@ -32,7 +51,9 @@ var routines_e17n56_upgradeCreeps_upgradeCreep = {
     },
 
     creepWatch: function (spawn, upgradeCreeps, upgradeCreep) {
-        if (upgradeCreeps.length < config_e17n56_respawn.maxActive.upgradeCreep) {
+        if (
+            upgradeCreeps.length < config_e17n56_respawn.maxActive.upgradeCreep
+        ) {
             upgradeCreep.spawnCreep(spawn)
         }
     },

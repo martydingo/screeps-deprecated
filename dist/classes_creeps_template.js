@@ -12,14 +12,18 @@ class classes_creeps_templateCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'templateCreep',
-                    creepRoom: this.room.name,
-                    targetRoom: this.targetRoom.name,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'templateCreep',
+                        creepRoom: this.room.name,
+                        targetRoom: this.targetRoom.name,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }

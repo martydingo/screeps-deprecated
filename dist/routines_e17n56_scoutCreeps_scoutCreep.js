@@ -8,7 +8,9 @@ var routines_e17n56_scoutCreeps_scoutCreep = {
         const targetPos = new RoomPosition(25, 25, room)
         var scoutCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'scoutCreep' && creep.memory.creepRoom == room
+            (creep) =>
+                creep.memory.creepClass == 'scoutCreep' &&
+                creep.memory.creepRoom == room
         )
         var scoutCreep = new classes_creeps_scoutCreep(room, [MOVE], targetPos)
 

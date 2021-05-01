@@ -7,7 +7,9 @@ var routines_e16n55_healerCreeps_healerCreep = {
         const spawn = Game.spawns['E17N55SPA1']
         var healerCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'healerCreep' && creep.memory.creepRoom == this.roomName
+            (creep) =>
+                creep.memory.creepClass == 'healerCreep' &&
+                creep.memory.creepRoom == this.roomName
         )
         var healerCreep = new classes_creeps_healerCreep(room)
         if (!spawn.memory.spawnBlocked) {

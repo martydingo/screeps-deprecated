@@ -18,7 +18,12 @@ var routines_e16n55_srcKeeperCreeps_sourceOneKeeper = {
         )
 
         //        var srcKeeperCreep = new classes_creeps_sourceOneKeeper(room, [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])
-        var srcKeeperCreep = new classes_creeps_sourceOneKeeper(room, campPos, lab, secondLair)
+        var srcKeeperCreep = new classes_creeps_sourceOneKeeper(
+            room,
+            campPos,
+            lab,
+            secondLair
+        )
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, srcKeeperCreeps, srcKeeperCreep)
         }
@@ -26,7 +31,10 @@ var routines_e16n55_srcKeeperCreeps_sourceOneKeeper = {
     },
 
     creepWatch: function (spawn, srcKeeperCreeps, srcKeeperCreep) {
-        if (srcKeeperCreeps.length < config_e16n55_respawn.maxActive.srcKeeperCreep.sourceOneKeeper) {
+        if (
+            srcKeeperCreeps.length <
+            config_e16n55_respawn.maxActive.srcKeeperCreep.sourceOneKeeper
+        ) {
             srcKeeperCreep.spawnCreep(spawn)
         }
     },
@@ -35,7 +43,8 @@ var routines_e16n55_srcKeeperCreeps_sourceOneKeeper = {
         for (var creep in srcKeeperCreeps) {
             if (
                 srcKeeperCreeps[creep].ticksToLive < 200 &&
-                srcKeeperCreeps[creep].pos.findInRange(FIND_HOSTILE_CREEPS, 1).length < 1
+                srcKeeperCreeps[creep].pos.findInRange(FIND_HOSTILE_CREEPS, 1)
+                    .length < 1
             ) {
                 srcKeeperCreeps[creep].memory.creepShouldRenew = true
             }

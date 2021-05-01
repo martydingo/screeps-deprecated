@@ -11,9 +11,15 @@ var routines_e17n53_keaniumCreeps_keaniumCreep = {
 
         var keaniumCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'keaniumCreep' && creep.memory.creepRoom == 'E17N53'
+            (creep) =>
+                creep.memory.creepClass == 'keaniumCreep' &&
+                creep.memory.creepRoom == 'E17N53'
         )
-        var keaniumCreep = new classes_creeps_keaniumCreep(keanium, keaniumStore, room)
+        var keaniumCreep = new classes_creeps_keaniumCreep(
+            keanium,
+            keaniumStore,
+            room
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, keaniumCreeps, keaniumCreep)
@@ -22,7 +28,9 @@ var routines_e17n53_keaniumCreeps_keaniumCreep = {
     },
 
     creepWatch: function (spawn, keaniumCreeps, keaniumCreep) {
-        if (keaniumCreeps.length < config_e17n53_respawn.maxActive.keaniumCreep) {
+        if (
+            keaniumCreeps.length < config_e17n53_respawn.maxActive.keaniumCreep
+        ) {
             keaniumCreep.spawnCreep(spawn)
         }
     },

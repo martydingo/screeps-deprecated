@@ -8,7 +8,9 @@ var routines_e16n55_warriorCreeps_warriorCreep = {
         const guardPost = new RoomPosition(44, 33, room)
         var warriorCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'warriorCreep' && creep.memory.creepRoom == room
+            (creep) =>
+                creep.memory.creepClass == 'warriorCreep' &&
+                creep.memory.creepRoom == room
         )
 
         var warriorCreep = new classes_creeps_warriorCreep(room)
@@ -19,7 +21,9 @@ var routines_e16n55_warriorCreeps_warriorCreep = {
     },
 
     creepWatch: function (spawn, warriorCreeps, warriorCreep) {
-        if (warriorCreeps.length < config_e16n55_respawn.maxActive.warriorCreep) {
+        if (
+            warriorCreeps.length < config_e16n55_respawn.maxActive.warriorCreep
+        ) {
             warriorCreep.spawnCreep(spawn)
         }
     },

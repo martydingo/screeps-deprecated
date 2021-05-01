@@ -1,19 +1,25 @@
-config_e15n53_respawn = require('config_e15n53_respawn')
-config_e15n53_sources = require('config_e15n53_sources')
-classes_creeps_feederCreep = require('classes_creeps_feederCreep')
+const config_e15n53_respawn = require('config_e15n53_respawn')
+const config_e15n53_sources = require('config_e15n53_sources')
+const classes_creeps_feederCreep = require('classes_creeps_feederCreep')
 
 var routines_e15n53_feederCreeps_feederCreep = {
     run: function () {
         const room = 'E15N53'
-        const origin = '60802877f9b1d6c57c1f2736'
-        const energySource = config_e15n53_sources.srcTwo
-        const roomController = '5bbcade89099fc012e6381d9'
+        const origin = '60883c1259886d435cb63a2c'
         const spawn = Game.spawns['E15N53SPA1']
         var feederCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'feederCreep' && creep.memory.creepRoom == 'E15N53'
+            (creep) =>
+                creep.memory.creepClass == 'feederCreep' &&
+                creep.memory.creepRoom == 'E15N53'
         )
-        var feederCreep = new classes_creeps_feederCreep(origin, energySource, roomController, room, [MOVE, CARRY])
+        var feederCreep = new classes_creeps_feederCreep(
+            origin,
+            null,
+            null,
+            room,
+            [MOVE, CARRY]
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, feederCreeps, feederCreep)

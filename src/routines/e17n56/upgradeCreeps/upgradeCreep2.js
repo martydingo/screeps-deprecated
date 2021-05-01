@@ -34,8 +34,6 @@ var routines_e17n56_upgradeCreeps_upgradeCreep2 = {
     },
 
     creepWatch: function (spawn, upgradeCreeps, upgradeCreep) {
-        console.log(config_e17n56_respawn.maxActive.upgradeCreep2)
-
         if (
             upgradeCreeps.length < config_e17n56_respawn.maxActive.upgradeCreep2
         ) {

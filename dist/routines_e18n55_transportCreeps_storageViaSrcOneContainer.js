@@ -15,52 +15,57 @@ var routines_e18n55_transportCreeps_storageViaSrcOneContainer = {
                 creep.memory.creepOrigin.id == origin &&
                 creep.memory.creepDestination.id == destination
         )
-        var transportCreep = new classes_creeps_transportCreep(origin, destination, room, [
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            WORK,
-            WORK,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-        ])
+        var transportCreep = new classes_creeps_transportCreep(
+            origin,
+            destination,
+            room,
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
+        )
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, transportCreeps, transportCreep)
         }
@@ -68,7 +73,11 @@ var routines_e18n55_transportCreeps_storageViaSrcOneContainer = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (transportCreeps.length < config_e18n55_respawn.maxActive.transportCreep.storageViaSrcOneContainer) {
+        if (
+            transportCreeps.length <
+            config_e18n55_respawn.maxActive.transportCreep
+                .storageViaSrcOneContainer
+        ) {
             transportCreep.spawnCreep(spawn)
         }
     },

@@ -44,14 +44,18 @@ class classes_creeps_mistCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'mistCreep',
-                    creepRoom: this.roomName,
-                    creepSource: this.mistSourceID,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'mistCreep',
+                        creepRoom: this.roomName,
+                        creepSource: this.mistSourceID,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -73,11 +77,21 @@ class classes_creeps_mistCreep {
                 }
             } else {
                 if (creep.harvest(this.mistSource) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.mistSource.pos))
+                    creep.moveTo(
+                        utils_pathfinding_avoidHostileCreeps.findPath(
+                            creep,
+                            this.mistSource.pos
+                        )
+                    )
                 }
             }
         } else {
-            creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, new RoomPosition(25, 25, this.roomName)))
+            creep.moveTo(
+                utils_pathfinding_avoidHostileCreeps.findPath(
+                    creep,
+                    new RoomPosition(25, 25, this.roomName)
+                )
+            )
         }
     }
 
@@ -92,11 +106,13 @@ class classes_creeps_mistCreep {
             })
             this.extensions = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (object) =>
-                    object.structureType == STRUCTURE_EXTENSION && object.store.getFreeCapacity(RESOURCE_MIST) > 0,
+                    object.structureType == STRUCTURE_EXTENSION &&
+                    object.store.getFreeCapacity(RESOURCE_MIST) > 0,
             })
             this.towers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (object) =>
-                    object.structureType == STRUCTURE_TOWER && object.store.getFreeCapacity(RESOURCE_MIST) > 0,
+                    object.structureType == STRUCTURE_TOWER &&
+                    object.store.getFreeCapacity(RESOURCE_MIST) > 0,
             })
             if (this.containers != null) {
                 this.unloadDest = this.containers
@@ -118,7 +134,12 @@ class classes_creeps_mistCreep {
                 if (creep.pos.roomName == 'E19N50') {
                     creep.moveTo(new RoomPosition(25, 25, 'E18N50'))
                 } else {
-                    this.result = creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, this.unloadDest))
+                    this.result = creep.moveTo(
+                        utils_pathfinding_avoidHostileCreeps.findPath(
+                            creep,
+                            this.unloadDest
+                        )
+                    )
                 }
                 // console.log(creep + " - " + this.result + " - " + this.unloadDest)
             } //else

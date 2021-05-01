@@ -8,7 +8,9 @@ var routines_e16n53_warriorCreeps_warriorCreep = {
         const spawn = Game.spawns['E17N53SPA1']
         var warriorCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'warriorCreep' && creep.memory.creepRoom == room
+            (creep) =>
+                creep.memory.creepClass == 'warriorCreep' &&
+                creep.memory.creepRoom == room
         )
 
         //       var warriorCreep = new classes_creeps_warriorCreep(room, [TOUGH,TOUGH,TOUGH,TOUGH,TOUGH,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])
@@ -41,7 +43,9 @@ var routines_e16n53_warriorCreeps_warriorCreep = {
     },
 
     creepWatch: function (spawn, warriorCreeps, warriorCreep) {
-        if (warriorCreeps.length < config_e16n53_respawn.maxActive.warriorCreep) {
+        if (
+            warriorCreeps.length < config_e16n53_respawn.maxActive.warriorCreep
+        ) {
             warriorCreep.spawnCreep(spawn)
         }
     },

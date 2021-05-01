@@ -8,7 +8,9 @@ var routines_e17n54_lootCreeps_lootCreep = {
         const storage = '605f381c97b43e119d443878'
         var lootCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'lootCreep' && creep.memory.creepRoom == room
+            (creep) =>
+                creep.memory.creepClass == 'lootCreep' &&
+                creep.memory.creepRoom == room
         )
         var lootCreep = new classes_creeps_lootCreep(room, storage)
 

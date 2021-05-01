@@ -31,7 +31,10 @@ var routines_e17n55_transportCreeps_labViaUtriumContainer = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (transportCreeps.length < config_e17n55_respawn.maxActive.transportCreep.labViaUtriumContainer) {
+        if (
+            transportCreeps.length <
+            config_e17n55_respawn.maxActive.transportCreep.labViaUtriumContainer
+        ) {
             transportCreep.spawnCreep(spawn)
         }
     },

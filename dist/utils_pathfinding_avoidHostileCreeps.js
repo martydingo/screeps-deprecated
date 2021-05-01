@@ -4,7 +4,7 @@ var utils_pathfinding_avoidHostileCreeps = {
 
         let ret = PathFinder.search(creep.pos, goals, {
             plainCost: 1,
-            swampCost: 5,
+            swampCost: 1,
             roomCallback: function (roomName) {
                 let costs = new PathFinder.CostMatrix()
                 // Avoid E19N51
@@ -33,11 +33,11 @@ var utils_pathfinding_avoidHostileCreeps = {
 
                 // Avoid creeps in the room
                 room.find(FIND_HOSTILE_CREEPS).forEach((creep) => {
-                    var x = -4
-                    var y = -4
+                    var x = -3
+                    var y = -3
                     while (x < 4) {
                         while (y < 4) {
-                            costs.set(creep.pos.x, creep.pos.y, 0xff)
+                            costs.set(creep.pos.x, creep.pos.y, 255)
                             y++
                         }
                         x++
@@ -49,7 +49,9 @@ var utils_pathfinding_avoidHostileCreeps = {
         })
 
         if (ret.incomplete == true) {
-            console.log(creep.name + ' - WARNING: Could not pathfind a complete path!')
+            console.log(
+                creep.name + ' - WARNING: Could not pathfind a complete path!'
+            )
         }
         let pos = ret.path[0]
         //console.log(JSON.stringify(ret.path))

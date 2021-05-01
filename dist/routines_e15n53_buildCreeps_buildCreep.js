@@ -10,19 +10,18 @@ var routines_e15n53_buildCreeps_srcOne = {
         const spawn = Game.spawns['E15N53SPA1']
         var buildCreeps = _.filter(
             Game.creeps,
-            (creep) => creep.memory.creepClass == 'buildCreep' && creep.memory.creepRoom == room
+            (creep) =>
+                creep.memory.creepClass == 'buildCreep' &&
+                creep.memory.creepRoom == room
         )
         //console.log(buildCreeps[0])
-        var buildCreep = new classes_creeps_buildCreep(storage, energySource, room, 0, [
-            WORK,
-            WORK,
-            WORK,
-            MOVE,
-            MOVE,
-            MOVE,
-            CARRY,
-            CARRY,
-        ])
+        var buildCreep = new classes_creeps_buildCreep(
+            storage,
+            energySource,
+            room,
+            0,
+            [WORK, WORK, WORK, MOVE, MOVE, MOVE, CARRY, CARRY]
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, buildCreeps, buildCreep)

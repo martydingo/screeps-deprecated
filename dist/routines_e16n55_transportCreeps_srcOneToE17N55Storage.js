@@ -21,7 +21,24 @@ var routines_e16n55_transportCreeps_srcOneToE17N55Storage = {
             origin,
             destination,
             room,
-            [MOVE, MOVE, MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, CARRY, CARRY, CARRY, CARRY],
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ],
             resourceType
         )
 
@@ -32,7 +49,10 @@ var routines_e16n55_transportCreeps_srcOneToE17N55Storage = {
     },
 
     creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (transportCreeps.length < config_e16n55_respawn.maxActive.transportCreep.srcOneToE16N55Storage) {
+        if (
+            transportCreeps.length <
+            config_e16n55_respawn.maxActive.transportCreep.srcOneToE16N55Storage
+        ) {
             transportCreep.spawnCreep(spawn)
         }
     },

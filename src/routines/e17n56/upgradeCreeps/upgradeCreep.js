@@ -4,7 +4,7 @@ const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 
 var routines_e17n56_upgradeCreeps_upgradeCreep = {
     run: function () {
-        const storage = '607adf9af2a970d033902c00'
+        const storage = '6073eaedcea495164e18734a'
         const room = 'E17N56'
         const energySource = config_e17n56_sources.srcOne
         const roomController = '5bbcade89099fc012e6381d6'

@@ -5,8 +5,8 @@ var routines_e17n56_links_storage_via_srcTwo = {
         const room = 'E17N56'
         var link = Game.getObjectById('6079c70a2588dd61dce30462')
         const remoteLink = Game.getObjectById('6079cbeef913971725c02bc3')
-        var link = new classes_structures_link(link, remoteLink, room)
-        link.run()
+        var linkObj = new classes_structures_link(link, remoteLink, room)
+        linkObj.run()
     },
 }
 

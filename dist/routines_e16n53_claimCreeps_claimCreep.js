@@ -10,8 +10,15 @@ var routines_e16n53_claimCreeps_claimCreep = {
         const roomController = '5bbcaddb9099fc012e637fac'
         const spawn = Game.spawns['E17N55SPA1']
         const targetRoomPos = new RoomPosition(25, 25, 'E16N53')
-        var claimCreeps = _.filter(Game.creeps, (creep) => creep.memory.creepClass == 'claimCreep')
-        var claimCreep = new classes_creeps_claimCreep(room, targetRoomPos, reserveController)
+        var claimCreeps = _.filter(
+            Game.creeps,
+            (creep) => creep.memory.creepClass == 'claimCreep'
+        )
+        var claimCreep = new classes_creeps_claimCreep(
+            room,
+            targetRoomPos,
+            reserveController
+        )
 
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, claimCreeps, claimCreep)

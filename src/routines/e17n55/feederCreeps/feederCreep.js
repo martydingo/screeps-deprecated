@@ -5,7 +5,7 @@ const classes_creeps_feederCreep = require('classes_creeps_feederCreep')
 var routines_e17n55_feederCreeps_feederCreep = {
     run: function () {
         const room = 'E17N55'
-        const origin = '608478c659886d383bb4eebd'
+        const origin = '605f381c97b43e119d443878'
         const energySource = config_e17n55_sources.srcTwo
         const roomController = '5bbcade89099fc012e6381d9'
         const spawn = Game.spawns['E17N55SPA1']

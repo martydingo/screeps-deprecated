@@ -29,13 +29,17 @@ class classes_creeps_hydrogenCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'hydrogenCreep',
-                    creepRoom: this.roomName,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'hydrogenCreep',
+                        creepRoom: this.roomName,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -62,7 +66,10 @@ class classes_creeps_hydrogenCreep {
                 creep.moveTo(this.hydrogenStore)
             } else {
                 creep.moveTo(
-                    utils_pathfinding_avoidHostileCreeps.findPath(creep, Game.flags[this.roomName + '_IDLFLA'])
+                    utils_pathfinding_avoidHostileCreeps.findPath(
+                        creep,
+                        Game.flags[this.roomName + '_IDLFLA']
+                    )
                 )
             }
         }

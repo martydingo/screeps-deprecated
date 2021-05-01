@@ -36,13 +36,17 @@ class classes_creeps_healerCreep {
 
     spawnCreep(spawner) {
         if (this.canSpawn(spawner) == true) {
-            this.result = spawner.spawnCreep(this.partsArray, this.creepName + Game.time, {
-                memory: {
-                    creepClass: 'healerCreep',
-                    creepRoom: this.roomName,
-                    creepParts: this.partsArray,
-                },
-            })
+            this.result = spawner.spawnCreep(
+                this.partsArray,
+                this.creepName + Game.time,
+                {
+                    memory: {
+                        creepClass: 'healerCreep',
+                        creepRoom: this.roomName,
+                        creepParts: this.partsArray,
+                    },
+                }
+            )
             return this.result
         }
     }
@@ -69,12 +73,20 @@ class classes_creeps_healerCreep {
     }
 
     follow(creep, targetCreep) {
-        creep.moveTo(utils_pathfinding_avoidHostileCreeps.findPath(creep, targetCreep.pos))
+        creep.moveTo(
+            utils_pathfinding_avoidHostileCreeps.findPath(
+                creep,
+                targetCreep.pos
+            )
+        )
     }
 
     run(creep) {
         this.badGuys = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4)
-        this.targetCreeps = _.filter(Game.creeps, (creep) => creep.memory.creepClass == 'snipeCreep')
+        this.targetCreeps = _.filter(
+            Game.creeps,
+            (creep) => creep.memory.creepClass == 'snipeCreep'
+        )
         if (this.targetCreeps.length > 0) {
             this.targetCreep = this.targetCreeps[0]
 
@@ -83,7 +95,12 @@ class classes_creeps_healerCreep {
                 this.heal(creep, this.targetCreep)
             } else {
                 if (this.badGuys.length > 0) {
-                    creep.moveTo(utils_pathfinding_fleeHostileCreeps.findPath(creep, targetCreep.pos))
+                    creep.moveTo(
+                        utils_pathfinding_fleeHostileCreeps.findPath(
+                            creep,
+                            targetCreep.pos
+                        )
+                    )
                     this.heal(creep, this.targetCreep)
                 } else {
                     this.heal(creep, this.targetCreep)

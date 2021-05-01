@@ -10,14 +10,25 @@ var routines_e16n54_utriumCreeps_srcOne = {
         const keeperLair = '5bbcaddb9099fc012e637fa9'
         const holdingPos = new RoomPosition(46, 17, 'E16N54')
 
-        var utriumCreeps = _.filter(Game.creeps, (creep) => creep.memory.creepClass == 'utriumCreep')
-        var utriumCreep = new classes_creeps_utriumCreep(utrium, utriumStore, room, holdingPos, keeperLair)
+        var utriumCreeps = _.filter(
+            Game.creeps,
+            (creep) => creep.memory.creepClass == 'utriumCreep'
+        )
+        var utriumCreep = new classes_creeps_utriumCreep(
+            utrium,
+            utriumStore,
+            room,
+            holdingPos,
+            keeperLair
+        )
 
         if (!spawn.memory.spawnBlocked) {
             if (
                 _.filter(
                     Game.creeps,
-                    (creep) => creep.memory.creepClass == 'srcKeeperCreep' && creep.memory.creepRoom == room
+                    (creep) =>
+                        creep.memory.creepClass == 'srcKeeperCreep' &&
+                        creep.memory.creepRoom == room
                 ).length > 0
             ) {
                 this.creepWatch(spawn, utriumCreeps, utriumCreep)
