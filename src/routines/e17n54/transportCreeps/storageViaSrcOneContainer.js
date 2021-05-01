@@ -1,6 +1,4 @@
-config_e17n54_respawn = require('config_e17n54_respawn')
-utils_creeps_renew = require('utils_creeps_renew')
-classes_creeps_transportCreep = require('classes_creeps_transportCreep')
+const classes_creeps_transportCreep = require('classes_creeps_transportCreep')
 
 var routines_e17n54_transportCreeps_storageViaSrcOneContainer = {
     run: function () {
@@ -44,23 +42,6 @@ var routines_e17n54_transportCreeps_storageViaSrcOneContainer = {
             ]
         )
 
-        if (!spawn.memory.spawnBlocked) {
-            this.creepWatch(spawn, transportCreeps, transportCreep)
-        }
-        this.creepAct(transportCreeps, transportCreep)
-    },
-
-    creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n54_respawn.maxActive.transportCreep
-                .storageViaSrcOneContainer
-        ) {
-            transportCreep.spawnCreep(spawn)
-        }
-    },
-
-    creepAct: function (transportCreeps, transportCreep) {
         for (var creep in transportCreeps) {
             transportCreep.run(transportCreeps[creep])
         }

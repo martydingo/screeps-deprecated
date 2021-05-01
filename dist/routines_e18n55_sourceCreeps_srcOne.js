@@ -37,22 +37,6 @@ var routines_e18n55_sourceCreeps_srcOne = {
             ]
         )
 
-        if (!spawn.memory.spawnBlocked) {
-            this.creepWatch(spawn, sourceCreeps, sourceCreep)
-        }
-        this.creepAct(sourceCreeps, sourceCreep, spawn)
-    },
-
-    creepWatch: function (spawn, sourceCreeps, sourceCreep) {
-        if (
-            sourceCreeps.length <
-            config_e18n55_respawn.maxActive.sourceCreep.srcOne
-        ) {
-            sourceCreep.spawnCreep(spawn)
-        }
-    },
-
-    creepAct: function (sourceCreeps, sourceCreep) {
         for (var creep in sourceCreeps) {
             sourceCreep.run(sourceCreeps[creep])
         }

@@ -4,6 +4,7 @@ class classes_visual_spawns extends classes_visual_template {
     constructor(room) {
         super()
         this.room = Game.rooms[room]
+        this.roomName = room
     }
 
     checkSpawningCreepName(spawn) {
@@ -56,7 +57,9 @@ class classes_visual_spawns extends classes_visual_template {
 
     drawAll() {
         for (var spawn in Game.spawns) {
-            this.drawSpawn(Game.spawns[spawn])
+            if (Game.spawns[spawn].pos.roomName == this.roomName) {
+                this.drawSpawn(Game.spawns[spawn])
+            }
         }
     }
 }

@@ -100,9 +100,9 @@ class classes_creeps_warriorCreep {
             }
         }
         if (this.badGuys.length > 0) {
-            this.result = creep.attack(this.badGuys)
+            this.result = creep.attack(this.badGuys[0])
             if (this.result == ERR_NOT_IN_RANGE) {
-                creep.moveTo(this.badGuys[0])
+                this.result = creep.moveTo(this.badGuys[0])
             }
             //console.log('Attack result: ' + this.result)
         } else {

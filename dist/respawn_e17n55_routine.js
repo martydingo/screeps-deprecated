@@ -1,37 +1,31 @@
-const classes_respawn_prioritization = require('classes_respawn_prioritization')
-const routines_e17n55_buildCreeps_buildCreep = require('routines_e17n55_buildCreeps_buildCreep')
-const routines_e17n55_feederCreeps_feederCreep = require('routines_e17n55_feederCreeps_feederCreep')
-const routines_e17n55_hydrogenCreeps_hydrogenCreep = require('routines_e17n55_hydrogenCreeps_hydrogenCreep')
-const routines_e17n55_lootCreeps_lootCreep = require('routines_e17n55_lootCreeps_lootCreep')
-const routines_e17n55_sourceCreeps_srcOne = require('routines_e17n55_sourceCreeps_srcOne')
-const routines_e17n55_sourceCreeps_srcTwo = require('routines_e17n55_sourceCreeps_srcTwo')
-const routines_e17n55_transportCreeps_labViaStorage = require('routines_e17n55_transportCreeps_labViaStorage')
-const routines_e17n55_transportCreeps_labViaUtriumContainer = require('routines_e17n55_transportCreeps_labViaUtriumContainer')
-const routines_e17n55_transportCreeps_linkViaStorage = require('routines_e17n55_transportCreeps_linkViaStorage')
-const routines_e17n55_transportCreeps_spawnerViaStorage = require('routines_e17n55_transportCreeps_spawnerViaStorage')
-const routines_e17n55_transportCreeps_storageViaSrcTwoContainer = require('routines_e17n55_transportCreeps_storageViaSrcTwoContainer')
-const routines_e17n55_transportCreeps_storageViaUtriumContainer = require('routines_e17n55_transportCreeps_storageViaUtriumContainer')
-const routines_e17n55_upgradeCreeps_upgradeCreep = require('routines_e17n55_upgradeCreeps_upgradeCreep')
+const classes_respawn_template = require('classes_respawn_template')
+const config_e17n55_creeps_sourceCreep = require('config_e17n55_creeps_sourceCreep')
+const config_e17n55_creeps_transportCreep = require('config_e17n55_creeps_transportCreep')
+const config_e17n55_creeps_feederCreep = require('config_e17n55_creeps_feederCreep')
 
-class respawn_e17n55_routine extends classes_respawn_prioritization {
-    constructor() {
-        super()
-        this.priorityMatrix = {
-            0: 'TEST',
-        }
-    }
-
-    respawn() {
-        for (var creepClass in this.priorityMatrix) {
-            for (var creep in this.priorityMatrix[creepClass]) {
-                if (
-                    this.priorityMatrix[creepClass][creep] == this.priorityLevel
-                ) {
-                    this.respawnRoutines[creepClass][creep]()
-                } else {
-                    this.priorityMatrix += 1
-                }
-            }
+class respawn_e17n55_routine extends classes_respawn_template {
+    constructor(roomName, spawnRoom) {
+        super(roomName, spawnRoom)
+        this.config.sourceCreep = config_e17n55_creeps_sourceCreep
+        this.config.transportCreep = config_e17n55_creeps_transportCreep
+        this.config.feederCreep = config_e17n55_creeps_feederCreep
+        this.config.maxActive = {
+            sourceCreep: {
+                srcOne: '1',
+                srcTwo: '1',
+            },
+            upgradeCreep: '0',
+            buildCreep: '0',
+            feederCreep: '2',
+            transportCreep: {
+                linkViaStorage: '0',
+                storageViaSrcTwoContainer: '1',
+                spawnerViaStorage: '1',
+            },
+            lootCreep: '1',
+            hydrogenCreep: '0',
+            claimCreep: '0',
+            warriorCreep: '0',
         }
     }
 }
