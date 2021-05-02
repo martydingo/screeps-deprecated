@@ -216,4 +216,5 @@ module.exports.loop = function () {
     //routines_e16n53_claimCreeps_claimCreep.run()
     routines_e16n53_sourceCreeps_srcOne.run()
     routines_e16n53_sourceCreeps_srcTwo.run()
+    routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep.run()
 }
