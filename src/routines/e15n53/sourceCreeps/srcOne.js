@@ -18,7 +18,7 @@ var routines_e15n53_sourceCreeps_srcOne = {
             storage,
             energySource,
             room,
-            [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, CARRY]
+            [WORK, WORK, MOVE, CARRY]
         )
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, sourceCreeps, sourceCreep)

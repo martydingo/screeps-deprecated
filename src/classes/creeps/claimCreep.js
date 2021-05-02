@@ -42,7 +42,7 @@ class classes_creeps_claimCreep {
 
     moveInAndClaim(creep) {
         try {
-            if (creep.pos.getRangeTo(this.targetRoomPos) < 20) {
+            if (creep.pos.getRangeTo(this.targetRoomPos) < 24) {
                 creep.memory.creepMovedIn = true
             }
             // eslint-disable-next-line no-empty
@@ -86,7 +86,7 @@ class classes_creeps_claimCreep {
                         })
                     }
                 } else {
-                    this.result = creep.attackController(this.room.controller)
+                    this.result = creep.attackController(creep.room.controller)
                     if (this.result == ERR_NOT_IN_RANGE) {
                         creep.moveTo(this.room.controller, {
                             visualizePathStyle: {

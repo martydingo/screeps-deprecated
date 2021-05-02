@@ -20,7 +20,7 @@ class respawn_e17n54_routine extends classes_respawn_template {
                 storageViaSrcOneContainer: '0',
             },
             lootCreep: '0',
-            claimCreep: '0',
+            claimCreep: '1',
             warriorCreep: '1',
         }
     }

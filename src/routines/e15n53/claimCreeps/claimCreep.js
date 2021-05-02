@@ -23,7 +23,7 @@ var routines_e15n53_claimCreeps_claimCreep = {
         if (!spawn.memory.spawnBlocked) {
             this.creepWatch(spawn, claimCreeps, claimCreep)
         }
-        this.creepAct(claimCreeps, claimCreep)
+        //this.creepAct(claimCreeps, claimCreep)
     },
 
     creepWatch: function (spawn, claimCreeps, claimCreep) {

@@ -93,6 +93,7 @@ const classes_visual_spawns = require('classes_visual_spawns')
 const classes_visual_storage = require('classes_visual_storage')
 
 const respawn_e17n55_routine = require('respawn_e17n55_routine')
+const respawn_e17n54_routine = require('respawn_e17n54_routine')
 const respawn_e18n55_routine = require('respawn_e18n55_routine')
 
 module.exports.loop = function () {
@@ -111,6 +112,9 @@ module.exports.loop = function () {
 
     const respawn_e18n55 = new respawn_e18n55_routine('E18N55', 'E17N55')
     respawn_e18n55.healthCheck()
+
+    const respawn_e17n54 = new respawn_e17n54_routine('E17N54', 'E17N55')
+    respawn_e17n54.healthCheck()
 
     //routines_e17n55_transportCreeps_linkViaStorage.run()
     routines_e17n55_transportCreeps_spawnerViaStorage.run()
@@ -184,7 +188,7 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerTwo.run()
     routines_e16n55_buildCreeps_buildCreep.run()
     routines_e16n55_sourceCreeps_srcTwo.run()
-    routines_e15n53_claimCreeps_claimCreep.run()
+    //routines_e15n53_claimCreeps_claimCreep.run()
     routines_e17n52_claimCreeps_claimCreep.run()
     //routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
     routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
