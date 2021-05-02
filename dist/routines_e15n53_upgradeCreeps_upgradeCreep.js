@@ -18,7 +18,7 @@ var routines_e15n53_upgradeCreeps_srcOne = {
 
         const upgradeFromPOS = null
         var upgradeCreep = new classes_creeps_upgradeCreep(
-            null,
+            storage,
             energySource,
             roomController,
             room,

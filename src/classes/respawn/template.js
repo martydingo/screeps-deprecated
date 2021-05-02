@@ -7,6 +7,7 @@ const classes_creeps_claimCreep = require('classes_creeps_claimCreep')
 const classes_creeps_warriorCreep = require('classes_creeps_warriorCreep')
 const classes_creeps_buildCreep = require('classes_creeps_buildCreep')
 const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
+const classes_creeps_srcKprHunterCreep = require('classes_creeps_srcKprHunterCreep')
 
 class classes_respawn_template {
     constructor(roomName, spawnRoom) {
@@ -18,12 +19,13 @@ class classes_respawn_template {
                 sourceCreep: '1',
                 feederCreep: '2',
                 transportCreep: '3',
-                lootCreep: '4',
-                hydrogenCreep: '5',
-                claimCreep: '6',
-                warriorCreep: '7',
-                buildCreep: '8',
-                upgradeCreep: '9',
+                srcKprHunterCreep: '4',
+                lootCreep: '5',
+                hydrogenCreep: '6',
+                claimCreep: '7',
+                warriorCreep: '8',
+                buildCreep: '9',
+                upgradeCreep: '10',
             },
         }
     }
@@ -69,7 +71,8 @@ class classes_respawn_template {
             creepClass == 'lootCreep' ||
             creepClass == 'hydrogenCreep' ||
             creepClass == 'warriorCreep' ||
-            creepClass == 'claimCreep'
+            creepClass == 'claimCreep' ||
+            creepClass == 'srcKprHunterCreep'
         ) {
             return _.filter(
                 Game.creeps,
@@ -140,6 +143,13 @@ class classes_respawn_template {
         if (creepClass == 'lootCreep') {
             var lootCreep = new classes_creeps_lootCreep(this.roomName)
             lootCreep.spawnCreep(spawner)
+            return true
+        }
+        if (creepClass == 'srcKprHunterCreep') {
+            var srcKprHunterCreep = new classes_creeps_srcKprHunterCreep(
+                this.roomName
+            )
+            srcKprHunterCreep.spawnCreep(spawner)
             return true
         }
         if (creepClass == 'claimCreep') {

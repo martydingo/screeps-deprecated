@@ -89,9 +89,12 @@ const routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreep
 const routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
 //const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
 const routines_e17n55_links_labLink_via_storageLink = require('routines_e17n55_links_labLink_via_storageLink')
+const routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep = require('routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep')
+
 const classes_visual_spawns = require('classes_visual_spawns')
 const classes_visual_storage = require('classes_visual_storage')
 
+const respawn_e16n55_routine = require('respawn_e16n55_routine')
 const respawn_e17n55_routine = require('respawn_e17n55_routine')
 const respawn_e17n54_routine = require('respawn_e17n54_routine')
 const respawn_e18n55_routine = require('respawn_e18n55_routine')
@@ -106,6 +109,9 @@ module.exports.loop = function () {
 
     var visualStorage = new classes_visual_storage()
     visualStorage.drawAll()
+
+    const respawn_e16n55 = new respawn_e16n55_routine('E16N55', 'E17N55')
+    respawn_e16n55.healthCheck()
 
     const respawn_e17n55 = new respawn_e17n55_routine('E17N55')
     respawn_e17n55.healthCheck()
