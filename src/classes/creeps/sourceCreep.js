@@ -117,17 +117,19 @@ class classes_creeps_sourceCreep {
         } else {
             this.unloadDest = this.storage
         }
-        if (this.unloadDest.hits < this.unloadDest.hitsMax / 2) {
-            creep.repair(this.unloadDest)
-        } else {
-            this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)
-            if (this.result == ERR_NOT_IN_RANGE) {
-                this.result = creep.moveTo(this.unloadDest)
-                // console.log(creep + " - " + this.result + " - " + this.unloadDest)
-            } //else
-            // if(this.result != 0){
-            //     //console.log(this.creepName + " Error: " + this.result)
-            // }
+        if (this.unloadDest) {
+            if (this.unloadDest.hits < this.unloadDest.hitsMax / 2) {
+                creep.repair(this.unloadDest)
+            } else {
+                this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)
+                if (this.result == ERR_NOT_IN_RANGE) {
+                    this.result = creep.moveTo(this.unloadDest)
+                    // console.log(creep + " - " + this.result + " - " + this.unloadDest)
+                } //else
+                // if(this.result != 0){
+                //     //console.log(this.creepName + " Error: " + this.result)
+                // }
+            }
         }
     }
 

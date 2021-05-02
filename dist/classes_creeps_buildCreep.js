@@ -119,7 +119,7 @@ class classes_creeps_buildCreep {
             }
         } else {
             if (creep.room.find(FIND_HOSTILE_CREEPS).length > 0) {
-                creep.move(
+                creep.moveTo(
                     utils_pathfinding_avoidHostileCreeps.findPath(
                         creep,
                         new RoomPosition(25, 25, this.roomName)
@@ -132,7 +132,9 @@ class classes_creeps_buildCreep {
     }
 
     harvestEnergySource(creep) {
-        if (this.energySource) {
+        if (creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1).length > 0) {
+            creep.pickup(creep.pos.findInRange(FIND_DROPPED_RESOURCES, 0)[0])
+        } else if (this.energySource) {
             this.result = creep.harvest(this.energySource)
             if (this.result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this.energySource)
@@ -223,9 +225,9 @@ class classes_creeps_buildCreep {
                     ) {
                         this.pickUpEnergy(creep)
                     } else {
-                        //this.harvestEnergySource(creep)
+                        this.harvestEnergySource(creep)
                     }
-                }// else this.harvestEnergySource(creep)
+                } else this.harvestEnergySource(creep)
             }
         } else {
             this.moveIn(creep)

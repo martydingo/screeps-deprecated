@@ -16,19 +16,6 @@ var routines_e18n55_buildCreeps_srcOne = {
 
         var buildCreep = new classes_creeps_buildCreep(null, energySource, room)
 
-        if (!spawn.memory.spawnBlocked) {
-            this.creepWatch(spawn, buildCreeps, buildCreep)
-        }
-        this.creepAct(buildCreeps, buildCreep)
-    },
-
-    creepWatch: function (spawn, buildCreeps, buildCreep) {
-        if (buildCreeps.length < config_e18n55_respawn.maxActive.buildCreep) {
-            buildCreep.spawnCreep(spawn)
-        }
-    },
-
-    creepAct: function (buildCreeps, buildCreep) {
         for (var creep in buildCreeps) {
             buildCreep.run(buildCreeps[creep])
         }

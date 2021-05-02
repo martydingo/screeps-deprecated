@@ -15,16 +15,17 @@ var routines_e18n55_transportCreeps_storageViaSrcOneContainer = {
                 creep.memory.creepOrigin.id == config.creepOrigin.id &&
                 creep.memory.creepDestination.id == config.creepDestination.id
         )
+        if (transportCreeps.length > 0) {
+            var transportCreep = new classes_creeps_transportCreep(
+                config.creepOrigin.id,
+                config.creepDestination.id,
+                roomName,
+                config.creepParts
+            )
 
-        var transportCreep = new classes_creeps_transportCreep(
-            config.creepOrigin.id,
-            config.creepDestination.id,
-            roomName,
-            config.creepParts
-        )
-
-        for (var creep in transportCreeps) {
-            transportCreep.run(transportCreeps[creep])
+            for (var creep in transportCreeps) {
+                transportCreep.run(transportCreeps[creep])
+            }
         }
     },
 }

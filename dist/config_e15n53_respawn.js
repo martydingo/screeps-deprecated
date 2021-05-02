@@ -3,9 +3,9 @@ var config_e15n53_respawn = {
         sourceCreep: {
             srcOne: '1',
         },
-        upgradeCreep: '1',
+        upgradeCreep: '0',
         buildCreep: '0',
-        feederCreep: '2',
+        feederCreep: '1',
         claimCreep: '0',
         lootCreep: '0',
         keaniumCreep: '0',

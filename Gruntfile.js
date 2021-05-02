@@ -8,6 +8,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-screeps')
     grunt.loadNpmTasks('grunt-contrib-clean')
     grunt.loadNpmTasks('grunt-contrib-copy')
+    grunt.loadNpmTasks('grunt-replace')
 
     grunt.initConfig({
         screeps: {

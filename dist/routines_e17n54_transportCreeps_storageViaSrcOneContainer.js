@@ -1,49 +1,31 @@
 const classes_creeps_transportCreep = require('classes_creeps_transportCreep')
+const config_e17n54_creeps_transportCreep = require('config_e17n54_creeps_transportCreep')
 
 var routines_e17n54_transportCreeps_storageViaSrcOneContainer = {
     run: function () {
-        const room = 'E17N54'
-        const origin = '6088023e12997133a7868587'
-        const destination = '605f381c97b43e119d443878'
-        const spawn = Game.spawns['E17N55SPA1']
+        const roomName = 'E17N54'
+        const config =
+            config_e17n54_creeps_transportCreep.storageViaSrcOneContainer
+
         var transportCreeps = _.filter(
             Game.creeps,
             (creep) =>
                 creep.memory.creepClass == 'transportCreep' &&
                 creep.memory.creepRoom == 'E17N54' &&
-                creep.memory.creepOrigin.id == origin &&
-                creep.memory.creepDestination.id == destination
+                creep.memory.creepOrigin.id == config.creepOrigin.id &&
+                creep.memory.creepDestination.id == config.creepDestination.id
         )
-        var transportCreep = new classes_creeps_transportCreep(
-            origin,
-            destination,
-            room,
-            [
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-            ]
-        )
+        if (transportCreeps.length > 0) {
+            var transportCreep = new classes_creeps_transportCreep(
+                config.creepOrigin.id,
+                config.creepDestination.id,
+                roomName,
+                config.creepParts
+            )
 
-        for (var creep in transportCreeps) {
-            transportCreep.run(transportCreeps[creep])
+            for (var creep in transportCreeps) {
+                transportCreep.run(transportCreeps[creep])
+            }
         }
     },
 }

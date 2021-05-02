@@ -3,6 +3,8 @@ const config_e17n54_creeps_sourceCreep = require('config_e17n54_creeps_sourceCre
 const config_e17n54_creeps_transportCreep = require('config_e17n54_creeps_transportCreep')
 const config_e17n54_creeps_feederCreep = require('config_e17n54_creeps_feederCreep')
 const config_e17n54_creeps_claimCreep = require('config_e17n54_creeps_claimCreep')
+const config_e17n54_creeps_buildCreep = require('config_e17n54_creeps_buildCreep')
+const config_e17n54_creeps_warriorCreep = require('config_e17n54_creeps_warriorCreep')
 
 class respawn_e17n54_routine extends classes_respawn_template {
     constructor(roomName, spawnRoom) {
@@ -11,17 +13,20 @@ class respawn_e17n54_routine extends classes_respawn_template {
         this.config.transportCreep = config_e17n54_creeps_transportCreep
         this.config.feederCreep = config_e17n54_creeps_feederCreep
         this.config.claimCreep = config_e17n54_creeps_claimCreep
+        this.config.buildCreep = config_e17n54_creeps_buildCreep
+        this.config.warriorCreep = config_e17n54_creeps_warriorCreep
 
         this.config.maxActive = {
             sourceCreep: {
-                srcOne: '0',
+                srcOne: '1',
             },
             transportCreep: {
-                storageViaSrcOneContainer: '0',
+                storageViaSrcOneContainer: '1',
             },
-            lootCreep: '0',
+            lootCreep: '1',
             claimCreep: '1',
             warriorCreep: '1',
+            buildCreep: '0',
         }
     }
 }

@@ -5,6 +5,8 @@ const classes_creeps_lootCreep = require('classes_creeps_lootCreep')
 const classes_creeps_feederCreep = require('classes_creeps_feederCreep')
 const classes_creeps_claimCreep = require('classes_creeps_claimCreep')
 const classes_creeps_warriorCreep = require('classes_creeps_warriorCreep')
+const classes_creeps_buildCreep = require('classes_creeps_buildCreep')
+const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 
 class classes_respawn_template {
     constructor(roomName, spawnRoom) {
@@ -89,6 +91,32 @@ class classes_respawn_template {
             sourceCreep.spawnCreep(spawner)
             return true
         }
+        if (creepClass == 'upgradeCreep') {
+            var upgradeCreep = new classes_creeps_upgradeCreep(
+                this.config.upgradeCreep.creepStorage.id,
+                this.config.upgradeCreep.creepSource,
+                this.config.upgradeCreep.creepController.id,
+                this.roomName,
+                this.config.upgradeCreep.creepUpgradeFromPOS,
+                this.config.upgradeCreep.creepContainer,
+                this.config.upgradeCreep.creepParts
+            )
+            if (this.roomName) {
+                upgradeCreep.spawnCreep(spawner)
+            } else {
+                console.log('error')
+            }
+            return true
+        }
+        if (creepClass == 'buildCreep') {
+            var buildCreep = new classes_creeps_buildCreep(
+                this.config.buildCreep.creepStorage,
+                this.config.buildCreep.creepSource,
+                this.roomName
+            )
+            buildCreep.spawnCreep(spawner)
+            return true
+        }
         if (creepClass == 'transportCreep') {
             var transportCreep = new classes_creeps_transportCreep(
                 this.config.transportCreep[creepName].creepOrigin.id,
@@ -123,7 +151,10 @@ class classes_respawn_template {
             return true
         }
         if (creepClass == 'warriorCreep') {
-            var warriorCreep = new classes_creeps_warriorCreep(this.roomName)
+            var warriorCreep = new classes_creeps_warriorCreep(
+                this.roomName,
+                this.config.warriorCreep.creepParts
+            )
             warriorCreep.spawnCreep(spawner)
             return true
         }
@@ -132,7 +163,7 @@ class classes_respawn_template {
 
     healthCheck() {
         var priorityIndex = 1
-        while (priorityIndex < Object.keys(this.config.priority).length) {
+        while (priorityIndex <= Object.keys(this.config.priority).length) {
             for (var creepClass in this.config.priority) {
                 if (this.config.priority[creepClass] == priorityIndex) {
                     if (
@@ -163,8 +194,14 @@ class classes_respawn_template {
                                 console.log(
                                     'Spawning ' + creepClass + '-' + creepName
                                 )
-
-                                this.spawnCreep(creepClass, creepName, spawner)
+                                if (spawner) {
+                                    this.spawnCreep(
+                                        creepClass,
+                                        creepName,
+                                        spawner
+                                    )
+                                    break
+                                }
                                 break
                             }
                         }

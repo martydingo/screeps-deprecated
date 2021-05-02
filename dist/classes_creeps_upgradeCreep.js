@@ -13,10 +13,9 @@ class classes_creeps_upgradeCreep {
         this.storage = Game.getObjectById(storage) || null
         this.roomController = Game.getObjectById(roomController)
         this.energySource = Game.getObjectById(energySourceID)
-        this.container =
-            Game.getObjectById(container) ||
-            Game.getObjectById('605cf742e96436c85b848964')
+        this.container = Game.getObjectById(container) || null
         this.room = Game.rooms[roomName]
+        this.roomName = roomName
         this.partsArray = partsArray || [
             MOVE,
             MOVE,
@@ -45,7 +44,7 @@ class classes_creeps_upgradeCreep {
             CARRY,
             CARRY,
         ]
-        this.creepName = 'upgradeCreep[' + this.room.name + ']-'
+        this.creepName = 'upgradeCreep[' + this.roomName + ']-'
         this.result = null
         this.upgradeFromPOS = upgradeFromPOS || null
     }
@@ -58,7 +57,7 @@ class classes_creeps_upgradeCreep {
                 {
                     memory: {
                         creepClass: 'upgradeCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepSource: this.energySource.id,
                         creepController: this.roomController.id,
                         creepParts: this.partsArray,
@@ -92,7 +91,9 @@ class classes_creeps_upgradeCreep {
                         )
                     )
                 } else {
-                    creep.moveTo(this.energySource)
+                    creep.moveTo(this.energySource, {
+                        visualizePathStyle: { stroke: '#EFDF70' },
+                    })
                 }
             }
             if (creep.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
@@ -106,14 +107,16 @@ class classes_creeps_upgradeCreep {
     pickUpEnergy(creep, storage) {
         this.result = creep.withdraw(storage, RESOURCE_ENERGY)
         if (this.result == ERR_NOT_IN_RANGE) {
-            creep.moveTo(storage)
+            creep.moveTo(storage, { visualizePathStyle: { stroke: '#EFDF70' } })
         }
     }
 
     upgrade(creep) {
         this.result = creep.upgradeController(this.roomController)
         if (this.result == ERR_NOT_IN_RANGE) {
-            creep.moveTo(this.roomController)
+            creep.moveTo(this.roomController, {
+                visualizePathStyle: { stroke: '#EFDF70' },
+            })
         }
     }
 
@@ -129,13 +132,14 @@ class classes_creeps_upgradeCreep {
         if (creep.memory.creepUpgrade) {
             // if(upgradeFromPOS){
             //     if(creep.pos.getRangeTo(upgradeFromPOS)>3){
-            //         this.result = creep.moveTo(upgradeFromPOS)
+            //         this.result = creep.moveTo(upgradeFromPOS, {visualizePathStyle: { stroke: '#EFDF70',},})
             //     } else {
             //         this.upgrade(creep)
             //     }
             // } else
             this.upgrade(creep)
         } else {
+            // console.log(this.roomName + ' + ' + this.storage)
             if (this.storage != null) {
                 if (this.storage.store[RESOURCE_ENERGY] > 5000) {
                     this.pickUpEnergy(creep, this.storage)

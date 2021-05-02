@@ -1,0 +1,15 @@
+Flatten Require Folder Structure -> from require('../class/example/test') -> require('classes/respawn/template') -> require('class_example_test')
+
+Step 1
+Search: (require\(').*\.\.\/([a-z].*)'\)   
+         1          2        3
+
+Replace: $1$2')
+
+
+Step 2 * Repeat Until Done
+
+require\('([a-z,_]*)/(.*\))
+
+
+require('$1_$2

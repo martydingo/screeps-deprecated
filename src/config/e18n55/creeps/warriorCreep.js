@@ -1,5 +1,5 @@
-module.exports = config_e17n54_creeps_warriorCreep
-var config_e17n54_creeps_warriorCreep = {
+module.exports = config_e18n55_creeps_warriorCreep
+var config_e18n55_creeps_warriorCreep = {
     creepParts: [
         TOUGH,
         TOUGH,
@@ -24,4 +24,4 @@ var config_e17n54_creeps_warriorCreep = {
     ],
 }
 
-module.exports = config_e17n54_creeps_warriorCreep
+module.exports = config_e18n55_creeps_warriorCreep

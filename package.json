@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "eslint": "^7.25.0",
+    "grunt-replace": "^2.0.1",
     "prettier": "^2.2.1"
   }
 }
