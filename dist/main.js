@@ -83,7 +83,8 @@ const routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo
 const routines_e17n56_hydrogenCreeps_hydrogenCreep = require('routines_e17n56_hydrogenCreeps_hydrogenCreep')
 const utils_garbageCollection_gc = require('utils_garbageCollection_gc')
 const routines_e18n55_buildCreeps_buildCreep = require('routines_e18n55_buildCreeps_buildCreep')
-const routines_e16n55_transportCreeps_srcOneToE17N55Storage = require('routines_e16n55_transportCreeps_srcOneToE17N55Storage')
+const routines_e16n55_transportCreeps_storageViaSrcTwoContainer = require('routines_e16n55_transportCreeps_storageViaSrcTwoContainer')
+const routines_e16n55_transportCreeps_storageViaSrcOneContainer = require('routines_e16n55_transportCreeps_storageViaSrcOneContainer')
 const routines_e16n53_warriorCreeps_warriorCreep = require('routines_e16n53_warriorCreeps_warriorCreep')
 const routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreeps_srcOne')
 const routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
@@ -93,6 +94,8 @@ const routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep = require('routines_e
 
 const classes_visual_spawns = require('classes_visual_spawns')
 const classes_visual_storage = require('classes_visual_storage')
+
+const classes_healthchecks_invader = require('classes_healthchecks_invader')
 
 const respawn_e16n55_routine = require('respawn_e16n55_routine')
 const respawn_e17n55_routine = require('respawn_e17n55_routine')
@@ -121,6 +124,9 @@ module.exports.loop = function () {
 
     const respawn_e17n54 = new respawn_e17n54_routine('E17N54', 'E17N55')
     respawn_e17n54.healthCheck()
+
+    const e16n55healthcheck_invader = new classes_healthchecks_invader('E16N55')
+    e16n55healthcheck_invader.run()
 
     //routines_e17n55_transportCreeps_linkViaStorage.run()
     routines_e17n55_transportCreeps_spawnerViaStorage.run()
@@ -211,7 +217,8 @@ module.exports.loop = function () {
     routines_e17n53_towers_towerTwo.run()
     routines_e17n56_towers_towerTwo.run()
     routines_e15n53_towers_towerTwo.run()
-    routines_e16n55_transportCreeps_srcOneToE17N55Storage.run()
+    routines_e16n55_transportCreeps_storageViaSrcOneContainer.run()
+    routines_e16n55_transportCreeps_storageViaSrcTwoContainer.run()
     routines_e16n53_warriorCreeps_warriorCreep.run()
     //routines_e16n53_claimCreeps_claimCreep.run()
     routines_e16n53_sourceCreeps_srcOne.run()

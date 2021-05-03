@@ -24,7 +24,26 @@ var routines_e15n53_upgradeCreeps_srcOne = {
             room,
             upgradeFromPOS,
             null,
-            [WORK, CARRY, MOVE, MOVE]
+            [
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                MOVE,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                WORK,
+                CARRY,
+                CARRY,
+                CARRY,
+                CARRY,
+            ]
         )
 
         if (!spawn.memory.spawnBlocked) {

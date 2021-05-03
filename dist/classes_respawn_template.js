@@ -16,10 +16,10 @@ class classes_respawn_template {
         this.room = Game.rooms[roomName]
         this.config = {
             priority: {
-                sourceCreep: '1',
-                feederCreep: '2',
-                transportCreep: '3',
-                srcKprHunterCreep: '4',
+                srcKprHunterCreep: '1',
+                sourceCreep: '2',
+                feederCreep: '3',
+                transportCreep: '4',
                 lootCreep: '5',
                 hydrogenCreep: '6',
                 claimCreep: '7',
@@ -71,14 +71,22 @@ class classes_respawn_template {
             creepClass == 'lootCreep' ||
             creepClass == 'hydrogenCreep' ||
             creepClass == 'warriorCreep' ||
-            creepClass == 'claimCreep' ||
-            creepClass == 'srcKprHunterCreep'
+            creepClass == 'claimCreep'
         ) {
             return _.filter(
                 Game.creeps,
                 (creep) =>
                     creep.memory.creepRoom == room &&
                     creep.memory.creepClass == creepClass
+            ).length
+        }
+        if (creepClass == 'srcKprHunterCreep') {
+            return _.filter(
+                Game.creeps,
+                (creep) =>
+                    creep.memory.creepRoom == room &&
+                    creep.memory.creepClass == creepClass &&
+                    (creep.ticksToLive > 300 || creep.ticksToLive == null)
             ).length
         }
     }
@@ -96,9 +104,9 @@ class classes_respawn_template {
         }
         if (creepClass == 'upgradeCreep') {
             var upgradeCreep = new classes_creeps_upgradeCreep(
-                this.config.upgradeCreep.creepStorage.id,
+                this.config.upgradeCreep.creepStorage,
                 this.config.upgradeCreep.creepSource,
-                this.config.upgradeCreep.creepController.id,
+                this.config.upgradeCreep.creepController,
                 this.roomName,
                 this.config.upgradeCreep.creepUpgradeFromPOS,
                 this.config.upgradeCreep.creepContainer,
@@ -200,11 +208,15 @@ class classes_respawn_template {
                                         this.spawnRoom
                                     )
                                 }
-
-                                console.log(
-                                    'Spawning ' + creepClass + '-' + creepName
-                                )
                                 if (spawner) {
+                                    console.log(
+                                        'Spawning ' +
+                                            creepClass +
+                                            ' - ' +
+                                            creepName +
+                                            ' for room ' +
+                                            this.roomName
+                                    )
                                     this.spawnCreep(
                                         creepClass,
                                         creepName,

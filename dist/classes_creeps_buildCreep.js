@@ -1,4 +1,4 @@
-utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
+const utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
 
 class classes_creeps_buildCreep {
     constructor(storage, energySourceID, roomName, containerLimit, partsArray) {
@@ -126,14 +126,14 @@ class classes_creeps_buildCreep {
                     )
                 )
             } else {
-                creep.moveTo(new RoomPosition(25, 25, this.roomName))
+                //creep.moveTo(new RoomPosition(25, 25, this.roomName))
             }
         }
     }
 
     harvestEnergySource(creep) {
-        if (creep.pos.findInRange(FIND_DROPPED_RESOURCES, 1).length > 0) {
-            creep.pickup(creep.pos.findInRange(FIND_DROPPED_RESOURCES, 0)[0])
+        if (creep.pos.findInRange(FIND_DROPPED_RESOURCES, 0).length > 0) {
+            // creep.pickup(creep.pos.findInRange(FIND_DROPPED_RESOURCES, 0)[0])
         } else if (this.energySource) {
             this.result = creep.harvest(this.energySource)
             if (this.result == ERR_NOT_IN_RANGE) {

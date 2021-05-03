@@ -1,6 +1,9 @@
 // [MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,ATTACK,HEAL,HEAL,HEAL]
+const config_e16n55_sources = require('config_e16n55_sources')
+
 class classes_creeps_srcKprHunterCreep {
     constructor(roomName) {
+        this.sources = config_e16n55_sources
         this.roomName = roomName
         this.creepName = 'srcKprHunterCreep[' + this.roomName + ']-'
         this.partsArray = [
@@ -21,6 +24,14 @@ class classes_creeps_srcKprHunterCreep {
             MOVE,
             MOVE,
             MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
             ATTACK,
             ATTACK,
             ATTACK,
@@ -41,16 +52,8 @@ class classes_creeps_srcKprHunterCreep {
             ATTACK,
             ATTACK,
             ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
-            ATTACK,
+            HEAL,
+            HEAL,
             HEAL,
             HEAL,
             HEAL,
@@ -89,23 +92,98 @@ class classes_creeps_srcKprHunterCreep {
     run(creep) {
         if (this.room) {
             if (creep.pos.roomName == this.room.name) {
-                var closestHostileCreep = creep.pos.findClosestByPath(
-                    FIND_HOSTILE_CREEPS
-                )
-                if (!creep.pos.inRangeTo(closestHostileCreep, 3)) {
-                    if (creep.hits < creep.hitsMax) {
-                        creep.heal(creep)
+                if (
+                    creep.room.find(FIND_HOSTILE_CREEPS, {
+                        filter: (Creep) =>
+                            'Keeper' + this.sources.srcOne.lair == Creep.name ||
+                            'Keeper' + this.sources.srcTwo.lair == Creep.name,
+                    }).length > 0
+                ) {
+                    var closestHostileCreep = creep.pos.findClosestByPath(
+                        FIND_HOSTILE_CREEPS,
+                        {
+                            filter: (Creep) =>
+                                'Keeper' + this.sources.srcOne.lair ==
+                                    Creep.name ||
+                                'Keeper' + this.sources.srcTwo.lair ==
+                                    Creep.name,
+                        }
+                    )
+                    if (!creep.pos.inRangeTo(closestHostileCreep, 3)) {
+                        if (creep.hits < creep.hitsMax) {
+                            creep.heal(creep)
+                        } else {
+                            creep.moveTo(closestHostileCreep)
+                        }
                     } else {
-                        creep.moveTo(closestHostileCreep)
+                        if (
+                            creep.attack(closestHostileCreep) ==
+                            ERR_NOT_IN_RANGE
+                        ) {
+                            creep.moveTo(closestHostileCreep)
+                        }
                     }
                 } else {
-                    if (creep.attack(closestHostileCreep) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(closestHostileCreep)
+                    if (creep.hits < creep.hitsMax) {
+                        var spawningLairs = creep.room.find(
+                            FIND_HOSTILE_STRUCTURES,
+                            {
+                                filter: (Structure) =>
+                                    (Structure.structureType ==
+                                        STRUCTURE_KEEPER_LAIR &&
+                                        Structure.id ==
+                                            this.sources.srcOne.lair) ||
+                                    Structure.id == this.sources.srcTwo.lair,
+                            }
+                        )
+                        if (
+                            creep.pos.findInRange(FIND_HOSTILE_CREEPS, 4)
+                                .length < 1
+                        ) {
+                            if (
+                                spawningLairs[0].ticksToSpawn <
+                                    spawningLairs[1].ticksToSpawn ||
+                                spawningLairs[0].ticksToSpawn == null
+                            ) {
+                                creep.moveTo(spawningLairs[0])
+                                creep.heal(creep)
+                            } else {
+                                creep.moveTo(spawningLairs[1])
+                                creep.heal(creep)
+                            }
+                        }
+                    } else {
+                        var spawningLairs = creep.room.find(
+                            FIND_HOSTILE_STRUCTURES,
+                            {
+                                filter: (Structure) =>
+                                    (Structure.structureType ==
+                                        STRUCTURE_KEEPER_LAIR &&
+                                        Structure.id ==
+                                            this.sources.srcOne.lair) ||
+                                    Structure.id == this.sources.srcTwo.lair,
+                            }
+                        )
+                        if (
+                            spawningLairs[0].ticksToSpawn <
+                                spawningLairs[1].ticksToSpawn ||
+                            spawningLairs[0].ticksToSpawn == null
+                        ) {
+                            creep.moveTo(
+                                new RoomPosition(36, 37, this.roomName)
+                            )
+                        } else {
+                            creep.moveTo(
+                                new RoomPosition(19, 41, this.roomName)
+                            )
+                        }
                     }
                 }
+            } else {
+                creep.moveTo(new RoomPosition(25, 25, this.roomName))
             }
         } else {
-            creep.moveTo(this.roomName)
+            creep.moveTo(new RoomPosition(25, 25, this.roomName))
         }
     }
 }

@@ -1,77 +1,24 @@
-const config_e16n55_respawn = require('config_e16n55_respawn')
-const config_e16n55_sources = require('config_e16n55_sources')
+const config_e16n55_creeps_sourceCreep = require('config_e16n55_creeps_sourceCreep')
 const classes_creeps_sourceCreep = require('classes_creeps_sourceCreep')
 
 var routines_e16n55_sourceCreeps_srcTwo = {
     run: function () {
-        const room = 'E16N55'
-        const energySource = config_e16n55_sources.srcTwo
-        const storage = '605f381c97b43e119d443878'
-        const spawn = Game.spawns['E17N55SPA1']
+        const roomName = 'E16N55'
+        const config = config_e16n55_creeps_sourceCreep.srcTwo
+
         var sourceCreeps = _.filter(
             Game.creeps,
             (creep) =>
                 creep.memory.creepClass == 'sourceCreep' &&
-                creep.memory.creepSource == energySource
+                creep.memory.creepSource == config.creepSource
         )
         var sourceCreep = new classes_creeps_sourceCreep(
-            storage,
-            energySource,
-            room,
-            [
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                MOVE,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                WORK,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-                CARRY,
-            ]
+            config.creepStorage,
+            config.creepSource,
+            roomName,
+            config.creepParts
         )
 
-        this.creepWatch(spawn, sourceCreeps, sourceCreep)
-        this.creepAct(sourceCreeps, sourceCreep, spawn)
-    },
-
-    creepWatch: function (spawn, sourceCreeps, sourceCreep) {
-        if (
-            sourceCreeps.length <
-            config_e16n55_respawn.maxActive.sourceCreep.srcTwo
-        ) {
-            sourceCreep.spawnCreep(spawn)
-        }
-    },
-
-    creepAct: function (sourceCreeps, sourceCreep) {
         for (var creep in sourceCreeps) {
             sourceCreep.run(sourceCreeps[creep])
         }

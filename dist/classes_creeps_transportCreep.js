@@ -56,9 +56,11 @@ class classes_creeps_transportCreep {
                 }
             }
         } else {
-            this.result = creep.withdraw(this.origin, this.resourceType)
-            if (this.result == ERR_NOT_IN_RANGE) {
-                creep.moveTo(this.origin)
+            if (this.origin.store[this.resourceType] > 0) {
+                this.result = creep.withdraw(this.origin, this.resourceType)
+                if (this.result == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(this.origin)
+                }
             }
         }
     }
