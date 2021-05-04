@@ -68,7 +68,6 @@ const routines_e16n54_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n54
 const routines_e16n55_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n55_srcKeeperCreeps_sourceOneKeeper')
 const routines_e16n55_sourceCreeps_srcOne = require('routines_e16n55_sourceCreeps_srcOne')
 const routines_e16n55_sourceCreeps_srcTwo = require('routines_e16n55_sourceCreeps_srcTwo')
-const routines_e15n53_claimCreeps_claimCreep = require('routines_e15n53_claimCreeps_claimCreep')
 const routines_e17n52_claimCreeps_claimCreep = require('routines_e17n52_claimCreeps_claimCreep')
 const routines_e17n56_links_storage_via_srcTwo = require('routines_e17n56_links_storage_via_srcTwo')
 const routines_e17n56_transportCreeps_upgradeContainerviaStorage = require('routines_e17n56_transportCreeps_upgradeContainerviaStorage')
@@ -96,6 +95,7 @@ const classes_visual_storage = require('classes_visual_storage')
 const classes_healthchecks_invader = require('classes_healthchecks_invader')
 
 const routines_respawn_e16n55_routine = require('routines_respawn_e16n55_routine')
+const routines_respawn_e15n53_routine = require('routines_respawn_e15n53_routine')
 const routines_respawn_e17n53_routine = require('routines_respawn_e17n53_routine')
 const routines_respawn_e17n54_routine = require('routines_respawn_e17n54_routine')
 const routines_respawn_e17n55_routine = require('routines_respawn_e17n55_routine')
@@ -119,6 +119,11 @@ module.exports.loop = function () {
         'E17N55'
     )
     routines_respawn_e16n55.healthCheck()
+
+    const routines_respawn_e15n53 = new routines_respawn_e15n53_routine(
+        'E15N53'
+    )
+    routines_respawn_e15n53.healthCheck()
 
     const routines_respawn_e17n53 = new routines_respawn_e17n53_routine(
         'E17N53'
@@ -215,7 +220,6 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerTwo.run()
     routines_e16n55_buildCreeps_buildCreep.run()
     routines_e16n55_sourceCreeps_srcTwo.run()
-    //routines_e15n53_claimCreeps_claimCreep.run()
     routines_e17n52_claimCreeps_claimCreep.run()
     routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
     routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
