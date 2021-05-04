@@ -1,4 +1,4 @@
-const classes_respawn_template = require('classes_respawn_template')
+const classes_respawn_engine = require('classes_respawn_engine')
 const config_e17n54_creeps_sourceCreep = require('config_e17n54_creeps_sourceCreep')
 const config_e17n54_creeps_transportCreep = require('config_e17n54_creeps_transportCreep')
 const config_e17n54_creeps_feederCreep = require('config_e17n54_creeps_feederCreep')
@@ -6,7 +6,7 @@ const config_e17n54_creeps_claimCreep = require('config_e17n54_creeps_claimCreep
 const config_e17n54_creeps_buildCreep = require('config_e17n54_creeps_buildCreep')
 const config_e17n54_creeps_warriorCreep = require('config_e17n54_creeps_warriorCreep')
 
-class respawn_e17n54_routine extends classes_respawn_template {
+class routines_respawn_e17n54_routine extends classes_respawn_engine {
     constructor(roomName, spawnRoom) {
         super(roomName, spawnRoom)
         this.config.sourceCreep = config_e17n54_creeps_sourceCreep
@@ -31,4 +31,4 @@ class respawn_e17n54_routine extends classes_respawn_template {
     }
 }
 
-module.exports = respawn_e17n54_routine
+module.exports = routines_respawn_e17n54_routine

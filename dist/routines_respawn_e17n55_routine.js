@@ -1,11 +1,11 @@
-const classes_respawn_template = require('classes_respawn_template')
+const classes_respawn_engine = require('classes_respawn_engine')
 const config_e17n55_creeps_sourceCreep = require('config_e17n55_creeps_sourceCreep')
 const config_e17n55_creeps_transportCreep = require('config_e17n55_creeps_transportCreep')
 const config_e17n55_creeps_feederCreep = require('config_e17n55_creeps_feederCreep')
 const config_e17n55_creeps_upgradeCreep = require('config_e17n55_creeps_upgradeCreep')
 const config_e17n55_creeps_buildCreep = require('config_e17n55_creeps_buildCreep')
 
-class respawn_e17n55_routine extends classes_respawn_template {
+class routines_respawn_e17n55_routine extends classes_respawn_engine {
     constructor(roomName, spawnRoom) {
         super(roomName, spawnRoom)
         this.config.sourceCreep = config_e17n55_creeps_sourceCreep
@@ -18,7 +18,7 @@ class respawn_e17n55_routine extends classes_respawn_template {
                 srcOne: '1',
                 srcTwo: '1',
             },
-            upgradeCreep: '1',
+            upgradeCreep: '0',
             buildCreep: '0',
             feederCreep: '3',
             transportCreep: {
@@ -31,7 +31,10 @@ class respawn_e17n55_routine extends classes_respawn_template {
             claimCreep: '0',
             warriorCreep: '0',
         }
+        if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
+            this.config.maxActive.upgradeCreep += 1
+        }
     }
 }
 
-module.exports = respawn_e17n55_routine
+module.exports = routines_respawn_e17n55_routine

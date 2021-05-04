@@ -9,7 +9,7 @@ const classes_creeps_buildCreep = require('classes_creeps_buildCreep')
 const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 const classes_creeps_srcKprHunterCreep = require('classes_creeps_srcKprHunterCreep')
 
-class classes_respawn_template {
+class classes_respawn_engine {
     constructor(roomName, spawnRoom) {
         this.spawnRoom = spawnRoom || null
         this.roomName = roomName
@@ -254,4 +254,4 @@ class classes_respawn_template {
     }
 }
 
-module.exports = classes_respawn_template
+module.exports = classes_respawn_engine

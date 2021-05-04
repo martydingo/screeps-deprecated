@@ -1,9 +1,9 @@
-const classes_respawn_template = require('classes_respawn_template')
+const classes_respawn_engine = require('classes_respawn_engine')
 const config_e16n55_creeps_sourceCreep = require('config_e16n55_creeps_sourceCreep')
 const config_e16n55_creeps_transportCreep = require('config_e16n55_creeps_transportCreep')
 const config_e16n55_creeps_buildCreep = require('config_e16n55_creeps_buildCreep')
 
-class respawn_e16n55_routine extends classes_respawn_template {
+class routines_respawn_e16n55_routine extends classes_respawn_engine {
     constructor(roomName, spawnRoom) {
         super(roomName, spawnRoom)
         this.config.sourceCreep = config_e16n55_creeps_sourceCreep
@@ -12,17 +12,17 @@ class respawn_e16n55_routine extends classes_respawn_template {
         if (!Memory.e16n55.healthcheck.invadersPresent) {
             this.config.maxActive = {
                 sourceCreep: {
-                    srcOne: '1',
-                    srcTwo: '1',
+                    srcOne: '0',
+                    srcTwo: '0',
                     srcThree: '0',
                 },
                 buildCreep: '0',
                 transportCreep: {
-                    storageViaSrcOneContainer: '1',
-                    storageViaSrcTwoContainer: '1',
+                    storageViaSrcOneContainer: '0',
+                    storageViaSrcTwoContainer: '0',
                 },
-                lootCreep: '1',
-                srcKprHunterCreep: '1',
+                lootCreep: '0',
+                srcKprHunterCreep: '0',
             }
         } else {
             this.config.maxActive = {
@@ -43,4 +43,4 @@ class respawn_e16n55_routine extends classes_respawn_template {
     }
 }
 
-module.exports = respawn_e16n55_routine
+module.exports = routines_respawn_e16n55_routine
