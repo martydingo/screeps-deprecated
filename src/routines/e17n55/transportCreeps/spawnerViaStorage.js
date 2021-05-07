@@ -18,7 +18,11 @@ var routines_e17n55_transportCreeps_spawnerViaStorage = {
             config.creepOrigin.id,
             config.creepDestination.id,
             roomName,
-            config.creepParts
+            config.creepParts,
+            config.creepResourceType,
+            config.creepRemoteLimit,
+            config.creepLocalLimit,
+            config.creepSecondaryOrigin
         )
 
         for (var creep in transportCreeps) {

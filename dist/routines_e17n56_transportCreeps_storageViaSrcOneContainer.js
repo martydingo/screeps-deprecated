@@ -5,7 +5,7 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
     run: function () {
         const room = 'E17N56'
         const origin = '60685f6d0db288d32283c306'
-        const origin2 = '6079cbeef913971725c02bc3'
+        const secondaryOrigin = '6079cbeef913971725c02bc3'
         const destination = '6073eaedcea495164e18734a'
         const spawn = Game.spawns['E17N56SPA1']
         var transportCreeps = _.filter(
@@ -24,7 +24,7 @@ var routines_e17n56_transportCreeps_storageViaSrcOneContainer = {
             RESOURCE_ENERGY,
             null,
             null,
-            origin2
+            secondaryOrigin
         )
 
         if (!spawn.memory.spawnBlocked) {

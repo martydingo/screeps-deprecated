@@ -24,6 +24,13 @@ class routines_respawn_e16n55_routine extends classes_respawn_engine {
                 lootCreep: '0',
                 srcKprHunterCreep: '0',
             }
+            if (
+                Game.rooms['E16N55'].find(FIND_CONSTRUCTION_SITES, {
+                    filter: (Site) => Site.owner.username == 'Marty',
+                }).length > 0
+            ) {
+                this.config.maxActive.buildCreep += 1
+            }
         } else {
             this.config.maxActive = {
                 sourceCreep: {

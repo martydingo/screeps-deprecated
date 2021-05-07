@@ -11,8 +11,8 @@ var routines_e17n53_transportCreeps_terminalViaStorage = {
             (creep) =>
                 creep.memory.creepClass == 'transportCreep' &&
                 creep.memory.creepRoom == 'E17N53' &&
-                creep.memory.creepOrigin.id == config.origin.id &&
-                creep.memory.creepDestination.id == config.destination.id
+                creep.memory.creepOrigin.id == config.creepOrigin.id &&
+                creep.memory.creepDestination.id == config.creepDestination.id
         )
 
         var transportCreep = new classes_creeps_transportCreep(
@@ -21,6 +21,9 @@ var routines_e17n53_transportCreeps_terminalViaStorage = {
             roomName,
             config.creepParts,
             config.creepResourceType,
+            config.creepRemoteLimit,
+            config.creepLocalLimit,
+            config.creepSecondaryOrigin,
             config.creepRemoteLimit
         )
 

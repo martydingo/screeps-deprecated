@@ -8,6 +8,7 @@ const classes_creeps_warriorCreep = require('classes_creeps_warriorCreep')
 const classes_creeps_buildCreep = require('classes_creeps_buildCreep')
 const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 const classes_creeps_srcKprHunterCreep = require('classes_creeps_srcKprHunterCreep')
+const classes_creeps_hydrogenCreep = require('classes_creeps_hydrogenCreep')
 
 class classes_respawn_engine {
     constructor(roomName, spawnRoom) {
@@ -102,6 +103,16 @@ class classes_respawn_engine {
             sourceCreep.spawnCreep(spawner)
             return true
         }
+        if (creepClass == 'hydrogenCreep') {
+            var hydrogenCreep = new classes_creeps_hydrogenCreep(
+                this.config.hydrogenCreep.creepStorage,
+                this.config.hydrogenCreep.creepHydrogen,
+                this.roomName,
+                this.config.hydrogenCreep.creepParts
+            )
+            hydrogenCreep.spawnCreep(spawner)
+            return true
+        }
         if (creepClass == 'upgradeCreep') {
             var upgradeCreep = new classes_creeps_upgradeCreep(
                 this.config.upgradeCreep.creepStorage,
@@ -123,7 +134,9 @@ class classes_respawn_engine {
             var buildCreep = new classes_creeps_buildCreep(
                 this.config.buildCreep.creepStorage,
                 this.config.buildCreep.creepSource,
-                this.roomName
+                this.roomName,
+                this.config.buildCreep.creepContainerLimit,
+                this.config.buildCreep.creepParts
             )
             buildCreep.spawnCreep(spawner)
             return true
@@ -133,7 +146,11 @@ class classes_respawn_engine {
                 this.config.transportCreep[creepName].creepOrigin.id,
                 this.config.transportCreep[creepName].creepDestination.id,
                 this.roomName,
-                this.config.transportCreep[creepName].creepParts
+                this.config.transportCreep[creepName].creepParts,
+                this.config.transportCreep[creepName].creepResourceType,
+                this.config.transportCreep[creepName].creepRemoteLimit,
+                this.config.transportCreep[creepName].creepLocalLimit,
+                this.config.transportCreep[creepName].creepSecondaryOrigin
             )
             transportCreep.spawnCreep(spawner)
             return true
@@ -222,9 +239,9 @@ class classes_respawn_engine {
                                         creepName,
                                         spawner
                                     )
+                                    //priorityIndex = 1
                                     break
                                 }
-                                break
                             }
                         }
                     } else {
@@ -244,6 +261,7 @@ class classes_respawn_engine {
                                 'Spawning ' + creepClass + ' at ' + spawner.name
                             )
                             this.spawnCreep(creepClass, null, spawner)
+                            priorityIndex = 1
                             break
                         }
                     }

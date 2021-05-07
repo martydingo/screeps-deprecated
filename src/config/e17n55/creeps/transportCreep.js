@@ -24,6 +24,20 @@ var config_e17n55_creeps_transportCreep = {
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
         creepResourceType: RESOURCE_ENERGY,
     },
+    terminalViaLink: {
+        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46'),
+        creepDestination: Game.getObjectById('608b7d022ba9ac9e4bcb1aec'),
+        creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
+        creepRemoteLimit: 20000,
+        creepResourceType: RESOURCE_ENERGY,
+    },
+    factoryViaLink: {
+        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46'),
+        creepDestination: Game.getObjectById('608ca2c5b7552f13fad1e4b0'),
+        creepParts: [MOVE, CARRY, MOVE, CARRY],
+        creepRemoteLimit: 600,
+        creepResourceType: RESOURCE_ENERGY,
+    },
 }
 
 module.exports = config_e17n55_creeps_transportCreep

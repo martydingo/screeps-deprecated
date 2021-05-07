@@ -19,15 +19,27 @@ class routines_respawn_e17n53_routine extends classes_respawn_engine {
             },
             upgradeCreep: '0',
             buildCreep: '0',
-            feederCreep: '1',
+            feederCreep: '2',
             keaniumCreep: '0',
             transportCreep: {
-                terminalViaStorage: '0',
+                terminalViaLink: '0',
+                linkViaStorage: '0',
             },
             lootCreep: '0',
         }
         if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
             this.config.maxActive.upgradeCreep += 1
+        }
+        if (Game.rooms[roomName].terminal.store[RESOURCE_ENERGY] < 20000) {
+            this.config.maxActive.transportCreep.terminalViaLink += 1
+            this.config.maxActive.transportCreep.linkViaStorage += 1
+        }
+        if (
+            Game.rooms['E17N53'].find(FIND_CONSTRUCTION_SITES, {
+                filter: (Site) => Site.owner.username == 'Marty',
+            }).length > 0
+        ) {
+            this.config.maxActive.buildCreep += 1
         }
     }
 }

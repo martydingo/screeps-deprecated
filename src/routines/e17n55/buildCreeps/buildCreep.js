@@ -15,7 +15,7 @@ var routines_e17n55_buildCreeps_srcOne = {
 
         var buildCreep = new classes_creeps_buildCreep(
             config.creepStorage.id,
-            config.creepSource.id,
+            config.creepSource,
             roomName
         )
 

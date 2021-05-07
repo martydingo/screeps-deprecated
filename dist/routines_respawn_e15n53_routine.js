@@ -18,12 +18,19 @@ class routines_respawn_e15n53_routine extends classes_respawn_engine {
                 srcOne: '1',
             },
             upgradeCreep: '1',
-            buildCreep: '0',
+            buildCreep: '1',
             feederCreep: '1',
             lootCreep: '0',
         }
         if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
             this.config.maxActive.upgradeCreep += 1
+        }
+        if (
+            Game.rooms['E15N53'].find(FIND_CONSTRUCTION_SITES, {
+                filter: (Site) => Site.owner.username == 'Marty',
+            }).length > 0
+        ) {
+            this.config.maxActive.buildCreep += 1
         }
     }
 }

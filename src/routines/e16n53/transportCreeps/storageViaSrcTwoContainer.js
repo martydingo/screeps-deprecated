@@ -1,49 +1,33 @@
-const config_e17n55_respawn = require('config_e17n55_respawn')
 const classes_creeps_transportCreep = require('classes_creeps_transportCreep')
+const config_e16n53_creeps_transportCreep = require('config_e16n53_creeps_transportCreep')
 
-var routines_e17n55_transportCreeps_storageViaSrcTwoContainer = {
+var routines_e16n53_transportCreeps_storageViaSrcTwoContainer = {
     run: function () {
-        const room = 'E17N55'
-        const origin = '6065b3c85dada2dc2d93716e'
-        const destination = '605f381c97b43e119d443878'
-        const spawn = Game.spawns['E17N55SPA1']
+        const roomName = 'E16N53'
+        const config =
+            config_e16n53_creeps_transportCreep.storageViaSrcTwoContainer
+
         var transportCreeps = _.filter(
             Game.creeps,
             (creep) =>
                 creep.memory.creepClass == 'transportCreep' &&
-                creep.memory.creepRoom == 'E17N55' &&
-                creep.memory.creepOrigin.id == origin &&
-                creep.memory.creepDestination.id == destination
+                creep.memory.creepRoom == 'E16N53' &&
+                creep.memory.creepOrigin.id == config.creepOrigin.id &&
+                creep.memory.creepDestination.id == config.creepDestination.id
         )
+        if (transportCreeps.length > 0) {
+            var transportCreep = new classes_creeps_transportCreep(
+                config.creepOrigin.id,
+                config.creepDestination.id,
+                roomName,
+                config.creepParts
+            )
 
-        var transportCreep = new classes_creeps_transportCreep(
-            origin,
-            destination,
-            room,
-            [MOVE, CARRY, CARRY, CARRY, CARRY]
-        )
-
-        if (!spawn.memory.spawnBlocked) {
-            this.creepWatch(spawn, transportCreeps, transportCreep)
-        }
-        this.creepAct(transportCreeps, transportCreep)
-    },
-
-    creepWatch: function (spawn, transportCreeps, transportCreep) {
-        if (
-            transportCreeps.length <
-            config_e17n55_respawn.maxActive.transportCreep
-                .storageViaSrcTwoContainer
-        ) {
-            transportCreep.spawnCreep(spawn)
-        }
-    },
-
-    creepAct: function (transportCreeps, transportCreep) {
-        for (var creep in transportCreeps) {
-            transportCreep.run(transportCreeps[creep])
+            for (var creep in transportCreeps) {
+                transportCreep.run(transportCreeps[creep])
+            }
         }
     },
 }
 
-module.exports = routines_e17n55_transportCreeps_storageViaSrcTwoContainer
+module.exports = routines_e16n53_transportCreeps_storageViaSrcTwoContainer

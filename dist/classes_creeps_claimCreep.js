@@ -96,7 +96,6 @@ class classes_creeps_claimCreep {
                     }
                 }
             } else {
-                console.log(this.roomName)
                 this.result = creep.reserveController(this.room.controller)
                 if (this.result == ERR_NOT_IN_RANGE) {
                     creep.moveTo(this.room.controller, {

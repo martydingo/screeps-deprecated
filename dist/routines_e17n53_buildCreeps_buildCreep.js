@@ -15,9 +15,9 @@ var routines_e17n53_buildCreeps_srcOne = {
 
         var buildCreep = new classes_creeps_buildCreep(
             config.creepStorage.id,
-            config.creepSource.id,
+            config.creepSource,
             roomName,
-            null,
+            config.creepContainerLimit,
             config.creepParts
         )
 

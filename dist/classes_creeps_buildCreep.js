@@ -74,7 +74,7 @@ class classes_creeps_buildCreep {
                 {
                     memory: {
                         creepClass: 'buildCreep',
-                        creepRoom: this.room.name,
+                        creepRoom: this.roomName,
                         creepSource: this.energySource.id,
                         creepParts: this.partsArray,
                         creepConstructionSite: this.constructionSite,
@@ -88,6 +88,11 @@ class classes_creeps_buildCreep {
     }
 
     canSpawn(spawner) {
+        console.log(
+            spawner.spawnCreep(this.partsArray, this.creepName, {
+                dryRun: true,
+            })
+        )
         if (
             spawner.spawnCreep(this.partsArray, this.creepName, {
                 dryRun: true,
@@ -186,7 +191,10 @@ class classes_creeps_buildCreep {
             if (creep.memory.creepBuild) {
                 if (creep.pos.roomName == this.roomName) {
                     this.constructionSite = creep.pos.findClosestByPath(
-                        FIND_CONSTRUCTION_SITES
+                        FIND_CONSTRUCTION_SITES,
+                        {
+                            filter: (Site) => Site.owner.username == 'Marty',
+                        }
                     )
                     if (this.constructionSite) {
                         this.build(creep)

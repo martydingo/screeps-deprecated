@@ -24,6 +24,13 @@ class routines_respawn_e18n55_routine extends classes_respawn_engine {
             warriorCreep: '0',
             claimCreep: '1',
         }
+        if (
+            Game.rooms['E18N55'].find(FIND_CONSTRUCTION_SITES, {
+                filter: (Site) => Site.owner.username == 'Marty',
+            }).length > 0
+        ) {
+            this.config.maxActive.buildCreep += 1
+        }
     }
 }
 

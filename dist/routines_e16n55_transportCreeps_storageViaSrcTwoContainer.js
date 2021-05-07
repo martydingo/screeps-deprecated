@@ -20,7 +20,10 @@ var routines_e16n55_transportCreeps_storageViaSrcTwoContainer = {
             config.creepDestination.id,
             roomName,
             config.creepParts,
-            config.creepResourceType
+            config.creepResourceType,
+            config.creepRemoteLimit,
+            config.creepLocalLimit,
+            config.creepSecondaryOrigin
         )
 
         for (var creep in transportCreeps) {
