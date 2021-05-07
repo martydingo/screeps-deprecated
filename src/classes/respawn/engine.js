@@ -18,8 +18,8 @@ class classes_respawn_engine {
         this.config = {
             priority: {
                 srcKprHunterCreep: '1',
-                sourceCreep: '2',
-                feederCreep: '3',
+                feederCreep: '2',
+                sourceCreep: '3',
                 transportCreep: '4',
                 lootCreep: '5',
                 hydrogenCreep: '6',
@@ -197,22 +197,110 @@ class classes_respawn_engine {
     }
 
     healthCheck() {
-        var priorityIndex = 1
-        while (priorityIndex <= Object.keys(this.config.priority).length) {
-            for (var creepClass in this.config.priority) {
-                if (this.config.priority[creepClass] == priorityIndex) {
-                    if (
-                        !(typeof this.config.maxActive[creepClass] === String)
-                    ) {
-                        for (var creepName in this.config.maxActive[
-                            creepClass
-                        ]) {
-                            var maxAlive = this.config.maxActive[creepClass][
-                                creepName
-                            ]
+        if (true) {
+            var priorityIndex = 0
+            while (priorityIndex <= Object.keys(this.config.priority).length) {
+                for (var creepClass in this.config.priority) {
+                    if (this.config.priority[creepClass] == priorityIndex) {
+                        if (
+                            !(
+                                typeof this.config.maxActive[creepClass] ===
+                                String
+                            )
+                        ) {
+                            for (var creepName in this.config.maxActive[
+                                creepClass
+                            ]) {
+                                var maxAlive = this.config.maxActive[
+                                    creepClass
+                                ][creepName]
+                                var currentAlive = this.getActiveClassCount(
+                                    creepClass,
+                                    creepName,
+                                    this.roomName
+                                )
+                                //delete Memory.respawnEngine
+                                if (!Memory.respawnEngine) {
+                                    Memory.respawnEngine = {}
+                                }
+                                if (!Memory.respawnEngine[this.roomName]) {
+                                    Memory.respawnEngine[this.roomName] = {}
+                                }
+                                if (
+                                    !Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ]
+                                ) {
+                                    Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ] = {}
+                                }
+                                if (
+                                    !Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ][creepClass]
+                                ) {
+                                    Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ][creepClass] = {}
+                                }
+                                if (
+                                    !Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ][creepClass][creepName]
+                                ) {
+                                    Memory.respawnEngine[this.roomName][
+                                        priorityIndex
+                                    ][creepClass][creepName] = {}
+                                }
+
+                                Memory.respawnEngine[this.roomName][
+                                    priorityIndex
+                                ][creepClass][creepName] =
+                                    Game.time +
+                                    ' - ' +
+                                    creepClass +
+                                    ' - ' +
+                                    creepName +
+                                    ' - ' +
+                                    maxAlive +
+                                    ' - ' +
+                                    currentAlive
+
+                                if (currentAlive < maxAlive) {
+                                    if (!this.spawnRoom) {
+                                        var spawner = this.returnSpawn(
+                                            this.roomName
+                                        )
+                                    } else {
+                                        var spawner = this.returnSpawn(
+                                            this.spawnRoom
+                                        )
+                                    }
+                                    if (spawner) {
+                                        console.log(
+                                            'Spawning ' +
+                                                creepClass +
+                                                ' - ' +
+                                                creepName +
+                                                ' for room ' +
+                                                this.roomName
+                                        )
+                                        this.spawnCreep(
+                                            creepClass,
+                                            creepName,
+                                            spawner
+                                        )
+                                        //priorityIndex = 1
+                                    }
+                                    return
+                                }
+                            }
+                        } else {
+                            var maxAlive = this.config.maxActive[creepClass]
                             var currentAlive = this.getActiveClassCount(
                                 creepClass,
-                                creepName,
+                                null,
                                 this.roomName
                             )
                             if (currentAlive < maxAlive) {
@@ -225,49 +313,21 @@ class classes_respawn_engine {
                                         this.spawnRoom
                                     )
                                 }
-                                if (spawner) {
-                                    console.log(
-                                        'Spawning ' +
-                                            creepClass +
-                                            ' - ' +
-                                            creepName +
-                                            ' for room ' +
-                                            this.roomName
-                                    )
-                                    this.spawnCreep(
-                                        creepClass,
-                                        creepName,
-                                        spawner
-                                    )
-                                    //priorityIndex = 1
-                                    break
-                                }
+                                console.log(
+                                    'Spawning ' +
+                                        creepClass +
+                                        ' at ' +
+                                        spawner.name
+                                )
+                                this.spawnCreep(creepClass, null, spawner)
+                                priorityIndex = 1
+                                break
                             }
-                        }
-                    } else {
-                        var maxAlive = this.config.maxActive[creepClass]
-                        var currentAlive = this.getActiveClassCount(
-                            creepClass,
-                            null,
-                            this.roomName
-                        )
-                        if (currentAlive < maxAlive) {
-                            if (!this.spawnRoom) {
-                                var spawner = this.returnSpawn(this.roomName)
-                            } else {
-                                var spawner = this.returnSpawn(this.spawnRoom)
-                            }
-                            console.log(
-                                'Spawning ' + creepClass + ' at ' + spawner.name
-                            )
-                            this.spawnCreep(creepClass, null, spawner)
-                            priorityIndex = 1
-                            break
                         }
                     }
                 }
+                priorityIndex += 1
             }
-            priorityIndex += 1
         }
     }
 }

@@ -1,7 +1,7 @@
 const config_e16n53_sources = require('config_e16n53_sources')
 
 var config_e16n53_creeps_upgradeCreep = {
-    creepStorage: Game.rooms['E17N53'].storage.id,
+    creepStorage: Game.rooms['E17N53'].storage,
     creepSource: config_e16n53_sources.srcOne,
     creepController: Game.rooms['E16N53'].controller.id,
     creepUpgradeFromPOS: null,

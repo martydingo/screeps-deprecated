@@ -1,6 +1,8 @@
 var config_e17n55_creeps_transportCreep = {
     storageViaSrcTwoContainer: {
-        creepOrigin: Game.getObjectById('60871e0f59886d6f70b5d713'),
+        creepOrigin: Game.getObjectById('60871e0f59886d6f70b5d713') || {
+            id: null,
+        },
         creepDestination: Game.rooms['E17N55'].storage,
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
         creepResourceType: RESOURCE_ENERGY,
@@ -25,14 +27,18 @@ var config_e17n55_creeps_transportCreep = {
         creepResourceType: RESOURCE_ENERGY,
     },
     terminalViaLink: {
-        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46'),
+        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46') || {
+            id: null,
+        },
         creepDestination: Game.getObjectById('608b7d022ba9ac9e4bcb1aec'),
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
         creepRemoteLimit: 20000,
         creepResourceType: RESOURCE_ENERGY,
     },
     factoryViaLink: {
-        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46'),
+        creepOrigin: Game.getObjectById('60830e9bdbf3497cb2220f46') || {
+            id: null,
+        },
         creepDestination: Game.getObjectById('608ca2c5b7552f13fad1e4b0'),
         creepParts: [MOVE, CARRY, MOVE, CARRY],
         creepRemoteLimit: 600,

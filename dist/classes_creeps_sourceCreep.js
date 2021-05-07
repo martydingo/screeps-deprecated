@@ -118,7 +118,7 @@ class classes_creeps_sourceCreep {
             this.unloadDest = this.storage
         }
         if (this.unloadDest) {
-            if (this.unloadDest.hits < this.unloadDest.hitsMax / 2) {
+            if (this.unloadDest.hits < this.unloadDest.hitsMax) {
                 creep.repair(this.unloadDest)
             } else {
                 this.result = creep.transfer(this.unloadDest, RESOURCE_ENERGY)

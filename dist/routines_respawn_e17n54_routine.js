@@ -16,6 +16,19 @@ class routines_respawn_e17n54_routine extends classes_respawn_engine {
         this.config.buildCreep = config_e17n54_creeps_buildCreep
         this.config.warriorCreep = config_e17n54_creeps_warriorCreep
 
+        this.config.priority = {
+            warriorCreep: '1',
+            claimCreep: '2',
+            sourceCreep: '3',
+            transportCreep: '4',
+            lootCreep: '5',
+            buildCreep: '6',
+            feederCreep: '7',
+            upgradeCreep: '8',
+            srcKprHunterCreep: '9',
+            hydrogenCreep: '10',
+        }
+
         this.config.maxActive = {
             sourceCreep: {
                 srcOne: '1',
@@ -25,15 +38,18 @@ class routines_respawn_e17n54_routine extends classes_respawn_engine {
             },
             lootCreep: '1',
             claimCreep: '1',
-            warriorCreep: '1',
+            warriorCreep: '2',
             buildCreep: '0',
         }
-        if (
-            Game.rooms['E17N54'].find(FIND_CONSTRUCTION_SITES, {
-                filter: (Site) => Site.owner.username == 'Marty',
-            }).length > 0
-        ) {
-            this.config.maxActive.buildCreep += 1
+
+        if (Game.rooms[roomName]) {
+            if (
+                Game.rooms[roomName].find(FIND_CONSTRUCTION_SITES, {
+                    filter: (Site) => Site.owner.username == 'Marty',
+                }).length > 0
+            ) {
+                this.config.maxActive.buildCreep += 1
+            }
         }
     }
 }

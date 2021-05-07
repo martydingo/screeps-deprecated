@@ -1,10 +1,10 @@
-const config_e16n53_creeps_warriorCreep = require('config_e16n53_creeps_warriorCreep')
+const config_e17n52_creeps_warriorCreep = require('config_e17n52_creeps_warriorCreep')
 const classes_creeps_warriorCreep = require('classes_creeps_warriorCreep')
 
-var routines_e16n53_warriorCreeps_warriorCreep = {
+var routines_e17n52_warriorCreeps_warriorCreep = {
     run: function () {
-        const room = 'E16N53'
-        const config = config_e16n53_creeps_warriorCreep
+        const room = 'E17N52'
+        const config = config_e17n52_creeps_warriorCreep
 
         var warriorCreeps = _.filter(
             Game.creeps,
@@ -24,4 +24,4 @@ var routines_e16n53_warriorCreeps_warriorCreep = {
     },
 }
 
-module.exports = routines_e16n53_warriorCreeps_warriorCreep
+module.exports = routines_e17n52_warriorCreeps_warriorCreep

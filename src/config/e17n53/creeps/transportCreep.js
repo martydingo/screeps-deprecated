@@ -13,7 +13,9 @@ var config_e17n53_creeps_transportCreep = {
         creepResourceType: RESOURCE_ENERGY,
     },
     terminalViaLink: {
-        creepOrigin: Game.getObjectById('6071ae0ff5e10e6714bbd05c'),
+        creepOrigin: Game.getObjectById('6071ae0ff5e10e6714bbd05c') || {
+            id: null,
+        },
         creepDestination: Game.getObjectById('6071a510015f30575a4c36c5'),
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
         creepRemoteLimit: 20000,

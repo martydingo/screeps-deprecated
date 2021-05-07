@@ -88,11 +88,6 @@ class classes_creeps_buildCreep {
     }
 
     canSpawn(spawner) {
-        console.log(
-            spawner.spawnCreep(this.partsArray, this.creepName, {
-                dryRun: true,
-            })
-        )
         if (
             spawner.spawnCreep(this.partsArray, this.creepName, {
                 dryRun: true,

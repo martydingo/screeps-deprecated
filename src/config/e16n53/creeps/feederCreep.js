@@ -1,5 +1,5 @@
 var config_e16n53_creeps_feederCreep = {
-    creepStorage: Game.rooms['E16N53'].storage,
+    creepStorage: Game.getObjectById('60883c1259886d435cb63a2c'),
     creepParts: [MOVE, CARRY, MOVE, CARRY, MOVE, CARRY],
 }
 

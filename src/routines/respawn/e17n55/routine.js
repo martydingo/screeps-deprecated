@@ -38,8 +38,12 @@ class routines_respawn_e17n55_routine extends classes_respawn_engine {
         if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
             this.config.maxActive.upgradeCreep += 1
         }
-        if (Game.rooms[roomName].storage.store[RESOURCE_HYDROGEN] < 10000) {
-            this.config.maxActive.hydrogenCreep += 1
+        if (Game.rooms[roomName].terminal.store[RESOURCE_HYDROGEN] < 10000) {
+            if (
+                Game.getObjectById('5bbcb36440062e4259e94363').mineralAmount > 0
+            ) {
+                this.config.maxActive.hydrogenCreep += 1
+            }
         }
         if (Game.rooms[roomName].terminal.store[RESOURCE_ENERGY] < 20000) {
             this.config.maxActive.transportCreep.terminalViaLink += 1

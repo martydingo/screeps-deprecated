@@ -59,6 +59,7 @@ class classes_creeps_hydrogenCreep {
             this.result = creep.harvest(this.hydrogen, RESOURCE_HYDROGEN)
             if (this.result == ERR_NOT_IN_RANGE) {
                 creep.moveTo(this.hydrogen)
+                console.log(this.result)
             }
         } else if (this.hydrogenStore.store[RESOURCE_HYDROGEN] < 10000) {
             this.result = creep.transfer(this.hydrogenStore, RESOURCE_HYDROGEN)

@@ -105,7 +105,6 @@ class classes_creeps_transportCreep {
         if (creep.getActiveBodyparts(WORK) > 0) {
             this.repairRoad(creep)
         }
-
         if (this.remoteLimit) {
             if (this.destination.store[this.resourceType] < this.remoteLimit) {
                 if (

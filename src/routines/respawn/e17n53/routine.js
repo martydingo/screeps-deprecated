@@ -19,7 +19,7 @@ class routines_respawn_e17n53_routine extends classes_respawn_engine {
             },
             upgradeCreep: '0',
             buildCreep: '0',
-            feederCreep: '2',
+            feederCreep: '3',
             keaniumCreep: '0',
             transportCreep: {
                 terminalViaLink: '0',

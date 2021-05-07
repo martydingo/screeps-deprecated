@@ -1,6 +1,8 @@
 var config_e16n53_creeps_transportCreep = {
     storageViaSrcOneContainer: {
-        creepOrigin: Game.getObjectById('60943c4ce0fde311af86ee4b'),
+        creepOrigin: Game.getObjectById('60955722b2d6c90bb2ffd50c') || {
+            id: null,
+        },
         creepDestination: Game.rooms['E17N53'].storage,
         creepParts: [
             MOVE,
@@ -47,7 +49,9 @@ var config_e16n53_creeps_transportCreep = {
         creepResourceType: RESOURCE_ENERGY,
     },
     storageViaSrcTwoContainer: {
-        creepOrigin: Game.getObjectById('60944865d6c0e462fd538190'),
+        creepOrigin: Game.getObjectById('609560bb16f0007e9872a348') || {
+            id: null,
+        },
         creepDestination: Game.rooms['E17N53'].storage,
         creepParts: [
             MOVE,

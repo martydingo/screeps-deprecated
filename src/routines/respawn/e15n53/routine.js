@@ -17,13 +17,13 @@ class routines_respawn_e15n53_routine extends classes_respawn_engine {
             sourceCreep: {
                 srcOne: '1',
             },
-            upgradeCreep: '1',
+            upgradeCreep: '2',
             buildCreep: '1',
-            feederCreep: '1',
+            feederCreep: '2',
             lootCreep: '0',
         }
-        if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
-            this.config.maxActive.upgradeCreep += 1
+        if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] < 50000) {
+            this.config.maxActive.upgradeCreep = 0
         }
         if (
             Game.rooms['E15N53'].find(FIND_CONSTRUCTION_SITES, {

@@ -2,7 +2,7 @@ const config_e16n53_sources = require('config_e16n53_sources')
 
 var config_e16n53_creeps_buildCreep = {
     creepStorage: { id: null },
-    creepSource: config_e16n53_sources.srcTwo,
+    creepSource: config_e16n53_sources.srcOne,
     creepContainerLimit: null,
     creepParts: [
         WORK,
