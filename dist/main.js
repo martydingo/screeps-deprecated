@@ -122,6 +122,15 @@ module.exports.loop = function () {
         Game.cpu.generatePixel()
     }
 
+    if (Game.rooms['E17N53'].terminal.store[RESOURCE_MIST] >= 100) {
+        Game.rooms['E17N53'].terminal.send(
+            RESOURCE_MIST,
+            Game.rooms['E17N53'].terminal.store[RESOURCE_MIST],
+            'E17N55',
+            'Mist-' + Game.time
+        )
+    }
+
     var e17n55visualspawn = new classes_visual_spawns('E17N55')
     e17n55visualspawn.drawAll()
 
