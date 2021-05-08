@@ -31,7 +31,7 @@ class routines_respawn_e18n55_routine extends classes_respawn_engine {
             },
             buildCreep: '0',
             transportCreep: {
-                storageViaSrcOneContainer: '1',
+                //    storageViaSrcOneContainer: '0',
             },
             lootCreep: '0',
             hydrogenCreep: '0',

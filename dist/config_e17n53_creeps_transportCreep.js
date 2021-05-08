@@ -21,6 +21,13 @@ var config_e17n53_creeps_transportCreep = {
         creepRemoteLimit: 20000,
         creepResourceType: RESOURCE_ENERGY,
     },
+    mistTerminalViaStorage: {
+        creepOrigin: Game.rooms['E17N53'].storage,
+        creepDestination: Game.getObjectById('6071a510015f30575a4c36c5'),
+        creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
+        creepRemoteLimit: 20000,
+        creepResourceType: RESOURCE_MIST,
+    },
 }
 
 module.exports = config_e17n53_creeps_transportCreep

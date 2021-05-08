@@ -9,6 +9,8 @@ const classes_creeps_buildCreep = require('classes_creeps_buildCreep')
 const classes_creeps_upgradeCreep = require('classes_creeps_upgradeCreep')
 const classes_creeps_srcKprHunterCreep = require('classes_creeps_srcKprHunterCreep')
 const classes_creeps_hydrogenCreep = require('classes_creeps_hydrogenCreep')
+const classes_creeps_factoryWorkerCreep = require('classes_creeps_factoryWorkerCreep')
+const classes_creeps_mistCreep = require('classes_creeps_mistCreep')
 
 class classes_respawn_engine {
     constructor(roomName, spawnRoom) {
@@ -17,7 +19,8 @@ class classes_respawn_engine {
         this.room = Game.rooms[roomName]
         this.config = {
             priority: {
-                srcKprHunterCreep: '1',
+                //srcKprHunterCreep: '1',
+                mistCreep: '1',
                 feederCreep: '2',
                 sourceCreep: '3',
                 transportCreep: '4',
@@ -27,6 +30,7 @@ class classes_respawn_engine {
                 warriorCreep: '8',
                 buildCreep: '9',
                 upgradeCreep: '10',
+                factoryWorkerCreep: '11',
             },
         }
     }
@@ -72,22 +76,15 @@ class classes_respawn_engine {
             creepClass == 'lootCreep' ||
             creepClass == 'hydrogenCreep' ||
             creepClass == 'warriorCreep' ||
-            creepClass == 'claimCreep'
+            creepClass == 'claimCreep' ||
+            creepClass == 'factoryWorkerCreep' ||
+            creepClass == 'mistCreep'
         ) {
             return _.filter(
                 Game.creeps,
                 (creep) =>
                     creep.memory.creepRoom == room &&
                     creep.memory.creepClass == creepClass
-            ).length
-        }
-        if (creepClass == 'srcKprHunterCreep') {
-            return _.filter(
-                Game.creeps,
-                (creep) =>
-                    creep.memory.creepRoom == room &&
-                    creep.memory.creepClass == creepClass &&
-                    (creep.ticksToLive > 300 || creep.ticksToLive == null)
             ).length
         }
     }
@@ -168,6 +165,18 @@ class classes_respawn_engine {
         if (creepClass == 'lootCreep') {
             var lootCreep = new classes_creeps_lootCreep(this.roomName)
             lootCreep.spawnCreep(spawner)
+            return true
+        }
+        if (creepClass == 'mistCreep') {
+            var mistCreep = new classes_creeps_mistCreep(this.roomName)
+            mistCreep.spawnCreep(spawner)
+            return true
+        }
+        if (creepClass == 'factoryWorkerCreep') {
+            var factoryWorkerCreep = new classes_creeps_factoryWorkerCreep(
+                this.roomName
+            )
+            factoryWorkerCreep.spawnCreep(spawner)
             return true
         }
         if (creepClass == 'srcKprHunterCreep') {

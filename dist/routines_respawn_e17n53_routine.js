@@ -24,6 +24,7 @@ class routines_respawn_e17n53_routine extends classes_respawn_engine {
             transportCreep: {
                 terminalViaLink: '0',
                 linkViaStorage: '0',
+                mistTerminalViaStorage: '1',
             },
             lootCreep: '0',
         }

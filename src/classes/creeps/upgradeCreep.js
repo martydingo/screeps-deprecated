@@ -1,4 +1,4 @@
-utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
+const utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
 
 class classes_creeps_upgradeCreep {
     constructor(
@@ -64,6 +64,7 @@ class classes_creeps_upgradeCreep {
                         creepUpgrade: false,
                         creepContainer: this.container,
                         creepUpgradeFromPOS: this.upgradeFromPOS,
+                        creepBoostedParts: true,
                     },
                 }
             )
@@ -121,34 +122,79 @@ class classes_creeps_upgradeCreep {
     }
 
     run(creep) {
-        if (creep.store[RESOURCE_ENERGY] < 3) {
-            creep.memory.creepUpgrade = false
-        } else if (
-            creep.store[RESOURCE_ENERGY] ==
-            creep.store.getCapacity(RESOURCE_ENERGY)
+        if (
+            creep.memory.creepBoostedParts == true &&
+            this.roomName == 'E17N55'
         ) {
-            creep.memory.creepUpgrade = true
-        }
-        if (creep.memory.creepUpgrade) {
-            // if(upgradeFromPOS){
-            //     if(creep.pos.getRangeTo(upgradeFromPOS)>3){
-            //         this.result = creep.moveTo(upgradeFromPOS, {visualizePathStyle: { stroke: '#EFDF70',},})
-            //     } else {
-            //         this.upgrade(creep)
-            //     }
-            // } else
-            this.upgrade(creep)
-        } else {
-            // console.log(this.roomName + ' + ' + this.storage)
-            if (this.storage != null) {
-                if (this.storage.store[RESOURCE_ENERGY] > 5000) {
-                    this.pickUpEnergy(creep, this.storage)
-                } else if (this.container != null) {
-                    if (this.container.store[RESOURCE_ENERGY] > 300) {
-                        this.pickUpEnergy(creep, this.container)
+            var boosterLab = Game.getObjectById('608207602f26bfe5973ba9a2')
+            if (boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >= 1200) {
+                for (var part in creep.body) {
+                    if (creep.body[part].type == WORK) {
+                        console.log(creep.body[part].boost)
+                        if (!creep.body[part].boost) {
+                            creep.memory.creepBoostedParts = false
+                        } else {
+                            creep.memory.creepBoostedParts = true
+                        }
                     }
+                }
+            } else {
+                creep.memory.creepBoostedParts = true
+            }
+        }
+        if (
+            creep.memory.creepBoostedParts == false &&
+            this.roomName == 'E17N55'
+        ) {
+            if (creep.memory.creepBoostedParts == false) {
+                var boosterLab = Game.getObjectById('608207602f26bfe5973ba9a2')
+                if (boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >= 1200) {
+                    var result = boosterLab.boostCreep(creep)
+                    if (result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(boosterLab)
+                    }
+                }
+                for (var part in creep.body) {
+                    if (creep.body[part].type == WORK) {
+                        console.log(creep.body[part].boost)
+                        if (!creep.body[part].boost) {
+                            creep.memory.creepBoostedParts = false
+                        } else {
+                            creep.memory.creepBoostedParts = true
+                        }
+                    }
+                }
+            }
+        } else {
+            if (creep.store[RESOURCE_ENERGY] < 3) {
+                creep.memory.creepUpgrade = false
+            } else if (
+                creep.store[RESOURCE_ENERGY] ==
+                creep.store.getCapacity(RESOURCE_ENERGY)
+            ) {
+                creep.memory.creepUpgrade = true
+            }
+            if (creep.memory.creepUpgrade) {
+                // if(upgradeFromPOS){
+                //     if(creep.pos.getRangeTo(upgradeFromPOS)>3){
+                //         this.result = creep.moveTo(upgradeFromPOS, {visualizePathStyle: { stroke: '#EFDF70',},})
+                //     } else {
+                //         this.upgrade(creep)
+                //     }
+                // } else
+                this.upgrade(creep)
+            } else {
+                // console.log(this.roomName + ' + ' + this.storage)
+                if (this.storage != null) {
+                    if (this.storage.store[RESOURCE_ENERGY] > 5000) {
+                        this.pickUpEnergy(creep, this.storage)
+                    } else if (this.container != null) {
+                        if (this.container.store[RESOURCE_ENERGY] > 300) {
+                            this.pickUpEnergy(creep, this.container)
+                        }
+                    } else this.harvestEnergySource(creep)
                 } else this.harvestEnergySource(creep)
-            } else this.harvestEnergySource(creep)
+            }
         }
     }
 }

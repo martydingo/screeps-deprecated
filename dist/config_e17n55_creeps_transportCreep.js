@@ -7,12 +7,12 @@ var config_e17n55_creeps_transportCreep = {
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
         creepResourceType: RESOURCE_ENERGY,
     },
-    labViaStorage: {
-        creepOrigin: Game.rooms['E17N55'].storage,
-        creepDestination: Game.getObjectById('606a0fa296af2a502a7be7c7'),
+    labViaTerminal: {
+        creepOrigin: Game.rooms['E17N55'].terminal,
+        creepDestination: Game.getObjectById('608207602f26bfe5973ba9a2'),
         creepParts: [MOVE, CARRY, CARRY, CARRY, CARRY],
-        creepRemoteLimit: 2000,
-        creepResourceType: RESOURCE_ENERGY,
+        creepRemoteLimit: 2400,
+        creepResourceType: RESOURCE_CATALYZED_GHODIUM_ACID,
     },
     spawnerViaStorage: {
         creepOrigin: Game.rooms['E17N55'].storage,

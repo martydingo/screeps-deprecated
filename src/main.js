@@ -45,6 +45,7 @@ const routines_e17n55_transportCreeps_linkViaStorage = require('routines_e17n55_
 const routines_e17n53_transportCreeps_linkViaStorage = require('routines_e17n53_transportCreeps_linkViaStorage')
 const routines_e17n55_transportCreeps_spawnerViaStorage = require('routines_e17n55_transportCreeps_spawnerViaStorage')
 const routines_e17n55_transportCreeps_storageViaSrcTwoContainer = require('routines_e17n55_transportCreeps_storageViaSrcTwoContainer')
+const routines_e17n55_transportCreeps_labViaTerminal = require('routines_e17n55_transportCreeps_labViaTerminal')
 const routines_e17n56_transportCreeps_storageViaSrcOneContainer = require('routines_e17n56_transportCreeps_storageViaSrcOneContainer')
 const routines_e17n54_transportCreeps_storageViaSrcOneContainer = require('routines_e17n54_transportCreeps_storageViaSrcOneContainer')
 const routines_e18n55_transportCreeps_storageViaSrcOneContainer = require('routines_e18n55_transportCreeps_storageViaSrcOneContainer')
@@ -65,7 +66,6 @@ const routines_e18n55_scoutCreeps_scoutCreep = require('routines_e18n55_scoutCre
 const routines_e17n55_hydrogenCreeps_hydrogenCreep = require('routines_e17n55_hydrogenCreeps_hydrogenCreep')
 const routines_e17n53_keaniumCreeps_keaniumCreep = require('routines_e17n53_keaniumCreeps_keaniumCreep')
 const routines_e17n53_transportCreeps_terminalViaStorage = require('routines_e17n53_transportCreeps_terminalViaStorage')
-const routines_e17n55_transportCreeps_labViaStorage = require('routines_e17n55_transportCreeps_labViaStorage')
 // const routines_e16n54_srcKeeperCreeps_utriumKeeper = require('routines_e16n54_srcKeeperCreeps_utriumKeeper')
 const routines_e17n53_towers_towerTwo = require('routines_e17n53_towers_towerTwo')
 const routines_e15n53_towers_towerTwo = require('routines_e15n53_towers_towerTwo')
@@ -96,6 +96,9 @@ const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCre
 const routines_e17n55_links_labLink_via_storageLink = require('routines_e17n55_links_labLink_via_storageLink')
 const routines_e17n53_links_labLink_via_storageLink = require('routines_e17n53_links_labLink_via_storageLink')
 const routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep = require('routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep')
+const routines_e17n53_transportCreeps_mistTerminalViaStorage = require('routines_e17n53_transportCreeps_mistTerminalViaStorage')
+const routines_e17n55_factoryWorkerCreeps_factoryWorkerCreep = require('routines_e17n55_factoryWorkerCreeps_factoryWorkerCreep')
+const routines_e16n50_mistCreeps_mistCreep = require('routines_e16n50_mistCreeps_mistCreep')
 
 const classes_visual_spawns = require('classes_visual_spawns')
 const classes_visual_storage = require('classes_visual_storage')
@@ -106,6 +109,7 @@ const routines_respawn_e16n55_routine = require('routines_respawn_e16n55_routine
 const routines_respawn_e15n53_routine = require('routines_respawn_e15n53_routine')
 const routines_respawn_e16n53_routine = require('routines_respawn_e16n53_routine')
 const routines_respawn_e17n52_routine = require('routines_respawn_e17n52_routine')
+const routines_respawn_e16n50_routine = require('routines_respawn_e16n50_routine')
 const routines_respawn_e17n53_routine = require('routines_respawn_e17n53_routine')
 const routines_respawn_e17n54_routine = require('routines_respawn_e17n54_routine')
 const routines_respawn_e17n55_routine = require('routines_respawn_e17n55_routine')
@@ -162,6 +166,11 @@ module.exports.loop = function () {
         'E17N53'
     )
     routines_respawn_e17n52.healthCheck()
+    const routines_respawn_e16n50 = new routines_respawn_e16n50_routine(
+        'E16N50',
+        'E17N53'
+    )
+    routines_respawn_e16n50.healthCheck()
     const routines_respawn_e17n54 = new routines_respawn_e17n54_routine(
         'E17N54',
         'E17N55'
@@ -244,7 +253,7 @@ module.exports.loop = function () {
     routines_e16n55_sourceCreeps_srcTwo.run()
     routines_e17n52_claimCreeps_claimCreep.run()
     routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
-    routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
+    //routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
     routines_e17n56_links_storage_via_srcTwo.run()
     routines_e17n56_transportCreeps_upgradeContainerviaStorage.run()
     routines_e15n53_buildCreeps_buildCreep.run()
@@ -273,4 +282,8 @@ module.exports.loop = function () {
     routines_e16n53_transportCreeps_storageViaSrcTwoContainer.run()
     routines_e16n53_warriorCreeps_warriorCreep.run()
     routines_e17n52_warriorCreeps_warriorCreep.run()
+    routines_e17n53_transportCreeps_mistTerminalViaStorage.run()
+    routines_e17n55_factoryWorkerCreeps_factoryWorkerCreep.run()
+    routines_e16n50_mistCreeps_mistCreep.run()
+    routines_e17n55_transportCreeps_labViaTerminal.run()
 }

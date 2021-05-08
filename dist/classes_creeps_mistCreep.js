@@ -1,33 +1,37 @@
-utils_pathfinding_avoidHostileCreeps = require('utils_pathfinding_avoidHostileCreeps')
-
 class classes_creeps_mistCreep {
-    constructor(storage, mistSourceID, roomName, partsArray) {
-        this.storage = Game.getObjectById(storage)
-        this.mistSource = Game.getObjectById(mistSourceID)
-        this.mistSourceID = mistSourceID
+    constructor(roomName, partsArray) {
         this.roomName = roomName
         this.room = Game.rooms[roomName]
+        this.storage = Game.rooms['E17N53'].storage
+        this.targetRoomName = 'E16N50'
         this.partsArray = partsArray || [
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
+            MOVE,
             WORK,
             WORK,
             WORK,
             WORK,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
             CARRY,
-            CARRY,
-            CARRY,
-            CARRY,
-            MOVE,
-            MOVE,
-            MOVE,
-            MOVE,
             CARRY,
             CARRY,
             CARRY,
@@ -39,7 +43,6 @@ class classes_creeps_mistCreep {
         this.spawns = []
         this.unloadDest = ''
         this.result = ''
-        this.path = this.path
     }
 
     spawnCreep(spawner) {
@@ -70,90 +73,93 @@ class classes_creeps_mistCreep {
     }
 
     harvestMistSource(creep) {
-        if (this.mistSource) {
-            if (creep.room.find(FIND_HOSTILE_CREEPS).length < 1) {
-                if (creep.harvest(this.mistSource) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(this.mistSource)
-                }
+        if (Game.rooms[this.targetRoomName]) {
+            var mist = Game.rooms[this.targetRoomName].find(FIND_DEPOSITS, {
+                filter: (Deposit) => Deposit.depositType == RESOURCE_MIST,
+            })[0]
+            var result = creep.harvest(mist)
+            if (result == ERR_NOT_IN_RANGE) {
+                creep.moveTo(mist)
             } else {
-                if (creep.harvest(this.mistSource) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(
-                        utils_pathfinding_avoidHostileCreeps.findPath(
-                            creep,
-                            this.mistSource.pos
-                        )
-                    )
+                if (result != OK && result != -11) {
+                    console.log(result)
                 }
             }
-        } else {
-            creep.moveTo(
-                utils_pathfinding_avoidHostileCreeps.findPath(
-                    creep,
-                    new RoomPosition(25, 25, this.roomName)
-                )
-            )
         }
     }
 
     unloadMist(creep) {
-        if (this.storage == null) {
-            this.containers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_STORAGE ||
-                    (object.structureType == STRUCTURE_CONTAINER &&
-                        object.id != '60673c5129245f65a5d6fa3d' &&
-                        object.id != '6068f47e6d58935c351d5f15'),
-            })
-            this.extensions = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_EXTENSION &&
-                    object.store.getFreeCapacity(RESOURCE_MIST) > 0,
-            })
-            this.towers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_TOWER &&
-                    object.store.getFreeCapacity(RESOURCE_MIST) > 0,
-            })
-            if (this.containers != null) {
-                this.unloadDest = this.containers
-            } else if (this.extensions != null) {
-                this.unloadDest = this.extensions
-            } else {
-                if (this.towers != null) {
-                    this.unloadDest = this.towers
-                } else this.unloadDest = creep.room.find(FIND_MY_SPAWNS)[0]
-            }
-        } else {
-            this.unloadDest = this.storage
+        var result = creep.transfer(this.storage, RESOURCE_MIST)
+        if (result == ERR_NOT_IN_RANGE) {
+            creep.moveTo(this.storage)
         }
-        if (this.unloadDest.hits < this.unloadDest.hitsMax) {
-            creep.repair(this.unloadDest)
+        if (result == OK) {
+            console.log('MistCreep has successfully delivered Mist')
+        }
+    }
+
+    goHome(creep) {
+        var curRoom = creep.pos.roomName
+        if (curRoom == 'E16N50') {
+            creep.moveTo(new RoomPosition(25, 2, 'E16N51'))
         } else {
-            this.result = creep.transfer(this.unloadDest, RESOURCE_MIST)
-            if (this.result == ERR_NOT_IN_RANGE) {
-                if (creep.pos.roomName == 'E19N50') {
-                    creep.moveTo(new RoomPosition(25, 25, 'E18N50'))
+            if (curRoom == 'E16N51') {
+                creep.moveTo(new RoomPosition(25, 25, 'E16N52'))
+            } else {
+                if (curRoom == 'E16N52') {
+                    creep.moveTo(new RoomPosition(25, 25, 'E17N52'))
                 } else {
-                    this.result = creep.moveTo(
-                        utils_pathfinding_avoidHostileCreeps.findPath(
-                            creep,
-                            this.unloadDest
-                        )
-                    )
+                    if (curRoom == 'E17N52') {
+                        creep.moveTo(new RoomPosition(25, 25, 'E17N53'))
+                    }
                 }
-                // console.log(creep + " - " + this.result + " - " + this.unloadDest)
-            } //else
-            // if(this.result != 0){
-            //     //console.log(this.creepName + " Error: " + this.result)
-            // }
+            }
+        }
+    }
+
+    goToMist(creep) {
+        var curRoom = creep.pos.roomName
+        if (curRoom == 'E17N53') {
+            creep.moveTo(new RoomPosition(25, 25, 'E17N52'))
+        } else {
+            if (curRoom == 'E17N52') {
+                creep.moveTo(new RoomPosition(25, 25, 'E16N52'))
+            } else {
+                if (curRoom == 'E16N52') {
+                    creep.moveTo(new RoomPosition(25, 2, 'E16N51'))
+                } else {
+                    if (curRoom == 'E16N51') {
+                        creep.moveTo(new RoomPosition(25, 25, 'E16N50'))
+                    }
+                }
+            }
         }
     }
 
     run(creep) {
         if (creep.store.getFreeCapacity(RESOURCE_MIST) == 0) {
-            this.unloadMist(creep)
+            if (creep.pos.roomName == this.storage.pos.roomName) {
+                this.unloadMist(creep)
+            } else {
+                this.goHome(creep)
+            }
         } else {
-            this.harvestMistSource(creep)
+            if (creep.pos.roomName == this.roomName) {
+                var droppedMist = this.room.find(FIND_DROPPED_RESOURCES, {
+                    filter: (Resource) =>
+                        Resource.resourceType == RESOURCE_MIST,
+                })
+                if (droppedMist.length >= 1) {
+                    var result = creep.pickup(droppedMist[0])
+                    if (result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(droppedMist[0])
+                    }
+                } else {
+                    this.harvestMistSource(creep)
+                }
+            } else {
+                this.goToMist(creep)
+            }
         }
     }
 }

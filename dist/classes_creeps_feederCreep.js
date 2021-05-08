@@ -56,8 +56,10 @@ class classes_creeps_feederCreep {
         if (this.destination == null) {
             this.destination = creep.pos.findClosestByPath(FIND_STRUCTURES, {
                 filter: (object) =>
-                    object.structureType == STRUCTURE_TOWER &&
-                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
+                    (object.structureType == STRUCTURE_TOWER &&
+                        object.store.getFreeCapacity(RESOURCE_ENERGY) > 0) ||
+                    (object.structureType == STRUCTURE_LAB &&
+                        object.store[RESOURCE_ENERGY] < 2000),
             })
         }
         this.result = creep.transfer(this.destination, RESOURCE_ENERGY)

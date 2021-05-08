@@ -30,7 +30,7 @@ class routines_respawn_e16n53_routine extends classes_respawn_engine {
             hydrogenCreep: '10',
         }
         this.config.maxActive = {
-            warriorCreep: '1',
+            warriorCreep: '2',
             sourceCreep: {
                 srcOne: '1',
                 srcTwo: '1',

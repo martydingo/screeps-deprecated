@@ -29,11 +29,13 @@ class routines_respawn_e17n55_routine extends classes_respawn_engine {
                 spawnerViaStorage: '1',
                 terminalViaLink: '0',
                 factoryViaLink: '0',
+                labViaTerminal: '0',
             },
             lootCreep: '1',
             hydrogenCreep: '0',
             claimCreep: '0',
             warriorCreep: '0',
+            factoryWorkerCreep: '1',
         }
         if (Game.rooms[roomName].storage.store[RESOURCE_ENERGY] > 200000) {
             this.config.maxActive.upgradeCreep += 1
@@ -44,6 +46,13 @@ class routines_respawn_e17n55_routine extends classes_respawn_engine {
             ) {
                 this.config.maxActive.hydrogenCreep += 1
             }
+        }
+        if (
+            Game.rooms[roomName].terminal.store[
+                RESOURCE_CATALYZED_GHODIUM_ACID
+            ] > 0
+        ) {
+            this.config.maxActive.transportCreep.labViaTerminal += 1
         }
         if (Game.rooms[roomName].terminal.store[RESOURCE_ENERGY] < 20000) {
             this.config.maxActive.transportCreep.terminalViaLink += 1

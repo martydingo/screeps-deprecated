@@ -37,6 +37,7 @@ class classes_creeps_transportCreep {
                         creepOrigin: this.origin,
                         creepsecondaryOrigin: this.secondaryOrigin,
                         creepDestination: this.destination,
+                        creepResourceType: this.resourceType,
                     },
                 }
             )
