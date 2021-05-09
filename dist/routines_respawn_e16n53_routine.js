@@ -2,7 +2,7 @@ const classes_respawn_engine = require('classes_respawn_engine')
 const config_e16n53_creeps_sourceCreep = require('config_e16n53_creeps_sourceCreep')
 const config_e16n53_creeps_transportCreep = require('config_e16n53_creeps_transportCreep')
 const config_e16n53_creeps_feederCreep = require('config_e16n53_creeps_feederCreep')
-const config_e16n53_creeps_upgradeCreep = require('config_e16n53_creeps_upgradeCreep')
+//const config_e16n53_creeps_upgradeCreep = require('config_e16n53_creeps_upgradeCreep')
 const config_e16n53_creeps_buildCreep = require('config_e16n53_creeps_buildCreep')
 const config_e16n53_creeps_claimCreep = require('config_e16n53_creeps_claimCreep')
 const config_e16n53_creeps_warriorCreep = require('config_e16n53_creeps_warriorCreep')
@@ -16,7 +16,7 @@ class routines_respawn_e16n53_routine extends classes_respawn_engine {
         this.config.buildCreep = config_e16n53_creeps_buildCreep
         this.config.warriorCreep = config_e16n53_creeps_warriorCreep
         this.config.feederCreep = config_e16n53_creeps_feederCreep
-        this.config.upgradeCreep = config_e16n53_creeps_upgradeCreep
+        //this.config.upgradeCreep = config_e16n53_creeps_upgradeCreep
         this.config.priority = {
             warriorCreep: '1',
             claimCreep: '2',
@@ -25,7 +25,7 @@ class routines_respawn_e16n53_routine extends classes_respawn_engine {
             lootCreep: '5',
             buildCreep: '6',
             feederCreep: '7',
-            upgradeCreep: '8',
+            //upgradeCreep: '8',
             srcKprHunterCreep: '9',
             hydrogenCreep: '10',
         }
@@ -35,7 +35,7 @@ class routines_respawn_e16n53_routine extends classes_respawn_engine {
                 srcOne: '1',
                 srcTwo: '1',
             },
-            upgradeCreep: '0',
+            //upgradeCreep: '0',
             buildCreep: '0',
             feederCreep: '0',
             lootCreep: '0',

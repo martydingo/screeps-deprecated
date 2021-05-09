@@ -2,16 +2,7 @@ class classes_creeps_feederCreep {
     constructor(origin, destination, resourceType, roomName, partsArray) {
         this.origin = Game.getObjectById(origin)
         this.room = Game.rooms[roomName]
-        this.partsArray = partsArray || [
-            MOVE,
-            MOVE,
-            CARRY,
-            CARRY,
-            MOVE,
-            MOVE,
-            CARRY,
-            CARRY,
-        ]
+        this.partsArray = partsArray || [MOVE, MOVE, CARRY, MOVE, CARRY, CARRY]
         this.creepName = 'feederCreep[' + this.room.name + ']-'
         this.destination = this.destination
         this.result = null
