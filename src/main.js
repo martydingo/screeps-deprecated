@@ -1,18 +1,18 @@
 const routines_e17n53_buildCreeps_buildCreep = require('routines_e17n53_buildCreeps_buildCreep')
-const routines_e17n54_claimCreeps_claimCreep = require('routines_e17n54_claimCreeps_claimCreep')
+//const routines_e17n54_claimCreeps_claimCreep = require('routines_e17n54_claimCreeps_claimCreep')
 const routines_e17n56_claimCreeps_claimCreep = require('routines_e17n56_claimCreeps_claimCreep')
-const routines_e18n55_claimCreeps_claimCreep = require('routines_e18n55_claimCreeps_claimCreep')
+//const routines_e18n55_claimCreeps_claimCreep = require('routines_e18n55_claimCreeps_claimCreep')
 const routines_e17n53_upgradeCreeps_upgradeCreep = require('routines_e17n53_upgradeCreeps_upgradeCreep')
-const routines_e17n54_buildCreeps_buildCreep = require('routines_e17n54_buildCreeps_buildCreep')
+//const routines_e17n54_buildCreeps_buildCreep = require('routines_e17n54_buildCreeps_buildCreep')
 const routines_e16n55_buildCreeps_buildCreep = require('routines_e16n55_buildCreeps_buildCreep')
 const routines_e16n55_warriorCreeps_warriorCreep = require('routines_e16n55_warriorCreeps_warriorCreep')
-const routines_e16n53_warriorCreeps_warriorCreep = require('routines_e16n53_warriorCreeps_warriorCreep')
-const routines_e17n52_warriorCreeps_warriorCreep = require('routines_e17n52_warriorCreeps_warriorCreep')
+//const routines_e16n53_warriorCreeps_warriorCreep = require('routines_e16n53_warriorCreeps_warriorCreep')
+//const routines_e17n52_warriorCreeps_warriorCreep = require('routines_e17n52_warriorCreeps_warriorCreep')
 const routines_e16n55_snipeCreeps_snipeCreep = require('routines_e16n55_snipeCreeps_snipeCreep')
-const routines_e17n54_warriorCreeps_warriorCreep = require('routines_e17n54_warriorCreeps_warriorCreep')
-const routines_e18n55_warriorCreeps_warriorCreep = require('routines_e18n55_warriorCreeps_warriorCreep')
+//const routines_e17n54_warriorCreeps_warriorCreep = require('routines_e17n54_warriorCreeps_warriorCreep')
+//const routines_e18n55_warriorCreeps_warriorCreep = require('routines_e18n55_warriorCreeps_warriorCreep')
 const routines_e16n55_healerCreeps_healerCreep = require('routines_e16n55_healerCreeps_healerCreep')
-const routines_e17n54_scoutCreeps_scoutCreep = require('routines_e17n54_scoutCreeps_scoutCreep')
+//const routines_e17n54_scoutCreeps_scoutCreep = require('routines_e17n54_scoutCreeps_scoutCreep')
 const routines_e17n56_scoutCreeps_scoutCreep = require('routines_e17n56_scoutCreeps_scoutCreep')
 const routines_e17n56_feederCreeps_feederCreep = require('routines_e17n56_feederCreeps_feederCreep')
 const routines_e17n56_upgradeCreeps_upgradeCreep = require('routines_e17n56_upgradeCreeps_upgradeCreep')
@@ -25,17 +25,17 @@ const routines_e17n55_transportCreeps_factoryViaLink = require('routines_e17n55_
 const routines_e16n55_scoutCreeps_scoutCreep = require('routines_e16n55_scoutCreeps_scoutCreep')
 const routines_e16n55_oxygenCreeps_oxygenCreep = require('routines_e16n55_oxygenCreeps_oxygenCreep')
 // const routines_e16n54_utriumCreeps_utriumCreep = require('routines_e16n54_utriumCreeps_utriumCreep')
-const routines_e17n54_sourceCreeps_srcOne = require('routines_e17n54_sourceCreeps_srcOne')
+//const routines_e17n54_sourceCreeps_srcOne = require('routines_e17n54_sourceCreeps_srcOne')
 // const routines_e16n54_sourceCreeps_srcOne = require('routines_e16n54_sourceCreeps_srcOne')
-const routines_e18n55_sourceCreeps_srcOne = require('routines_e18n55_sourceCreeps_srcOne')
+//const routines_e18n55_sourceCreeps_srcOne = require('routines_e18n55_sourceCreeps_srcOne')
 const routines_e17n55_upgradeCreeps_upgradeCreep = require('routines_e17n55_upgradeCreeps_upgradeCreep')
 const routines_e17n55_buildCreeps_buildCreep = require('routines_e17n55_buildCreeps_buildCreep')
-const routines_e17n52_buildCreeps_buildCreep = require('routines_e17n52_buildCreeps_buildCreep')
+//const routines_e17n52_buildCreeps_buildCreep = require('routines_e17n52_buildCreeps_buildCreep')
 const routines_e17n56_buildCreeps_buildCreep = require('routines_e17n56_buildCreeps_buildCreep')
 const routines_e17n55_lootCreeps_lootCreep = require('routines_e17n55_lootCreeps_lootCreep')
 const routines_e17n56_lootCreeps_lootCreep = require('routines_e17n56_lootCreeps_lootCreep')
-const routines_e18n55_lootCreeps_lootCreep = require('routines_e18n55_lootCreeps_lootCreep')
-const routines_e17n54_lootCreeps_lootCreep = require('routines_e17n54_lootCreeps_lootCreep')
+//const routines_e18n55_lootCreeps_lootCreep = require('routines_e18n55_lootCreeps_lootCreep')
+//const routines_e17n54_lootCreeps_lootCreep = require('routines_e17n54_lootCreeps_lootCreep')
 // const routines_e16n54_lootCreeps_lootCreep = require('routines_e16n54_lootCreeps_lootCreep')
 const routines_e16n55_lootCreeps_lootCreep = require('routines_e16n55_lootCreeps_lootCreep')
 const routines_e17n53_lootCreeps_lootCreep = require('routines_e17n53_lootCreeps_lootCreep')
@@ -47,13 +47,13 @@ const routines_e17n55_transportCreeps_spawnerViaStorage = require('routines_e17n
 const routines_e17n55_transportCreeps_storageViaSrcTwoContainer = require('routines_e17n55_transportCreeps_storageViaSrcTwoContainer')
 const routines_e17n55_transportCreeps_labViaTerminal = require('routines_e17n55_transportCreeps_labViaTerminal')
 const routines_e17n56_transportCreeps_storageViaSrcOneContainer = require('routines_e17n56_transportCreeps_storageViaSrcOneContainer')
-const routines_e17n54_transportCreeps_storageViaSrcOneContainer = require('routines_e17n54_transportCreeps_storageViaSrcOneContainer')
-const routines_e18n55_transportCreeps_storageViaSrcOneContainer = require('routines_e18n55_transportCreeps_storageViaSrcOneContainer')
+//const routines_e17n54_transportCreeps_storageViaSrcOneContainer = require('routines_e17n54_transportCreeps_storageViaSrcOneContainer')
+//const routines_e18n55_transportCreeps_storageViaSrcOneContainer = require('routines_e18n55_transportCreeps_storageViaSrcOneContainer')
 const routines_e17n56_transportCreeps_storageViaSrcTwoContainer = require('routines_e17n56_transportCreeps_storageViaSrcTwoContainer')
 const routines_e17n55_transportCreeps_storageViaUtriumContainer = require('routines_e17n55_transportCreeps_storageViaUtriumContainer')
 const routines_e17n55_transportCreeps_labViaUtriumContainer = require('routines_e17n55_transportCreeps_labViaUtriumContainer')
 const routines_e17n53_feederCreeps_feederCreep = require('routines_e17n53_feederCreeps_feederCreep')
-const routines_e17n52_sourceCreeps_srcOne = require('routines_e17n52_sourceCreeps_srcOne')
+//const routines_e17n52_sourceCreeps_srcOne = require('routines_e17n52_sourceCreeps_srcOne')
 const routines_e17n53_sourceCreeps_srcOne = require('routines_e17n53_sourceCreeps_srcOne')
 const routines_e17n55_sourceCreeps_srcOne = require('routines_e17n55_sourceCreeps_srcOne')
 const routines_e17n55_sourceCreeps_srcTwo = require('routines_e17n55_sourceCreeps_srcTwo')
@@ -61,7 +61,7 @@ const routines_e17n56_towers_towerOne = require('routines_e17n56_towers_towerOne
 const routines_e17n55_towers_towerOne = require('routines_e17n55_towers_towerOne')
 const routines_e17n55_towers_towerTwo = require('routines_e17n55_towers_towerTwo')
 const routines_e17n53_towers_towerOne = require('routines_e17n53_towers_towerOne')
-const routines_e18n55_scoutCreeps_scoutCreep = require('routines_e18n55_scoutCreeps_scoutCreep')
+//const routines_e18n55_scoutCreeps_scoutCreep = require('routines_e18n55_scoutCreeps_scoutCreep')
 //const routines_e17n55_links_spawnLink_via_storageLink = require('routines_e17n55_links_spawnLink_via_storageLink')
 const routines_e17n55_hydrogenCreeps_hydrogenCreep = require('routines_e17n55_hydrogenCreeps_hydrogenCreep')
 const routines_e17n53_keaniumCreeps_keaniumCreep = require('routines_e17n53_keaniumCreeps_keaniumCreep')
@@ -74,11 +74,11 @@ const routines_e17n55_towers_towerThree = require('routines_e17n55_towers_towerT
 const routines_e16n55_srcKeeperCreeps_sourceOneKeeper = require('routines_e16n55_srcKeeperCreeps_sourceOneKeeper')
 const routines_e16n55_sourceCreeps_srcOne = require('routines_e16n55_sourceCreeps_srcOne')
 const routines_e16n55_sourceCreeps_srcTwo = require('routines_e16n55_sourceCreeps_srcTwo')
-const routines_e17n52_claimCreeps_claimCreep = require('routines_e17n52_claimCreeps_claimCreep')
+//const routines_e17n52_claimCreeps_claimCreep = require('routines_e17n52_claimCreeps_claimCreep')
 const routines_e17n56_links_storage_via_srcTwo = require('routines_e17n56_links_storage_via_srcTwo')
 const routines_e17n56_transportCreeps_upgradeContainerviaStorage = require('routines_e17n56_transportCreeps_upgradeContainerviaStorage')
 const routines_e15n53_buildCreeps_buildCreep = require('routines_e15n53_buildCreeps_buildCreep')
-const routines_e16n53_buildCreeps_buildCreep = require('routines_e16n53_buildCreeps_buildCreep')
+//const routines_e16n53_buildCreeps_buildCreep = require('routines_e16n53_buildCreeps_buildCreep')
 const routines_e15n53_upgradeCreeps_upgradeCreep = require('routines_e15n53_upgradeCreeps_upgradeCreep')
 const routines_e15n53_sourceCreeps_srcOne = require('routines_e15n53_sourceCreeps_srcOne')
 const routines_e15n53_feederCreeps_feederCreep = require('routines_e15n53_feederCreeps_feederCreep')
@@ -86,13 +86,13 @@ const routines_e20n49_mistCreeps_srcOne = require('routines_e20n49_mistCreeps_sr
 const routines_e17n56_towers_towerTwo = require('routines_e17n56_towers_towerTwo')
 const routines_e17n56_hydrogenCreeps_hydrogenCreep = require('routines_e17n56_hydrogenCreeps_hydrogenCreep')
 const utils_garbageCollection_gc = require('utils_garbageCollection_gc')
-const routines_e18n55_buildCreeps_buildCreep = require('routines_e18n55_buildCreeps_buildCreep')
-const routines_e17n52_transportCreeps_storageViaSrcOneContainer = require('routines_e17n52_transportCreeps_storageViaSrcOneContainer')
-const routines_e16n53_transportCreeps_storageViaSrcOneContainer = require('routines_e16n53_transportCreeps_storageViaSrcOneContainer')
-const routines_e16n53_transportCreeps_storageViaSrcTwoContainer = require('routines_e16n53_transportCreeps_storageViaSrcTwoContainer')
-const routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreeps_srcOne')
-const routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
-const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
+//const routines_e18n55_buildCreeps_buildCreep = require('routines_e18n55_buildCreeps_buildCreep')
+//const routines_e17n52_transportCreeps_storageViaSrcOneContainer = require('routines_e17n52_transportCreeps_storageViaSrcOneContainer')
+//const routines_e16n53_transportCreeps_storageViaSrcOneContainer = require('routines_e16n53_transportCreeps_storageViaSrcOneContainer')
+//const routines_e16n53_transportCreeps_storageViaSrcTwoContainer = require('routines_e16n53_transportCreeps_storageViaSrcTwoContainer')
+//const routines_e16n53_sourceCreeps_srcOne = require('routines_e16n53_sourceCreeps_srcOne')
+//const routines_e16n53_sourceCreeps_srcTwo = require('routines_e16n53_sourceCreeps_srcTwo')
+//const routines_e16n53_claimCreeps_claimCreep = require('routines_e16n53_claimCreeps_claimCreep')
 const routines_e17n55_links_labLink_via_storageLink = require('routines_e17n55_links_labLink_via_storageLink')
 const routines_e17n53_links_labLink_via_storageLink = require('routines_e17n53_links_labLink_via_storageLink')
 const routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep = require('routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep')
@@ -107,13 +107,13 @@ const classes_healthchecks_invader = require('classes_healthchecks_invader')
 
 const routines_respawn_e16n55_routine = require('routines_respawn_e16n55_routine')
 const routines_respawn_e15n53_routine = require('routines_respawn_e15n53_routine')
-const routines_respawn_e16n53_routine = require('routines_respawn_e16n53_routine')
-const routines_respawn_e17n52_routine = require('routines_respawn_e17n52_routine')
+//const routines_respawn_e16n53_routine = require('routines_respawn_e16n53_routine')
+//const routines_respawn_e17n52_routine = require('routines_respawn_e17n52_routine')
 const routines_respawn_e16n50_routine = require('routines_respawn_e16n50_routine')
 const routines_respawn_e17n53_routine = require('routines_respawn_e17n53_routine')
-const routines_respawn_e17n54_routine = require('routines_respawn_e17n54_routine')
+//const routines_respawn_e17n54_routine = require('routines_respawn_e17n54_routine')
 const routines_respawn_e17n55_routine = require('routines_respawn_e17n55_routine')
-const routines_respawn_e18n55_routine = require('routines_respawn_e18n55_routine')
+//const routines_respawn_e18n55_routine = require('routines_respawn_e18n55_routine')
 
 module.exports.loop = function () {
     utils_garbageCollection_gc.garbageCollection.creeps.run()
@@ -137,22 +137,22 @@ module.exports.loop = function () {
     var visualStorage = new classes_visual_storage()
     visualStorage.drawAll()
 
-    const routines_respawn_e16n55 = new routines_respawn_e16n55_routine(
-        'E16N55',
-        'E17N55'
-    )
-    routines_respawn_e16n55.healthCheck()
+    // const routines_respawn_e16n55 = new routines_respawn_e16n55_routine(
+    //     'E16N55',
+    //     'E17N55'
+    // )
+    // routines_respawn_e16n55.healthCheck()
 
     const routines_respawn_e15n53 = new routines_respawn_e15n53_routine(
         'E15N53'
     )
     routines_respawn_e15n53.healthCheck()
 
-    const routines_respawn_e16n53 = new routines_respawn_e16n53_routine(
-        'E16N53',
-        'E17N53'
-    )
-    routines_respawn_e16n53.healthCheck()
+    //    // const routines_respawn_e16n53 = new routines_respawn_e16n53_routine(
+    //     'E16N53',
+    //     'E17N53'
+    // )
+    //    // routines_respawn_e16n53.healthCheck()
 
     const routines_respawn_e17n53 = new routines_respawn_e17n53_routine(
         'E17N53'
@@ -164,27 +164,27 @@ module.exports.loop = function () {
     )
     routines_respawn_e17n55.healthCheck()
 
-    const routines_respawn_e18n55 = new routines_respawn_e18n55_routine(
-        'E18N55',
-        'E17N55'
-    )
-    routines_respawn_e18n55.healthCheck()
+    //    // const routines_respawn_e18n55 = new routines_respawn_e18n55_routine(
+    //     'E18N55',
+    //     'E17N55'
+    // )
+    //    // routines_respawn_e18n55.healthCheck()
 
-    const routines_respawn_e17n52 = new routines_respawn_e17n52_routine(
-        'E17N52',
-        'E17N53'
-    )
-    routines_respawn_e17n52.healthCheck()
+    //    // const routines_respawn_e17n52 = new routines_respawn_e17n52_routine(
+    //     'E17N52',
+    //     'E17N53'
+    // )
+    //    // routines_respawn_e17n52.healthCheck()
     const routines_respawn_e16n50 = new routines_respawn_e16n50_routine(
         'E16N50',
         'E17N53'
     )
     routines_respawn_e16n50.healthCheck()
-    const routines_respawn_e17n54 = new routines_respawn_e17n54_routine(
-        'E17N54',
-        'E17N55'
-    )
-    routines_respawn_e17n54.healthCheck()
+    //    // const routines_respawn_e17n54 = new routines_respawn_e17n54_routine(
+    //     'E17N54',
+    //     'E17N55'
+    // )
+    //    // routines_respawn_e17n54.healthCheck()
 
     const e16n55healthcheck_invader = new classes_healthchecks_invader('E16N55')
     e16n55healthcheck_invader.run()
@@ -202,20 +202,20 @@ module.exports.loop = function () {
     routines_e17n55_sourceCreeps_srcOne.run()
     routines_e17n55_sourceCreeps_srcTwo.run()
     routines_e17n53_sourceCreeps_srcOne.run()
-    routines_e17n52_sourceCreeps_srcOne.run()
+    //    routines_e17n52_sourceCreeps_srcOne.run()
     routines_e17n53_buildCreeps_buildCreep.run()
-    routines_e17n54_claimCreeps_claimCreep.run()
+    //    routines_e17n54_claimCreeps_claimCreep.run()
     routines_e17n56_claimCreeps_claimCreep.run()
-    routines_e18n55_claimCreeps_claimCreep.run()
-    routines_e17n54_buildCreeps_buildCreep.run()
-    routines_e18n55_buildCreeps_buildCreep.run()
-    routines_e17n52_buildCreeps_buildCreep.run()
+    //    routines_e18n55_claimCreeps_claimCreep.run()
+    //    routines_e17n54_buildCreeps_buildCreep.run()
+    //    routines_e18n55_buildCreeps_buildCreep.run()
+    //    routines_e17n52_buildCreeps_buildCreep.run()
     routines_e16n55_warriorCreeps_warriorCreep.run()
     routines_e16n55_healerCreeps_healerCreep.run()
     // routines_e16n54_sourceCreeps_srcOne.run()
-    routines_e17n54_sourceCreeps_srcOne.run()
-    routines_e18n55_sourceCreeps_srcOne.run()
-    routines_e17n54_scoutCreeps_scoutCreep.run()
+    //    routines_e17n54_sourceCreeps_srcOne.run()
+    //    routines_e18n55_sourceCreeps_srcOne.run()
+    //    routines_e17n54_scoutCreeps_scoutCreep.run()
     routines_e17n56_scoutCreeps_scoutCreep.run()
     routines_e17n56_feederCreeps_feederCreep.run()
     routines_e17n56_upgradeCreeps_upgradeCreep.run()
@@ -232,8 +232,8 @@ module.exports.loop = function () {
     routines_e17n56_buildCreeps_buildCreep.run()
     routines_e17n55_lootCreeps_lootCreep.run()
     routines_e17n56_lootCreeps_lootCreep.run()
-    routines_e17n54_lootCreeps_lootCreep.run()
-    routines_e18n55_lootCreeps_lootCreep.run()
+    //    routines_e17n54_lootCreeps_lootCreep.run()
+    //    routines_e18n55_lootCreeps_lootCreep.run()
     // routines_e16n54_lootCreeps_lootCreep.run()
     routines_e16n55_lootCreeps_lootCreep.run()
     routines_e17n53_lootCreeps_lootCreep.run()
@@ -243,14 +243,14 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerTwo.run()
     routines_e17n55_towers_towerThree.run()
     routines_e17n53_towers_towerOne.run()
-    routines_e18n55_scoutCreeps_scoutCreep.run()
+    //    routines_e18n55_scoutCreeps_scoutCreep.run()
     routines_e17n55_links_labLink_via_storageLink.run()
     //routines_e17n55_links_spawnLink_via_storageLink.run()
     routines_e16n55_snipeCreeps_snipeCreep.run()
     routines_e17n55_hydrogenCreeps_hydrogenCreep.run()
     // routines_e17n55_labs_lab6.run();
-    routines_e18n55_warriorCreeps_warriorCreep.run()
-    routines_e17n54_warriorCreeps_warriorCreep.run()
+    //    routines_e18n55_warriorCreeps_warriorCreep.run()
+    //    routines_e17n54_warriorCreeps_warriorCreep.run()
     routines_e17n53_keaniumCreeps_keaniumCreep.run()
     routines_e17n53_transportCreeps_terminalViaStorage.run()
     //routines_e17n55_transportCreeps_labViaStorage.run()
@@ -260,9 +260,9 @@ module.exports.loop = function () {
     routines_e17n55_towers_towerTwo.run()
     routines_e16n55_buildCreeps_buildCreep.run()
     routines_e16n55_sourceCreeps_srcTwo.run()
-    routines_e17n52_claimCreeps_claimCreep.run()
-    routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
-    //routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
+    //    routines_e17n52_claimCreeps_claimCreep.run()
+    //    routines_e17n54_transportCreeps_storageViaSrcOneContainer.run()
+    //    //routines_e18n55_transportCreeps_storageViaSrcOneContainer.run()
     routines_e17n56_links_storage_via_srcTwo.run()
     routines_e17n56_transportCreeps_upgradeContainerviaStorage.run()
     routines_e15n53_buildCreeps_buildCreep.run()
@@ -277,20 +277,20 @@ module.exports.loop = function () {
     routines_e15n53_towers_towerTwo.run()
     // routines_e16n55_transportCreeps_storageViaSrcOneContainer.run()
     // routines_e16n55_transportCreeps_storageViaSrcTwoContainer.run()
-    routines_e16n53_claimCreeps_claimCreep.run()
-    routines_e16n53_sourceCreeps_srcOne.run()
-    routines_e16n53_sourceCreeps_srcTwo.run()
+    //    routines_e16n53_claimCreeps_claimCreep.run()
+    //    routines_e16n53_sourceCreeps_srcOne.run()
+    //    routines_e16n53_sourceCreeps_srcTwo.run()
     routines_e16n55_srcKprHunterCreeps_srcKprHunterCreep.run()
     routines_e17n55_transportCreeps_terminalViaLink.run()
     routines_e17n53_transportCreeps_terminalViaLink.run()
     routines_e17n55_transportCreeps_factoryViaLink.run()
     routines_e17n53_links_labLink_via_storageLink.run()
-    routines_e16n53_buildCreeps_buildCreep.run()
-    routines_e17n52_transportCreeps_storageViaSrcOneContainer.run()
-    routines_e16n53_transportCreeps_storageViaSrcOneContainer.run()
-    routines_e16n53_transportCreeps_storageViaSrcTwoContainer.run()
-    routines_e16n53_warriorCreeps_warriorCreep.run()
-    routines_e17n52_warriorCreeps_warriorCreep.run()
+    //    routines_e16n53_buildCreeps_buildCreep.run()
+    //    routines_e17n52_transportCreeps_storageViaSrcOneContainer.run()
+    //    routines_e16n53_transportCreeps_storageViaSrcOneContainer.run()
+    //    routines_e16n53_transportCreeps_storageViaSrcTwoContainer.run()
+    //    routines_e16n53_warriorCreeps_warriorCreep.run()
+    //    routines_e17n52_warriorCreeps_warriorCreep.run()
     routines_e17n53_transportCreeps_mistTerminalViaStorage.run()
     routines_e17n55_factoryWorkerCreeps_factoryWorkerCreep.run()
     routines_e16n50_mistCreeps_mistCreep.run()
