@@ -4,7 +4,18 @@ var config_e17n53_creeps_sourceCreep = {
     srcOne: {
         creepStorage: Game.rooms['E17N53'].storage,
         creepSource: config_e17n53_sources.srcOne,
-        creepParts: [WORK, WORK, WORK, WORK, WORK, WORK, MOVE, CARRY],
+        creepParts: [
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            WORK,
+            MOVE,
+            MOVE,
+            MOVE,
+            CARRY,
+        ]
     },
 }
 

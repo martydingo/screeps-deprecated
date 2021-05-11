@@ -36,7 +36,7 @@ class routines_respawn_e17n54_routine extends classes_respawn_engine {
             transportCreep: {
                 storageViaSrcOneContainer: '1',
             },
-            lootCreep: '1',
+            lootCreep: '0',
             claimCreep: '1',
             warriorCreep: '2',
             buildCreep: '0',

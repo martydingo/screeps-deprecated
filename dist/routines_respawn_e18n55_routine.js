@@ -3,6 +3,7 @@ const config_e18n55_creeps_claimCreep = require('config_e18n55_creeps_claimCreep
 const config_e18n55_creeps_sourceCreep = require('config_e18n55_creeps_sourceCreep')
 const config_e18n55_creeps_transportCreep = require('config_e18n55_creeps_transportCreep')
 const config_e18n55_creeps_buildCreep = require('config_e18n55_creeps_buildCreep')
+const config_e18n55_creeps_warriorCreep = require('config_e18n55_creeps_warriorCreep')
 
 class routines_respawn_e18n55_routine extends classes_respawn_engine {
     constructor(roomName, spawnRoom) {
@@ -11,6 +12,7 @@ class routines_respawn_e18n55_routine extends classes_respawn_engine {
         this.config.sourceCreep = config_e18n55_creeps_sourceCreep
         this.config.transportCreep = config_e18n55_creeps_transportCreep
         this.config.buildCreep = config_e18n55_creeps_buildCreep
+        this.config.warriorCreep = config_e18n55_creeps_warriorCreep
 
         this.config.priority = {
             warriorCreep: '1',
@@ -31,11 +33,11 @@ class routines_respawn_e18n55_routine extends classes_respawn_engine {
             },
             buildCreep: '0',
             transportCreep: {
-                //    storageViaSrcOneContainer: '0',
+                storageViaSrcOneContainer: '1',
             },
             lootCreep: '0',
             hydrogenCreep: '0',
-            warriorCreep: '0',
+            warriorCreep: '1',
             claimCreep: '1',
         }
 

@@ -8,12 +8,15 @@ class classes_creeps_upgradeCreep {
         roomName,
         upgradeFromPOS,
         container,
+        boostRequired,
         partsArray
     ) {
         this.storage = Game.getObjectById(storage) || null
         this.roomController = Game.getObjectById(roomController)
         this.energySource = Game.getObjectById(energySourceID)
         this.container = Game.getObjectById(container) || null
+        this.boostRequired = boostRequired || false
+        this.boosterLab = this.boosterLab
         this.room = Game.rooms[roomName]
         this.roomName = roomName
         this.partsArray = partsArray || [
@@ -64,7 +67,7 @@ class classes_creeps_upgradeCreep {
                         creepUpgrade: false,
                         creepContainer: this.container,
                         creepUpgradeFromPOS: this.upgradeFromPOS,
-                        creepBoostedParts: true,
+                        creepBoostedParts: false,
                     },
                 }
             )
@@ -121,104 +124,40 @@ class classes_creeps_upgradeCreep {
         }
     }
 
-    run(creep) {
-        if (
-            creep.memory.creepBoostedParts == true &&
-            (this.roomName == 'E17N55' || this.roomName == 'E17N53')
-        ) {
-            if (this.roomName == 'E17N55') {
-                var boosterLab = Game.getObjectById('608207602f26bfe5973ba9a2')
-                if (boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >= 1200) {
-                    for (var part in creep.body) {
-                        if (creep.body[part].type == WORK) {
-                            console.log(creep.body[part].boost)
-                            if (!creep.body[part].boost) {
-                                creep.memory.creepBoostedParts = false
-                            } else {
-                                creep.memory.creepBoostedParts = true
-                            }
-                        }
-                    }
-                } else {
+    boostCheckDaemon(creep) {
+        for (var part in creep.body) {
+            if (creep.body[part].type == WORK) {
+                if (creep.body[part].boost) {
                     creep.memory.creepBoostedParts = true
-                }
-            }
-            if (this.roomName == 'E17N53') {
-                var boosterLab = Game.getObjectById('608a25788227a443ccb8e792')
-                if (boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >= 1200) {
-                    for (var part in creep.body) {
-                        if (creep.body[part].type == WORK) {
-                            console.log(creep.body[part].boost)
-                            if (!creep.body[part].boost) {
-                                creep.memory.creepBoostedParts = false
-                            } else {
-                                creep.memory.creepBoostedParts = true
-                            }
-                        }
-                    }
                 } else {
-                    creep.memory.creepBoostedParts = true
+                    //
                 }
             }
         }
+    }
+
+    run(creep) {
+        if (this.boostRequired == true) {
+            this.boostCheckDaemon(creep)
+            this.boosterLab = creep.room.find(FIND_STRUCTURES, {
+                filter: (Structure) =>
+                    Structure.structureType == STRUCTURE_LAB &&
+                    Structure.store[RESOURCE_CATALYZED_GHODIUM_ACID] >= 1200,
+            })[0]
+        }
         if (
+            this.boostRequired == true &&
             creep.memory.creepBoostedParts == false &&
-            (this.roomName == 'E17N55' || this.roomName == 'E17N53')
+            this.boosterLab != null
         ) {
-            if (this.roomName == 'E17N55') {
-                if (creep.memory.creepBoostedParts == false) {
-                    var boosterLab = Game.getObjectById(
-                        '608207602f26bfe5973ba9a2'
-                    )
-                    if (
-                        boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >=
-                        1200
-                    ) {
-                        var result = boosterLab.boostCreep(creep)
-                        if (result == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(boosterLab)
-                        }
-                    }
-                    for (var part in creep.body) {
-                        if (creep.body[part].type == WORK) {
-                            console.log(creep.body[part].boost)
-                            if (!creep.body[part].boost) {
-                                creep.memory.creepBoostedParts = false
-                            } else {
-                                creep.memory.creepBoostedParts = true
-                            }
-                        }
-                    }
-                }
-            }
-            if (this.roomName == 'E17N53') {
-                if (creep.memory.creepBoostedParts == false) {
-                    var boosterLab = Game.getObjectById(
-                        '608a25788227a443ccb8e792'
-                    )
-                    if (
-                        boosterLab.store[RESOURCE_CATALYZED_GHODIUM_ACID] >=
-                        1200
-                    ) {
-                        var result = boosterLab.boostCreep(creep)
-                        if (result == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(boosterLab)
-                        }
-                    }
-                    for (var part in creep.body) {
-                        if (creep.body[part].type == WORK) {
-                            console.log(creep.body[part].boost)
-                            if (!creep.body[part].boost) {
-                                creep.memory.creepBoostedParts = false
-                            } else {
-                                creep.memory.creepBoostedParts = true
-                            }
-                        }
-                    }
-                }
+            var result = this.boosterLab.boostCreep(creep)
+            if (result == ERR_NOT_IN_RANGE) {
+                creep.moveTo(this.boosterLab, {
+                    visualizePathStyle: { stroke: '#EFDF70' },
+                })
             }
         } else {
-            if (creep.store[RESOURCE_ENERGY] < 3) {
+            if (creep.store[RESOURCE_ENERGY] < 1) {
                 creep.memory.creepUpgrade = false
             } else if (
                 creep.store[RESOURCE_ENERGY] ==

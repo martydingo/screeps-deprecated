@@ -1,8 +1,6 @@
 var config_e18n55_creeps_transportCreep = {
     storageViaSrcOneContainer: {
-        creepOrigin: Game.getObjectById('60952efa59886de547babcee') || {
-            id: null,
-        },
+        creepOrigin: null,
         creepDestination: Game.rooms['E17N55'].storage,
         creepParts: [
             MOVE,

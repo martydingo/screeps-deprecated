@@ -11,13 +11,13 @@ var routines_e16n53_transportCreeps_storageViaSrcTwoContainer = {
             Game.creeps,
             (creep) =>
                 creep.memory.creepClass == 'transportCreep' &&
-                creep.memory.creepRoom == 'E16N53' &&
-                creep.memory.creepOrigin.id == config.creepOrigin.id &&
+                creep.memory.creepRoom == roomName &&
+                creep.memory.creepOrigin == config.creepOrigin &&
                 creep.memory.creepDestination.id == config.creepDestination.id
         )
         if (transportCreeps.length > 0) {
             var transportCreep = new classes_creeps_transportCreep(
-                config.creepOrigin.id,
+                config.creepOrigin,
                 config.creepDestination.id,
                 roomName,
                 config.creepParts

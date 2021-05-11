@@ -14,9 +14,6 @@ class classes_creeps_sourceCreep {
             WORK,
             WORK,
             WORK,
-            WORK,
-            WORK,
-            WORK,
             MOVE,
             MOVE,
             MOVE,
@@ -88,32 +85,8 @@ class classes_creeps_sourceCreep {
 
     unloadEnergy(creep) {
         if (this.storage == null) {
-            this.containers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_STORAGE ||
-                    (object.structureType == STRUCTURE_CONTAINER &&
-                        object.id != '60673c5129245f65a5d6fa3d' &&
-                        object.id != '6068f47e6d58935c351d5f15'),
-            })
-            this.extensions = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_EXTENSION &&
-                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
-            })
-            this.towers = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-                filter: (object) =>
-                    object.structureType == STRUCTURE_TOWER &&
-                    object.store.getFreeCapacity(RESOURCE_ENERGY) > 0,
-            })
-            if (this.containers != null) {
-                this.unloadDest = this.containers
-            } else if (this.extensions != null) {
-                this.unloadDest = this.extensions
-            } else {
-                if (this.towers != null) {
-                    this.unloadDest = this.towers
-                } else this.unloadDest = creep.room.find(FIND_MY_SPAWNS)[0]
-            }
+            creep.drop(RESOURCE_ENERGY)
+            this.unloadDest = null
         } else {
             this.unloadDest = this.storage
         }

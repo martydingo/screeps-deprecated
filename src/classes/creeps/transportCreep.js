@@ -46,26 +46,49 @@ class classes_creeps_transportCreep {
     }
 
     pickUp(creep) {
-        if (this.secondaryOrigin) {
-            if (this.origin.store[this.resourceType] < 1) {
-                this.result = creep.withdraw(
-                    this.secondaryOrigin,
-                    this.resourceType
-                )
-                if (this.result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(this.secondaryOrigin)
+        if (this.origin) {
+            if (this.secondaryOrigin) {
+                if (this.origin.store[this.resourceType] < 1) {
+                    this.result = creep.withdraw(
+                        this.secondaryOrigin,
+                        this.resourceType
+                    )
+                    if (this.result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(this.secondaryOrigin)
+                    }
+                } else {
+                    this.result = creep.withdraw(this.origin, this.resourceType)
+                    if (this.result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(this.origin)
+                    }
                 }
             } else {
-                this.result = creep.withdraw(this.origin, this.resourceType)
-                if (this.result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(this.origin)
+                if (this.origin.store[this.resourceType] > 0) {
+                    if (
+                        this.destination.store.getFreeCapacity(
+                            this.resourceType
+                        ) > creep.store[this.resourceType]
+                    ) {
+                        this.result = creep.withdraw(
+                            this.origin,
+                            this.resourceType
+                        )
+                        if (this.result == ERR_NOT_IN_RANGE) {
+                            creep.moveTo(this.origin)
+                        }
+                    }
                 }
             }
         } else {
-            if (this.origin.store[this.resourceType] > 0) {
-                this.result = creep.withdraw(this.origin, this.resourceType)
-                if (this.result == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(this.origin)
+            if (creep.pos.roomName != this.roomName) {
+                creep.moveTo(new RoomPosition(25, 25, this.roomName))
+            } else {
+                var droppedEnergy = creep.room.find(FIND_DROPPED_RESOURCES)[0]
+                if (droppedEnergy) {
+                    var result = creep.pickup(droppedEnergy)
+                    if (result == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(droppedEnergy)
+                    }
                 }
             }
         }

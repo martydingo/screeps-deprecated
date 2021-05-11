@@ -19,6 +19,7 @@ var routines_e15n53_upgradeCreeps_srcOne = {
             roomName,
             config.creepUpgradeFromPOS,
             config.creepContainer,
+            config.creepBoostRequired,
             config.creepParts
         )
 

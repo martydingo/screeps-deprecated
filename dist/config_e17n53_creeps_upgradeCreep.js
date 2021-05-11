@@ -6,6 +6,7 @@ var config_e17n53_creeps_upgradeCreep = {
     creepController: Game.rooms['E17N53'].controller.id,
     creepUpgradeFromPOS: null,
     creepContainer: null,
+    creepBoostRequired: true,
     creepParts: [
         MOVE,
         MOVE,

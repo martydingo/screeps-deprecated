@@ -20,6 +20,7 @@ var routines_e17n55_upgradeCreeps_srcOne = {
             roomName,
             config.creepUpgradeFromPOS,
             config.creepContainer,
+            config.creepBoostRequired,
             config.creepParts
         )
         for (var creep in upgradeCreeps) {

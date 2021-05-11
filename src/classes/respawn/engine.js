@@ -47,17 +47,34 @@ class classes_respawn_engine {
     }
     getActiveClassCount(creepClass, creepName, room) {
         if (creepClass == 'transportCreep') {
-            return _.filter(
-                Game.creeps,
-                (creep) =>
-                    creep.memory.creepRoom == room &&
-                    creep.memory.creepClass == 'transportCreep' &&
-                    creep.memory.creepOrigin.id ==
-                        this.config.transportCreep[creepName].creepOrigin.id &&
-                    creep.memory.creepDestination.id ==
-                        this.config.transportCreep[creepName].creepDestination
-                            .id
-            ).length
+            if (
+                this.config.transportCreep[creepName].creepOrigin &&
+                this.config.transportCreep[creepName].creepOrigin.id
+            ) {
+                return _.filter(
+                    Game.creeps,
+                    (creep) =>
+                        creep.memory.creepRoom == room &&
+                        creep.memory.creepClass == 'transportCreep' &&
+                        creep.memory.creepOrigin.id ==
+                            this.config.transportCreep[creepName].creepOrigin
+                                .id &&
+                        creep.memory.creepDestination.id ==
+                            this.config.transportCreep[creepName]
+                                .creepDestination.id
+                ).length
+            } else {
+                return _.filter(
+                    Game.creeps,
+                    (creep) =>
+                        creep.memory.creepRoom == room &&
+                        creep.memory.creepClass == 'transportCreep' &&
+                        creep.memory.creepOrigin == null &&
+                        creep.memory.creepDestination.id ==
+                            this.config.transportCreep[creepName]
+                                .creepDestination.id
+                ).length
+            }
         }
         if (creepClass == 'sourceCreep') {
             var creepSource = this.config.sourceCreep[creepName].creepSource
@@ -118,6 +135,7 @@ class classes_respawn_engine {
                 this.roomName,
                 this.config.upgradeCreep.creepUpgradeFromPOS,
                 this.config.upgradeCreep.creepContainer,
+                this.config.upgradeCreep.creepBoostRequired,
                 this.config.upgradeCreep.creepParts
             )
             if (this.roomName) {
@@ -139,18 +157,33 @@ class classes_respawn_engine {
             return true
         }
         if (creepClass == 'transportCreep') {
-            var transportCreep = new classes_creeps_transportCreep(
-                this.config.transportCreep[creepName].creepOrigin.id,
-                this.config.transportCreep[creepName].creepDestination.id,
-                this.roomName,
-                this.config.transportCreep[creepName].creepParts,
-                this.config.transportCreep[creepName].creepResourceType,
-                this.config.transportCreep[creepName].creepRemoteLimit,
-                this.config.transportCreep[creepName].creepLocalLimit,
-                this.config.transportCreep[creepName].creepSecondaryOrigin
-            )
-            transportCreep.spawnCreep(spawner)
-            return true
+            if (this.config.transportCreep[creepName].creepOrigin) {
+                var transportCreep = new classes_creeps_transportCreep(
+                    this.config.transportCreep[creepName].creepOrigin.id,
+                    this.config.transportCreep[creepName].creepDestination.id,
+                    this.roomName,
+                    this.config.transportCreep[creepName].creepParts,
+                    this.config.transportCreep[creepName].creepResourceType,
+                    this.config.transportCreep[creepName].creepRemoteLimit,
+                    this.config.transportCreep[creepName].creepLocalLimit,
+                    this.config.transportCreep[creepName].creepSecondaryOrigin
+                )
+                transportCreep.spawnCreep(spawner)
+                return true
+            } else {
+                var transportCreep = new classes_creeps_transportCreep(
+                    this.config.transportCreep[creepName].creepOrigin,
+                    this.config.transportCreep[creepName].creepDestination.id,
+                    this.roomName,
+                    this.config.transportCreep[creepName].creepParts,
+                    this.config.transportCreep[creepName].creepResourceType,
+                    this.config.transportCreep[creepName].creepRemoteLimit,
+                    this.config.transportCreep[creepName].creepLocalLimit,
+                    this.config.transportCreep[creepName].creepSecondaryOrigin
+                )
+                transportCreep.spawnCreep(spawner)
+                return true
+            }
         }
         if (creepClass == 'feederCreep') {
             var feederCreep = new classes_creeps_feederCreep(
